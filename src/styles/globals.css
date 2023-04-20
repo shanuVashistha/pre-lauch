@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*, :after, :before {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-size: 15px;
+    font-family: Poppins, sans-serif;
+}
+
+.banner {
+    background-image: url(../../public/images/banner.png);
+    max-height: 100vh;
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.card {
+    background: #FFFFFF;
+    border: 0.5px solid #DADADA;
+    box-shadow: 0px 10.2474px 15.6408px rgba(5, 5, 5, 0.11);
+    border-radius: 10.7867px;
+}
+
+.card-number {
+    border-radius: 14.0228px;
+}
+
+.card-number-one {
+    background: #3575E299;
+}
+
+.card-number-two {
+    background: #63BE98;
+}
+
+.video-banner {
+    background-image: url(../../public/images/who-enjoys-banner.png);
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.video-button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FFFFFF4D;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.video-button {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FFFFFF;
+    border-radius: 50%;
+}
+
+.social-button {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    transition: .25s linear;
+    border: 1px solid transparent;
+}
+
+.social-button:hover {
+    border-color: #FFFFFF;
+}
+
+.input {
+    min-width: 100%;
+    min-height: 58.1px;
+    border: 0.9px solid rgba(255, 255, 255, 0.38);
+    border-radius: 8px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.input::placeholder, .input::-webkit-input-placeholder, .input::-moz-placeholder, .input:-ms-input-placeholder, .input:-moz-placeholder {
+    font-weight: 400;
+    font-size: 14.4px;
+    line-height: 23px;
+    color: #909090;
+}
+
+.input:focus, .input:focus-within, .input:focus-visible {
+    outline: none;
+}
+
+.input.fill {
+    background: #FFFFFF;
+    border: 0.793076px solid #E4E4E4;
+    color: #72737C;
+}
+
+.input.fill::placeholder, .input.fill::-webkit-input-placeholder, .input.fill::-moz-placeholder, .input.fill:-ms-input-placeholder, .input.fill:-moz-placeholder {
+    color: #72737C;
+}
+
+
+.button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    padding: 13px 22px;
+    background: #FFFFFF;
+    transition: .2s linear;
+    border: 1px solid #FFFFFF;
+}
+
+.button:hover {
+    background: transparent;
+    color: #FFFFFF;
+}
+
+.button.primary {
+    background: #F9B400;
+    color: #FFFFFF;
+    border: 1px solid #F9B400;
+}
+
+.button.primary:hover {
+    background: transparent;
+    color: #F9B400;
+}
