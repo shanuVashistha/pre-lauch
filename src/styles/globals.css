@@ -14,7 +14,7 @@ body {
 }
 
 .banner {
-    background-image: url(../../public/images/banner.png);
+    background-image: url(/images/banner.png);
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -111,7 +111,7 @@ body {
 }
 
 .video-banner {
-    background-image: url(../../public/images/who-enjoys-banner.png);
+    background-image: url(/images/who-enjoys-banner.png);
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
