@@ -21,10 +21,11 @@ const Home: React.FC = () => {
                 <img src={"/images/moving-items/8.svg"} alt={"moving item"} id="moving-item-8" className="moving-item"/>
             </div>
             <div className="logo">
-                <img src={"/images/logo.png"} alt={"logo"} className="md:w-[105px] md:h-[64px] w-[73.93px] h-[45px]"/>
                 <Image
-                    alt={alt}
+                    alt={"alt"}
                     src={"/images/logo.png"}
+                    width={100}
+                    height={100}
                     className="md:w-[105px] md:h-[64px] w-[73.93px] h-[45px]"
                 />
             </div>
