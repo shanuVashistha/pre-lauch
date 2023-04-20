@@ -1,32 +1,8 @@
 import React from "react";
-import Image from "next/image";
-import Logo from "../../public/images/logo.png";
-import LogoWhite from "../../public/images/logo-white.svg";
-import Banner from "../../public/images/banner-featured.png"
-import MobileBanner from "../../public/images/banner-featured-mobile.png"
-import Featured from "../../public/images/Featured.png"
-import VideoThumbnail from "../../public/images/video-thumbnail.png"
-import PlayIcon from "../../public/images/play.svg"
-import OfferImage from "../../public/images/offer.svg"
 import { Card } from "@/utils/Card";
 import { SocialButton } from "@/utils/SocialButton";
-import FacebookIcon from "../../public/images/icons/facebook.svg"
-import TwitterIcon from "../../public/images/icons/twitter.svg"
-import YouTubeIcon from "../../public/images/icons/youtube.svg"
-import LinkedInIcon from "../../public/images/icons/linkedIn.svg"
-import InstagramIcon from "../../public/images/icons/instagram.svg"
-import LeftLinerImage from "../../public/images/who-uses-left.png"
-import RightLinerImage from "../../public/images/who-uses-right.png"
 import { Input, TextArea } from "@/utils/Input";
 import { Button } from "@/utils/Button";
-import MovingItemOne from "../../public/images/moving-items/1.svg"
-import MovingItemTwo from "../../public/images/moving-items/2.svg"
-import MovingItemThree from "../../public/images/moving-items/3.svg"
-import MovingItemFour from "../../public/images/moving-items/4.svg"
-import MovingItemFive from "../../public/images/moving-items/5.svg"
-import MovingItemSix from "../../public/images/moving-items/6.svg"
-import MovingItemSeven from "../../public/images/moving-items/7.svg"
-import MovingItemEight from "../../public/images/moving-items/8.svg"
 
 const Home: React.FC = () => {
     const [email, setEmail] = React.useState("");
@@ -34,17 +10,17 @@ const Home: React.FC = () => {
     return <div>
         <div className="banner md:px-[80px] md:pt-[40px] md:pb-[160px] p-[24px] relative">
             <div className="moving-item-wrapper">
-                <Image src={MovingItemOne} alt={"moving item"} id="moving-item-1" className="moving-item"/>
-                <Image src={MovingItemTwo} alt={"moving item"} id="moving-item-2" className="moving-item"/>
-                <Image src={MovingItemThree} alt={"moving item"} id="moving-item-3" className="moving-item"/>
-                <Image src={MovingItemFour} alt={"moving item"} id="moving-item-4" className="moving-item"/>
-                <Image src={MovingItemFive} alt={"moving item"} id="moving-item-5" className="moving-item"/>
-                <Image src={MovingItemSix} alt={"moving item"} id="moving-item-6" className="moving-item"/>
-                <Image src={MovingItemSeven} alt={"moving item"} id="moving-item-7" className="moving-item"/>
-                <Image src={MovingItemEight} alt={"moving item"} id="moving-item-8" className="moving-item"/>
+                <img src={"/images/moving-items/1.svg"} alt={"moving item"} id="moving-item-1" className="moving-item"/>
+                <img src={"/images/moving-items/2.svg"} alt={"moving item"} id="moving-item-2" className="moving-item"/>
+                <img src={"/images/moving-items/3.svg"} alt={"moving item"} id="moving-item-3" className="moving-item"/>
+                <img src={"/images/moving-items/4.svg"} alt={"moving item"} id="moving-item-4" className="moving-item"/>
+                <img src={"/images/moving-items/5.svg"} alt={"moving item"} id="moving-item-5" className="moving-item"/>
+                <img src={"/images/moving-items/6.svg"} alt={"moving item"} id="moving-item-6" className="moving-item"/>
+                <img src={"/images/moving-items/7.svg"} alt={"moving item"} id="moving-item-7" className="moving-item"/>
+                <img src={"/images/moving-items/8.svg"} alt={"moving item"} id="moving-item-8" className="moving-item"/>
             </div>
             <div className="logo">
-                <Image src={Logo} alt={"logo"} className="md:w-[105px] md:h-[64px] w-[73.93px] h-[45px]"/>
+                <img src={"/images/logo.png"} alt={"logo"} className="md:w-[105px] md:h-[64px] w-[73.93px] h-[45px]"/>
             </div>
             <div className="flex md:flex-row flex-col gap-8 items-center pt-[30px] md:pt-0">
                 <div className="md:flex-1 w-[100%]">
@@ -82,8 +58,8 @@ const Home: React.FC = () => {
                     </h3>
                 </div>
                 <div className="md:flex-1 banner-image w-[100%]">
-                    <Image src={Banner} alt={"banner"} className="w-100 h-100 hidden md:flex"/>
-                    <Image src={MobileBanner} alt={"banner"} className="w-[100%] md:hidden"/>
+                    <img src={"/images/banner-featured.png"} alt={"banner"} className="w-100 h-100 hidden md:flex"/>
+                    <img src={"/images/banner-featured-mobile.png"} alt={"banner"} className="w-[100%] md:hidden"/>
                 </div>
             </div>
         </div>
@@ -127,7 +103,7 @@ const Home: React.FC = () => {
                     </div>
                 </div>
                 <div className="px-[16px] md:py-0 py-[20px]">
-                    <Image src={Featured} alt={""} className="w-[300px] mx-auto"/>
+                    <img src={"/images/Featured.png"} alt={""} className="w-[300px] mx-auto"/>
                 </div>
                 <div
                     className="flex-1 lg:items-start items-center justify-center lg:justify-between flex flex-wrap lg:flex-col lg:flex-nowrap">
@@ -163,31 +139,31 @@ const Home: React.FC = () => {
         </div>
         <div className="video-banner relative md:py-[142px] px-[30px]">
             <div className="video-banner-liners right">
-                <Image src={RightLinerImage} alt={"right liner"} className="md:w-[400px]  w-[100px]"/>
+                <img src={"/images/who-uses-right.png"} alt={"right liner"} className="md:w-[400px]  w-[100px]"/>
             </div>
             <h3 className="text-center md:text-[42px] md:leading-[45px] text-[30px] leading-[35px] text-[#263041] font-semibold pb-[42px]">
                 Who uses Enjoy Mondays
             </h3>
             <div className="">
                 <div className="video-container flex justify-center relative">
-                    <Image src={VideoThumbnail} alt={"Video Thumbnail"} className="md:w-[60%] w-[100%]"/>
+                    <img src={"/images/video-thumbnail.png"} alt={"Video Thumbnail"} className="md:w-[60%] w-[100%]"/>
                     <div className="absolute top-0 left-0 w-[100%] h-[100%] flex justify-center items-center">
                         <button className="video-button-wrapper">
                             <div className="video-button">
-                                <Image src={PlayIcon} alt={"Play"}/>
+                                <img src={"/images/play.svg"} alt={"Play"}/>
                             </div>
                         </button>
                     </div>
                 </div>
             </div>
             <div className="video-banner-liners left">
-                <Image src={LeftLinerImage} alt={"left liner"} className="md:w-[250px] w-[70px]"/>
+                <img src={"/images/who-uses-left.png"} alt={"left liner"} className="md:w-[250px] w-[70px]"/>
             </div>
         </div>
         <div className="md:px-[45px] md:py-[7px] p-[27px]">
             <div className="flex flex-col lg:flex-row items-center">
                 <div className="lg:flex-1 md:p-[35px] md:pb-[35px] pb-[15px] w-[100%]">
-                    <Image src={OfferImage} alt={"Offers"}/>
+                    <img src={"/images/offer.svg"} alt={"Offers"}/>
                 </div>
                 <div className="lg:flex-1 md:p-[35px] w-[100%]">
                     <h3 className="md:text-[42px] md:leading-[47px] text-[20px] leading-[30px] text-[#363848] font-semibold pb-[10px]">
@@ -219,7 +195,7 @@ const Home: React.FC = () => {
             <div className="flex flex-col lg:flex-row items-center">
                 <div className="md:p-[35px] lg:flex-1 w-[100%] flex lg:flex-col md:items-start items-center">
                     <div className="lg:pb-[42px]">
-                        <Image src={LogoWhite} alt={"Footer Logo"} className="md:w-[91px] w-[70.6px]"/>
+                        <img src={"/images/logo-white.svg"} alt={"Footer Logo"} className="md:w-[91px] w-[70.6px]"/>
                     </div>
                     <div className="lg:flex-auto flex-1 flex flex-col lg:items-start items-end">
                         <h3 className="md:text-[25px] md:leading-[40.5px] text-[12px] leading-[10.6px] font-semibold text-[#FFFFFF] pb-[16px]">
@@ -227,19 +203,19 @@ const Home: React.FC = () => {
                         </h3>
                         <div className="flex items-center">
                             <div className="lg:pr-8 pr-4">
-                                <SocialButton icon={FacebookIcon} url={"#"}/>
+                                <SocialButton icon={"/images/icons/facebook.svg"} url={"#"}/>
                             </div>
                             <div className="lg:pr-8 pr-4">
-                                <SocialButton icon={TwitterIcon} url={"#"}/>
+                                <SocialButton icon={"/images/icons/twitter.svg"} url={"#"}/>
                             </div>
                             <div className="lg:pr-8 pr-4">
-                                <SocialButton icon={YouTubeIcon} url={"#"}/>
+                                <SocialButton icon={"/images/icons/youtube.svg"} url={"#"}/>
                             </div>
                             <div className="lg:pr-8 pr-4">
-                                <SocialButton icon={LinkedInIcon} url={"#"}/>
+                                <SocialButton icon={"/images/icons/linkedIn.svg"} url={"#"}/>
                             </div>
                             <div>
-                                <SocialButton icon={InstagramIcon} url={"#"}/>
+                                <SocialButton icon={"/images/icons/instagram.svg"} url={"#"}/>
                             </div>
                         </div>
                         <p className="pt-[46px] text-[#F3F3F3] text-[14px] leading-[24px] font-normal opacity-50 lg:flex hidden">
