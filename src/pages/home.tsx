@@ -15,14 +15,34 @@ import TwitterIcon from "../../public/images/icons/twitter.svg"
 import YouTubeIcon from "../../public/images/icons/youtube.svg"
 import LinkedInIcon from "../../public/images/icons/linkedIn.svg"
 import InstagramIcon from "../../public/images/icons/instagram.svg"
+import LeftLinerImage from "../../public/images/who-uses-left.png"
+import RightLinerImage from "../../public/images/who-uses-right.png"
 import { Input, TextArea } from "@/utils/Input";
 import { Button } from "@/utils/Button";
+import MovingItemOne from "../../public/images/moving-items/1.svg"
+import MovingItemTwo from "../../public/images/moving-items/2.svg"
+import MovingItemThree from "../../public/images/moving-items/3.svg"
+import MovingItemFour from "../../public/images/moving-items/4.svg"
+import MovingItemFive from "../../public/images/moving-items/5.svg"
+import MovingItemSix from "../../public/images/moving-items/6.svg"
+import MovingItemSeven from "../../public/images/moving-items/7.svg"
+import MovingItemEight from "../../public/images/moving-items/8.svg"
 
 const Home: React.FC = () => {
     const [email, setEmail] = React.useState("");
     const [message, setMessage] = React.useState("");
     return <div>
-        <div className="banner md:px-[80px] md:pt-[40px] md:pb-[160px] p-[24px]">
+        <div className="banner md:px-[80px] md:pt-[40px] md:pb-[160px] p-[24px] relative">
+            <div className="moving-item-wrapper">
+                <Image src={MovingItemOne} alt={"moving item"} id="moving-item-1" className="moving-item"/>
+                <Image src={MovingItemTwo} alt={"moving item"} id="moving-item-2" className="moving-item"/>
+                <Image src={MovingItemThree} alt={"moving item"} id="moving-item-3" className="moving-item"/>
+                <Image src={MovingItemFour} alt={"moving item"} id="moving-item-4" className="moving-item"/>
+                <Image src={MovingItemFive} alt={"moving item"} id="moving-item-5" className="moving-item"/>
+                <Image src={MovingItemSix} alt={"moving item"} id="moving-item-6" className="moving-item"/>
+                <Image src={MovingItemSeven} alt={"moving item"} id="moving-item-7" className="moving-item"/>
+                <Image src={MovingItemEight} alt={"moving item"} id="moving-item-8" className="moving-item"/>
+            </div>
             <div className="logo">
                 <Image src={Logo} alt={"logo"} className="md:w-[105px] md:h-[64px] w-[73.93px] h-[45px]"/>
             </div>
@@ -141,7 +161,10 @@ const Home: React.FC = () => {
                 </div>
             </div>
         </div>
-        <div className="video-banner md:py-[142px] px-[30px]">
+        <div className="video-banner relative md:py-[142px] px-[30px]">
+            <div className="video-banner-liners right">
+                <Image src={RightLinerImage} alt={"right liner"} className="md:w-[400px]  w-[100px]"/>
+            </div>
             <h3 className="text-center md:text-[42px] md:leading-[45px] text-[30px] leading-[35px] text-[#263041] font-semibold pb-[42px]">
                 Who uses Enjoy Mondays
             </h3>
@@ -156,6 +179,9 @@ const Home: React.FC = () => {
                         </button>
                     </div>
                 </div>
+            </div>
+            <div className="video-banner-liners left">
+                <Image src={LeftLinerImage} alt={"left liner"} className="md:w-[250px] w-[70px]"/>
             </div>
         </div>
         <div className="md:px-[45px] md:py-[7px] p-[27px]">

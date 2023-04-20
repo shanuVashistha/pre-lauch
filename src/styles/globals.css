@@ -20,6 +20,77 @@ body {
     background-repeat: no-repeat;
 }
 
+.moving-item {
+    position: absolute;
+    transition: .2s linear;
+    z-index: -1;
+}
+
+.moving-item-wrapper {
+    overflow: hidden;
+}
+
+#moving-item-1 {
+    top: 35%;
+    right: 2%;
+    animation: linear infinite movingItem1 2s
+}
+
+#moving-item-2 {
+    top: 70%;
+    right: 35%;
+    animation: linear infinite movingItem1 2s
+}
+
+#moving-item-4 {
+    top: 70%;
+    right: 45%;
+    animation: linear infinite movingItem1 2s
+}
+
+#moving-item-3 {
+    top: 10%;
+    left: 17%;
+    animation: linear infinite movingItem1 2s
+}
+
+#moving-item-5 {
+    bottom: 10%;
+    left: 10%;
+    animation: linear infinite movingItem1 2s
+}
+
+#moving-item-6 {
+    top: 35%;
+    left: 45%;
+    animation: linear infinite movingItem1 2s
+}
+
+#moving-item-7 {
+    top: 45%;
+    left: 2%;
+    animation: linear infinite movingItem1 2s
+}
+
+#moving-item-8 {
+    top: 20%;
+    right: 17%;
+    animation: linear infinite movingItem1 2s
+}
+
+
+@keyframes movingItem1 {
+    0% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(10px, 10px);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
 .card {
     background: #FFFFFF;
     border: 0.5px solid #DADADA;
@@ -142,6 +213,20 @@ input:focus, input:focus-within, input:focus-visible, .input:focus, .input:focus
     border-radius: 8px;
 }
 
+.video-banner-liners {
+    position: absolute;
+}
+
+
+.video-banner-liners.left {
+    top: -150px;
+    left: 0;
+}
+
+.video-banner-liners.right {
+    bottom: -220px;
+    right: 0;
+}
 
 @media screen and (max-width: 768px) {
     body {
@@ -158,5 +243,50 @@ input:focus, input:focus-within, input:focus-visible, .input:focus, .input:focus
 
     .card {
         border-radius: 8.24px;
+    }
+
+    .video-banner-liners.left, .video-banner-liners.right {
+        top: -200%;
+        bottom: unset;
+    }
+
+    #moving-item-1 {
+        top: 80%;
+        right: 2%;
+    }
+
+    #moving-item-2 {
+        top: 60%;
+        right: 55%;
+    }
+
+    #moving-item-4 {
+        top: 95%;
+        right: 45%;
+    }
+
+    #moving-item-3 {
+        top: 5%;
+        left: 30%;
+    }
+
+    #moving-item-5 {
+        bottom: 40%;
+        left: 0%;
+    }
+
+    #moving-item-6 {
+        top: 25%;
+        left: 45%;
+    }
+
+    #moving-item-7 {
+        top: 4%;
+        left: 82%;
+    }
+
+    #moving-item-8 {
+        top: 34%;
+        right: 17%;
     }
 }
