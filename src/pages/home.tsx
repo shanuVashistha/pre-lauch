@@ -161,14 +161,27 @@ const Home: React.FC = () => {
                         Upgrade your job search game and get a free $250 resume appraisal today.
                     </p>
                     <div className="mt-[32px]">
-
+                        <div className="flex claim-input-container">
+                            <input
+                                className="claim-input flex-1"
+                                placeholder="Enter your email address..."
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                            <Button
+                                label="Sign me up"
+                                onClick={() => console.log(email)}
+                                color="primary"
+                                className="font-medium text-[18px] leading-[21px]"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div className="bg-[#263041] px-[120px] py-[70px]">
+        <div className="bg-[#263041] px-[45px] py-[7px]">
             <div className="flex items-center">
-                <div className="flex-1 flex flex-col">
+                <div className="p-[35px] flex-1 flex flex-col">
                     <div className="pb-[42px]">
                         <Image src={LogoWhite} alt={"Footer Logo"} className="w-[91px]"/>
                     </div>
@@ -196,11 +209,11 @@ const Home: React.FC = () => {
                         © Copyright 2023. All rights reserved. Privacy policy.
                     </p>
                 </div>
-                <div className="flex-1 flex flex-col items-center">
+                <div className="p-[35px] flex-1 flex flex-col items-center">
                     <h3 className="text-[31.5px] text-center leading-[40.5px] font-bold text-[#FFFFFF] pb-[40px]">
                         Got any questions?
                     </h3>
-                    <div className="pb-[24px] w-[80%]">
+                    <div className="pb-[24px] w-[100%]">
                         <Input
                             type={"text"}
                             placeholder={"Enter Your Email"}
@@ -208,7 +221,7 @@ const Home: React.FC = () => {
                             value={email}
                         />
                     </div>
-                    <div className="pb-[40px] w-[80%]">
+                    <div className="pb-[40px] w-[100%]">
                         <TextArea
                             placeholder={"Enter Your Message"}
                             onChange={e => setMessage(e.target.value)}
