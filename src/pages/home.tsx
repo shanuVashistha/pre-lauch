@@ -3,6 +3,7 @@ import { Card } from "@/utils/Card";
 import { SocialButton } from "@/utils/SocialButton";
 import { Input, TextArea } from "@/utils/Input";
 import { Button } from "@/utils/Button";
+import Image from "next/image";
 
 const Home: React.FC = () => {
     const [email, setEmail] = React.useState("");
@@ -21,6 +22,11 @@ const Home: React.FC = () => {
             </div>
             <div className="logo">
                 <img src={"/images/logo.png"} alt={"logo"} className="md:w-[105px] md:h-[64px] w-[73.93px] h-[45px]"/>
+                <Image
+                    alt={alt}
+                    src={"/images/logo.png"}
+                    className="md:w-[105px] md:h-[64px] w-[73.93px] h-[45px]"
+                />
             </div>
             <div className="flex md:flex-row flex-col gap-8 items-center pt-[30px] md:pt-0">
                 <div className="md:flex-1 w-[100%]">
