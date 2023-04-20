@@ -11,7 +11,7 @@ export const Button: React.FC<ButtonInterface> = ({ label, onClick, className, c
     return (
         <button
             onClick={onClick}
-            className={`button ${className} ${color}`}
+            className={`button ${className} ${color} md:py-[13px] md:[px-22px] p-[12px]`}
         >
             {label}
         </button>
