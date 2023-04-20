@@ -2,7 +2,7 @@ import React from 'react'
 
 interface ButtonInterface {
     label: string
-    onClick: () => void
+    onClick: () => any
     className?: string
     color?: string
 }

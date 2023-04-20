@@ -6,7 +6,7 @@ interface InputInterface {
     rows?: number
     type?: string
     value: string
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => any
     error?: string
     placeholder?: string
     className?: string
