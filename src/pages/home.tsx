@@ -3,7 +3,6 @@ import { Card } from "@/utils/Card";
 import { SocialButton } from "@/utils/SocialButton";
 import { Input, TextArea } from "@/utils/Input";
 import { Button } from "@/utils/Button";
-import Image from "next/image";
 
 const Home: React.FC = () => {
     const [email, setEmail] = React.useState("");
@@ -21,13 +20,7 @@ const Home: React.FC = () => {
                 <img src={"/images/moving-items/8.svg"} alt={"moving item"} id="moving-item-8" className="moving-item"/>
             </div>
             <div className="logo">
-                <Image
-                    alt={"alt"}
-                    src={"/images/logo.png"}
-                    width={100}
-                    height={100}
-                    className="md:w-[105px] md:h-[64px] w-[73.93px] h-[45px]"
-                />
+                <img src={"/images/logo.png"} alt={"logo"} className="md:w-[105px] md:h-[64px] w-[73.93px] h-[45px]"/>
             </div>
             <div className="flex md:flex-row flex-col gap-8 items-center pt-[30px] md:pt-0">
                 <div className="md:flex-1 w-[100%]">
