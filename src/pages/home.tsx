@@ -3,6 +3,7 @@ import { Card } from "@/utils/Card";
 import { SocialButton } from "@/utils/SocialButton";
 import { Input, TextArea } from "@/utils/Input";
 import { Button } from "@/utils/Button";
+import { Img } from "@/utils/Img";
 
 const Home: React.FC = () => {
     const [email, setEmail] = React.useState("");
@@ -10,17 +11,17 @@ const Home: React.FC = () => {
     return <div>
         <div className="banner md:px-[80px] md:pt-[40px] md:pb-[160px] p-[24px] relative">
             <div className="moving-item-wrapper">
-                <img src={"/images/moving-items/1.svg"} alt={"moving item"} id="moving-item-1" className="moving-item"/>
-                <img src={"/images/moving-items/2.svg"} alt={"moving item"} id="moving-item-2" className="moving-item"/>
-                <img src={"/images/moving-items/3.svg"} alt={"moving item"} id="moving-item-3" className="moving-item"/>
-                <img src={"/images/moving-items/4.svg"} alt={"moving item"} id="moving-item-4" className="moving-item"/>
-                <img src={"/images/moving-items/5.svg"} alt={"moving item"} id="moving-item-5" className="moving-item"/>
-                <img src={"/images/moving-items/6.svg"} alt={"moving item"} id="moving-item-6" className="moving-item"/>
-                <img src={"/images/moving-items/7.svg"} alt={"moving item"} id="moving-item-7" className="moving-item"/>
-                <img src={"/images/moving-items/8.svg"} alt={"moving item"} id="moving-item-8" className="moving-item"/>
+                <Img src={"/images/moving-items/1.svg"} alt={"moving item"} id="moving-item-1" className="moving-item"/>
+                <Img src={"/images/moving-items/2.svg"} alt={"moving item"} id="moving-item-2" className="moving-item"/>
+                <Img src={"/images/moving-items/3.svg"} alt={"moving item"} id="moving-item-3" className="moving-item"/>
+                <Img src={"/images/moving-items/4.svg"} alt={"moving item"} id="moving-item-4" className="moving-item"/>
+                <Img src={"/images/moving-items/5.svg"} alt={"moving item"} id="moving-item-5" className="moving-item"/>
+                <Img src={"/images/moving-items/6.svg"} alt={"moving item"} id="moving-item-6" className="moving-item"/>
+                <Img src={"/images/moving-items/7.svg"} alt={"moving item"} id="moving-item-7" className="moving-item"/>
+                <Img src={"/images/moving-items/8.svg"} alt={"moving item"} id="moving-item-8" className="moving-item"/>
             </div>
             <div className="logo">
-                <img src={"/images/logo.png"} alt={"logo"} className="md:w-[105px] md:h-[64px] w-[73.93px] h-[45px]"/>
+                <Img src={"/images/logo.svg"} alt={"logo"} className="md:w-[105px] md:h-[64px] w-[73.93px] h-[45px]"/>
             </div>
             <div className="flex md:flex-row flex-col gap-8 items-center pt-[30px] md:pt-0">
                 <div className="md:flex-1 w-[100%]">

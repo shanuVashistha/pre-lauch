@@ -24,6 +24,8 @@ body {
     position: absolute;
     transition: .2s linear;
     z-index: -1;
+    width: auto;
+    height: auto;
 }
 
 .moving-item-wrapper {
