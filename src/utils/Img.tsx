@@ -16,8 +16,8 @@ export const Img: React.FC<ImgInterface> = ({ src, alt, width, height, className
             id={id || ""}
             src={src}
             alt={alt || ""}
-            width={width || 100}
-            height={height || 100}
+            width={width || 500}
+            height={height || 500}
             className={className}
         />
     );
