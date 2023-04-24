@@ -26,6 +26,7 @@ export default function Blog() {
         </h3>
         <div>
           <p className="flex md:text-center text-center md:pt-[15px] pt-[7px] md:text-[18px] font-normal md:leading-[26px] text-[#77838F] md:w-[790px] w-[390px] m-auto text-[12px] leading-[12.41px]">
+          
             Orci varius natoque penatibus et magnis dis parturient montes,
             nascetur ridiculus mus. Etiam placerat tortor commodo lectus laoreet
             venenatis. Donec ultricies, metus vitae bibendum consequat, tortor
