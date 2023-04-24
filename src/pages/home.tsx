@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { Card } from "@/utils/Card";
 import { SocialButton } from "@/utils/SocialButton";
 import { Input, TextArea } from "@/utils/Input";
@@ -298,6 +299,7 @@ const Home: React.FC = () => {
               description="Lorem ipsum dolor sit amet, consectetur
                 adipiscing elit, sed do eiusmod."
               className=" "
+                url="/Blog"
             />
 
             <BlogCards
@@ -309,6 +311,7 @@ const Home: React.FC = () => {
               description="Lorem ipsum dolor sit amet, consectetur
                adipiscing elit, sed do eiusmod."
                className=" md:w-auto w-auto md:h-auto h-auto"
+          url=" /Blog"
             />
             <BlogCards
               img="/images/card11.png"
@@ -319,6 +322,7 @@ const Home: React.FC = () => {
               description="Lorem ipsum dolor sit amet, consectetur
                 adipiscing elit, sed do eiusmod."
                 className=" md:w-auto w-auto md:h-auto h-auto"
+                url="/Blog"
             />
           </div>
         </div>
