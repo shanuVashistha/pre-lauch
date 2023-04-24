@@ -1,20 +1,36 @@
-<svg width="102" height="90" viewBox="0 0 102 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="123" height="56" viewBox="0 0 123 56" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g opacity="0.5">
-<circle cx="6.02657" cy="25.944" r="4.30989" transform="rotate(-15 6.02657 25.944)" fill="#E184BD"/>
-<circle cx="31.0051" cy="19.2507" r="4.30989" transform="rotate(-15 31.0051 19.2507)" fill="#E184BD"/>
-<circle cx="55.9826" cy="12.5583" r="4.30989" transform="rotate(-15 55.9826 12.5583)" fill="#E184BD"/>
-<circle cx="80.9611" cy="5.86494" r="4.30989" transform="rotate(-15 80.9611 5.86494)" fill="#E184BD"/>
-<circle cx="11.2326" cy="45.3718" r="4.30989" transform="rotate(-15 11.2326 45.3718)" fill="#E184BD"/>
-<circle cx="36.2111" cy="38.6784" r="4.30989" transform="rotate(-15 36.2111 38.6784)" fill="#E184BD"/>
-<circle cx="61.1887" cy="31.986" r="4.30989" transform="rotate(-15 61.1887 31.986)" fill="#E184BD"/>
-<circle cx="86.1672" cy="25.2927" r="4.30989" transform="rotate(-15 86.1672 25.2927)" fill="#E184BD"/>
-<circle cx="16.4377" cy="64.7995" r="4.30989" transform="rotate(-15 16.4377 64.7995)" fill="#E184BD"/>
-<circle cx="41.4162" cy="58.1071" r="4.30989" transform="rotate(-15 41.4162 58.1071)" fill="#E184BD"/>
-<circle cx="66.3938" cy="51.4138" r="4.30989" transform="rotate(-15 66.3938 51.4138)" fill="#E184BD"/>
-<circle cx="91.3723" cy="44.7204" r="4.30989" transform="rotate(-15 91.3723 44.7204)" fill="#E184BD"/>
-<circle cx="21.6428" cy="84.2263" r="4.30989" transform="rotate(-15 21.6428 84.2263)" fill="#E184BD"/>
-<circle cx="46.6213" cy="77.5329" r="4.30989" transform="rotate(-15 46.6213 77.5329)" fill="#E184BD"/>
-<circle cx="71.5998" cy="70.8405" r="4.30989" transform="rotate(-15 71.5998 70.8405)" fill="#E184BD"/>
-<circle cx="96.5773" cy="64.1472" r="4.30989" transform="rotate(-15 96.5773 64.1472)" fill="#E184BD"/>
+<circle cx="119.309" cy="2.77464" r="2.77464" transform="rotate(90 119.309 2.77464)" fill="#44B480"/>
+<circle cx="102.661" cy="2.77464" r="2.77464" transform="rotate(90 102.661 2.77464)" fill="#44B480"/>
+<circle cx="86.0134" cy="2.77464" r="2.77464" transform="rotate(90 86.0134 2.77464)" fill="#44B480"/>
+<circle cx="69.366" cy="2.77464" r="2.77464" transform="rotate(90 69.366 2.77464)" fill="#44B480"/>
+<circle cx="52.718" cy="2.77464" r="2.77464" transform="rotate(90 52.718 2.77464)" fill="#44B480"/>
+<circle cx="36.0701" cy="2.77464" r="2.77464" transform="rotate(90 36.0701 2.77464)" fill="#44B480"/>
+<circle cx="19.4221" cy="2.77464" r="2.77464" transform="rotate(90 19.4221 2.77464)" fill="#44B480"/>
+<circle cx="2.77419" cy="2.77464" r="2.77464" transform="rotate(90 2.77419 2.77464)" fill="#44B480"/>
+<circle cx="119.309" cy="19.4231" r="2.77464" transform="rotate(90 119.309 19.4231)" fill="#44B480"/>
+<circle cx="102.661" cy="19.4231" r="2.77464" transform="rotate(90 102.661 19.4231)" fill="#44B480"/>
+<circle cx="86.0134" cy="19.4231" r="2.77464" transform="rotate(90 86.0134 19.4231)" fill="#44B480"/>
+<circle cx="69.366" cy="19.4231" r="2.77464" transform="rotate(90 69.366 19.4231)" fill="#44B480"/>
+<circle cx="52.718" cy="19.4231" r="2.77464" transform="rotate(90 52.718 19.4231)" fill="#44B480"/>
+<circle cx="36.0701" cy="19.4231" r="2.77464" transform="rotate(90 36.0701 19.4231)" fill="#44B480"/>
+<circle cx="19.4221" cy="19.4231" r="2.77464" transform="rotate(90 19.4221 19.4231)" fill="#44B480"/>
+<circle cx="2.77419" cy="19.4231" r="2.77464" transform="rotate(90 2.77419 19.4231)" fill="#44B480"/>
+<circle cx="119.309" cy="36.0705" r="2.77464" transform="rotate(90 119.309 36.0705)" fill="#44B480"/>
+<circle cx="102.661" cy="36.0705" r="2.77464" transform="rotate(90 102.661 36.0705)" fill="#44B480"/>
+<circle cx="86.0134" cy="36.0705" r="2.77464" transform="rotate(90 86.0134 36.0705)" fill="#44B480"/>
+<circle cx="69.366" cy="36.0705" r="2.77464" transform="rotate(90 69.366 36.0705)" fill="#44B480"/>
+<circle cx="52.718" cy="36.0705" r="2.77464" transform="rotate(90 52.718 36.0705)" fill="#44B480"/>
+<circle cx="36.0701" cy="36.0705" r="2.77464" transform="rotate(90 36.0701 36.0705)" fill="#44B480"/>
+<circle cx="19.4221" cy="36.0705" r="2.77464" transform="rotate(90 19.4221 36.0705)" fill="#44B480"/>
+<circle cx="2.77419" cy="36.0705" r="2.77464" transform="rotate(90 2.77419 36.0705)" fill="#44B480"/>
+<circle cx="119.309" cy="52.718" r="2.77464" transform="rotate(90 119.309 52.718)" fill="#44B480"/>
+<circle cx="102.661" cy="52.718" r="2.77464" transform="rotate(90 102.661 52.718)" fill="#44B480"/>
+<circle cx="86.0134" cy="52.718" r="2.77464" transform="rotate(90 86.0134 52.718)" fill="#44B480"/>
+<circle cx="69.366" cy="52.718" r="2.77464" transform="rotate(90 69.366 52.718)" fill="#44B480"/>
+<circle cx="52.718" cy="52.718" r="2.77464" transform="rotate(90 52.718 52.718)" fill="#44B480"/>
+<circle cx="36.0701" cy="52.718" r="2.77464" transform="rotate(90 36.0701 52.718)" fill="#44B480"/>
+<circle cx="19.4221" cy="52.718" r="2.77464" transform="rotate(90 19.4221 52.718)" fill="#44B480"/>
+<circle cx="2.77419" cy="52.718" r="2.77464" transform="rotate(90 2.77419 52.718)" fill="#44B480"/>
 </g>
 </svg>

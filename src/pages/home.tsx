@@ -113,7 +113,7 @@ const Home: React.FC = () => {
           </div>
           <div className="md:flex-1 banner-image w-[100%] ">
             <Img
-              src={"/images/hero.svg"}
+              src={"/hero1.png"}
               alt={"banner"}
               className="w-100 h-100 hidden md:flex w-[100%] "
             />
@@ -280,24 +280,23 @@ const Home: React.FC = () => {
         </div>
         <div>
           <div>
-            {/* <h3 className=" flex justify-center md:text-[42px] font-bold md:leading-[74.27px] text-bannerHeading text-[31px] leading-[55px]">
+            <h3 className=" flex justify-center md:text-[42px] font-bold md:leading-[74.27px] text-bannerHeading text-[31px] leading-[55px]">
               Enjoy our Blogs
             </h3>
             <p className="text-center md:text-[16px] font-normal md:leading-[26px] text-[#363848] md:w-[490px] m-auto text-[12px] leading-[18.41px]">
-              We will give you industry tips, discuss booming industries, and talk
-              shop about the job market today.
-            </p> */}
+              We will give you industry tips, discuss booming industries, and
+              talk shop about the job market today.
+            </p>
           </div>
-          
-          <div className="flex justify-center md:my-20 my-12 md:gap-9 gap-4 ">
-            {/* <div className="card md:h-[450px] h-[150px] md:w-[300px] w-[100px] rounded-md">
+
+          {/* <div className="card md:h-[450px] h-[150px] md:w-[300px] w-[100px] rounded-md">
               <Img
                 src="/images/card11.png"
                 alt="Avatar "
                 className=" rounded-lg"
               />
                </div> */}
-              {/* <div className="container">
+          {/* <div className="container">
                 <h4 className=" md:text-[18px] text-[12px] mx-5 my-4 leading-9 font-bold">
                   How to build strong portfolio and get a Job in UI/UX
                 </h4>
@@ -306,15 +305,15 @@ const Home: React.FC = () => {
                   do eiusmod.
                 </p>
               </div> */}
-           
-            {/* <div className="card md:h-[450px] h-[150px] md:w-[300px] w-[100px] rounded-md">
+
+          {/* <div className="card md:h-[450px] h-[150px] md:w-[300px] w-[100px] rounded-md">
               <Img
                 src="/images/card11.png"
                 alt="Avatar "
                 className=" rounded-lg"
               />
                   </div> */}
-              {/* <div className="container">
+          {/* <div className="container">
                 <h4 className=" md:text-[18px] text-[12px] mx-5 my-4 leading-9 font-bold">
                   How to build strong portfolio and get a Job in UI/UX
                 </h4>
@@ -323,8 +322,8 @@ const Home: React.FC = () => {
                   do eiusmod.
                 </p>
               </div> */}
-        
-            {/* <div className="card md:h-[450px] h-[150px] md:w-[300px] w-[100px] rounded-md">
+
+          {/* <div className="card md:h-[450px] h-[150px] md:w-[300px] w-[100px] rounded-md">
               <Img
                 src="/images/card11.png"
                 alt="Avatar "
@@ -340,42 +339,38 @@ const Home: React.FC = () => {
                 </p>
               </div>
             </div> */}
-
-            <div className=" flex justify-center items-center space-x-8  py-[10px] md:pl-[20px] pl-[10px] mx-[18px] rounded-md gap-9 md:w-[260px] w-[190px]  md:h-[350px] h-[250px]">
+          <div className=" flex md:mx-[15px] mx-[3px]  md:mt-[70px] mt-[30px]  md:gap-16 gap-4 rounded-3xl     md:w-auto w-auto  md:h-auto h-auto md:mb-[160px] mb-[120px]">
             <BlogCards
-         img="/images/card11.png"
+              img="/images/card11.png"
               title="How to build strong
-                portfolio and get a Job
-                in UI/UX"
+              portfolio and get a Job
+              in UI/UX"
               background="card-number-two"
               description="Lorem ipsum dolor sit amet, consectetur
                 adipiscing elit, sed do eiusmod."
-              className="md:h-auto h-[100%]"
-           
+              className=" "
             />
+
             <BlogCards
-             img="/images/card11.png"
+              img="/images/card11.png"
               title="How to build strong
               portfolio and get a Job
               in UI/UX"
               background="card-number-two"
               description="Lorem ipsum dolor sit amet, consectetur
                adipiscing elit, sed do eiusmod."
-              className="md:h-auto h-[100%]"
-           
+               className=" md:w-auto w-auto md:h-auto h-auto"
             />
             <BlogCards
               img="/images/card11.png"
               title="How to build strong
-                portfolio and get a Job
-                in UI/UX"
+              portfolio and get a Job
+              in UI/UX"
               background="card-number-two"
               description="Lorem ipsum dolor sit amet, consectetur
                 adipiscing elit, sed do eiusmod."
-              className="md:h-auto h-[100%]"
-           
+                className=" md:w-auto w-auto md:h-auto h-auto"
             />
-          </div>
           </div>
         </div>
       </div>
