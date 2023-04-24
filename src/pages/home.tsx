@@ -289,13 +289,13 @@ const Home: React.FC = () => {
               talk shop about the job market today.
             </p>
           </div>
-          <div className=" flex md:mx-[25px] mx-[3px]  md:mt-[70px] mt-[30px]  md:gap-16 gap-4 rounded-3xl     md:w-auto w-auto  md:h-auto h-auto md:mb-[160px] mb-[120px]">
+          <div className=" flex md:mx-[25px]  md:mt-[70px] mt-[50px] md:gap-16 gap-[10px] rounded-3xl     md:w-auto  md:h-auto  md:mb-[160px] mb-[100px] ">
             <BlogCards
               img="/images/card11.png"
               title="How to build strong
               portfolio and get a Job
               in UI/UX"
-              background="card-number-two"
+              background="card-number-one"
               description="Lorem ipsum dolor sit amet, consectetur
                 adipiscing elit, sed do eiusmod."
               className=" "
