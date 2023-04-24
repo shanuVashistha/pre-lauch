@@ -288,58 +288,7 @@ const Home: React.FC = () => {
               talk shop about the job market today.
             </p>
           </div>
-
-          {/* <div className="card md:h-[450px] h-[150px] md:w-[300px] w-[100px] rounded-md">
-              <Img
-                src="/images/card11.png"
-                alt="Avatar "
-                className=" rounded-lg"
-              />
-               </div> */}
-          {/* <div className="container">
-                <h4 className=" md:text-[18px] text-[12px] mx-5 my-4 leading-9 font-bold">
-                  How to build strong portfolio and get a Job in UI/UX
-                </h4>
-                <p className="mx-5">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod.
-                </p>
-              </div> */}
-
-          {/* <div className="card md:h-[450px] h-[150px] md:w-[300px] w-[100px] rounded-md">
-              <Img
-                src="/images/card11.png"
-                alt="Avatar "
-                className=" rounded-lg"
-              />
-                  </div> */}
-          {/* <div className="container">
-                <h4 className=" md:text-[18px] text-[12px] mx-5 my-4 leading-9 font-bold">
-                  How to build strong portfolio and get a Job in UI/UX
-                </h4>
-                <p className="mx-5">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod.
-                </p>
-              </div> */}
-
-          {/* <div className="card md:h-[450px] h-[150px] md:w-[300px] w-[100px] rounded-md">
-              <Img
-                src="/images/card11.png"
-                alt="Avatar "
-                className=" rounded-lg"
-              />
-              <div className="container">
-                <h4 className=" md:text-[18px] text-[12px] mx-5 my-4 leading-9 font-bold">
-                  How to build strong portfolio and get a Job in UI/UX
-                </h4>
-                <p className="mx-5">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod.
-                </p>
-              </div>
-            </div> */}
-          <div className=" flex md:mx-[15px] mx-[3px]  md:mt-[70px] mt-[30px]  md:gap-16 gap-4 rounded-3xl     md:w-auto w-auto  md:h-auto h-auto md:mb-[160px] mb-[120px]">
+          <div className=" flex md:mx-[25px] mx-[3px]  md:mt-[70px] mt-[30px]  md:gap-16 gap-4 rounded-3xl     md:w-auto w-auto  md:h-auto h-auto md:mb-[160px] mb-[120px]">
             <BlogCards
               img="/images/card11.png"
               title="How to build strong
