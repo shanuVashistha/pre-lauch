@@ -19,7 +19,7 @@ export const BlogCards: React.FC<CardBlog> = ({
 
 }) => {
   return (
-    <div className={`card flex px-[0px] py-[0px] md:w-[360px] w-[120px] md:h-[524px] h-[250px]   ${className}`}>
+    <div className={` card flex px-[0px] py-[0px] md:w-[360px] w-[120px] md:h-[524px] h-[250px]    ${className}`}>
       <div className="flex-1 md:pl-[0px] pl-[0px ] md:rounded-3xl  ">
       <Img
                 src={img || ""}
@@ -35,7 +35,7 @@ export const BlogCards: React.FC<CardBlog> = ({
         <a
       href={url}
      
-      className="flex  md:my-[10px] md:mr-[30px] justify-end pt-[40px] md:text-[16px] text-[9px] font-semibold text-[#6D6D6D]"
+      className="flex  md:-my-[5px] md:mr-[30px] justify-end pt-[40px] md:text-[16px] text-[9px] font-semibold text-[#6D6D6D]"
     > Read more ...</a>
        
        </div>
