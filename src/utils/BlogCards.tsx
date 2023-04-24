@@ -35,7 +35,7 @@ export const BlogCards: React.FC<CardBlog> = ({
         <a
       href={url}
      
-      className="flex md:my-[40px] md:mr-[30px] justify-end md:text-[16px] text-[9px] font-semibold text-[#6D6D6D]"
+      className="flex  md:my-[40px] md:mr-[30px] justify-end pt-[40px] md:text-[16px] text-[9px] font-semibold text-[#6D6D6D]"
     > Read more ...</a>
        
        </div>

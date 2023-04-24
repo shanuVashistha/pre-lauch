@@ -12,7 +12,7 @@ export const SocialButton: React.FC<SocialButtonInterface> = ({
   url,
   className,
   target,
-}) => {
+}: SocialButtonInterface) => {
   return (
     <a
       href={url}
