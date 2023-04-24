@@ -26,16 +26,16 @@ export const BlogCards: React.FC<CardBlog> = ({
                 alt="Avatar "
                 className=" md:rounded-t-3xl rounded-t-lg md:w-[360px] w-[120px] md:h-[250px] h-[110px]"
               />
-        <h3 className="  md:my-[12px]  md:mx-[20px] md:text-[20.88px] md:leading-[37.12px] text-[12px] leading-[15px] font-semibold text-[#363848]">
+        <h3 className="  md:my-[12px]  pl-[17px] md:mx-[20px] md:text-[20.88px] md:leading-[37.12px] text-[12px] leading-[15px] font-bold text-[#363848]">
           {title}
         </h3>
-        <p className="  md:mx-[20px] md:text-[16px] md:mt-3 md:leading-[18px] text-[9.5px] leading-[12.25px] text-[#6D6D6D]">
+        <p className="  md:mx-[20px] pl-[17px] md:text-[16px] md:mt-3 md:leading-[18px] text-[9.5px] leading-[12.25px] text-[#6D6D6D]">
           {description}
         </p>
         <a
       href={url}
      
-      className="flex  md:my-[40px] md:mr-[30px] justify-end pt-[40px] md:text-[16px] text-[9px] font-semibold text-[#6D6D6D]"
+      className="flex  md:my-[10px] md:mr-[30px] justify-end pt-[40px] md:text-[16px] text-[9px] font-semibold text-[#6D6D6D]"
     > Read more ...</a>
        
        </div>
