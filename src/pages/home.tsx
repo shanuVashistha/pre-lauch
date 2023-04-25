@@ -289,7 +289,7 @@ const Home: React.FC = () => {
               talk shop about the job market today.
             </p>
           </div>
-          <div className="flex md:flex-row flex-col md:justify-normal md:ml-[] ml-[32px]  md:mx-[28px]  md:gap-[70px]  md:mt-[70px] mt-[60px] md:space-y-0 space-y-14    md:w-auto  md:h-auto  md:mb-[160px] mb-[100px] ">
+          <div className="flex md:flex-row flex-col md:justify-normal justify-center md:ml-[] ml-[50px]  md:mx-[28px]  md:gap-[70px]  md:mt-[70px] mt-[60px] md:space-y-0 space-y-14    md:w-auto  md:h-auto  md:mb-[160px] mb-[100px] ">
             <BlogCards
               img="/images/card11.png"
               title="How to build strong
