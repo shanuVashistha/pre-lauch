@@ -19,8 +19,8 @@ export const BlogCards: React.FC<CardBlog> = ({
 
 }) => {
   return (
-    <div className={` card flex px-[0px] py-[0px] md:w-[360px] w-[245px] md:h-[524px] h-[375px]    ${className}`}>
-      <div className="flex-1 md:pl-[0px] pl-[0px ] md:rounded-3xl  ">
+    <div className={` md:rounded-3xl rounded-lg md:bg-slate-100 bg-slate-100 md:shadow-lg shadow-lg flex px-[0px] py-[0px] md:w-[360px] w-[245px] md:h-[524px] h-[375px]     ${className}`}>
+      <div className="  rounded-3xl flex-1 md:pl-[0px] pl-[0px ]   ">
       <Img
                 src={img || ""}
                 alt="Avatar "

@@ -289,7 +289,7 @@ const Home: React.FC = () => {
               talk shop about the job market today.
             </p>
           </div>
-          <div className="flex md:flex-row flex-col md:justify-normal justify-center md:ml-[] ml-[50px]  md:mx-[28px]  md:gap-[70px]  md:mt-[70px] mt-[60px] md:space-y-0 space-y-14    md:w-auto  md:h-auto  md:mb-[160px] mb-[100px] ">
+          <div className=" flex md:flex-row flex-col md:justify-normal items-center    md:mx-[28px]   md:gap-[70px]  md:mt-[70px] mt-[60px] md:space-y-0 space-y-14      md:mb-[160px] mb-[100px] ">
             <BlogCards
               img="/images/card11.png"
               title="How to build strong
@@ -299,7 +299,7 @@ const Home: React.FC = () => {
               description="Lorem ipsum dolor sit amet, consectetur
                 adipiscing elit, sed do eiusmod."
               className="  "
-                url="/Blog"
+              url="/Blog"
             />
 
             <BlogCards
@@ -310,8 +310,8 @@ const Home: React.FC = () => {
               background="card-number-two"
               description="Lorem ipsum dolor sit amet, consectetur
                adipiscing elit, sed do eiusmod."
-               className=" "
-          url=" /Blog"
+              className=" "
+              url=" /Blog"
             />
             <BlogCards
               img="/images/card11.png"
@@ -321,8 +321,8 @@ const Home: React.FC = () => {
               background="card-number-two"
               description="Lorem ipsum dolor sit amet, consectetur
                 adipiscing elit, sed do eiusmod."
-                className=" "
-                url="/Blog"
+              className=" "
+              url="/Blog"
             />
           </div>
         </div>
