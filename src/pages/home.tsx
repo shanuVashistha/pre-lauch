@@ -377,6 +377,7 @@ const Home: React.FC = () => {
                 placeholder={"Enter Your Email"}
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
+                className=""
               />
             </div>
             <div className="mb-[40px] w-[100%]">

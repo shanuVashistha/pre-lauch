@@ -25,7 +25,7 @@ export default function Blog() {
           Top 5 In-Demand Skills Employers Want in 2023
         </h3>
         <div>
-          <p className="flex md:text-center text-center md:pt-[15px] pt-[7px] md:text-[18px] font-normal md:leading-[26px] text-[#77838F] md:w-[790px] w-[390px] m-auto text-[12px] leading-[12.41px]">
+          <p className="flex md:text-center text-start md:pt-[15px] pt-[7px] md:text-[18px] font-normal md:leading-[26px] text-[#77838F] md:w-[790px] w-[290px] m-auto text-[12px] leading-[12.41px]">
           
             Orci varius natoque penatibus et magnis dis parturient montes,
             nascetur ridiculus mus. Etiam placerat tortor commodo lectus laoreet
@@ -52,7 +52,7 @@ export default function Blog() {
         </h3>
       </div>
       <div>
-        <p className="md:mx-[185px] mx-[47px] md:pt-[15px] pt-[7px] md:text-[18px] font-normal md:leading-[26px] text-[#77838F]  text-[12px] leading-[12.41px]">
+        <p className="md:mx-[185px] mx-[47px] md:pt-[15px] pt-[7px] md:text-[18px]  font-normal md:leading-[26px] text-[#77838F]  text-[12px] leading-[12.41px]">
           In lacinia sapien a libero accumsan facilisis. Donec vitae lorem
           massa. Aliquam tristique vehicula enim ut luctus. Vivamus gravida
           dignissim ligula, dictum laoreet elit malesuada ac. Praesent est
@@ -130,7 +130,7 @@ export default function Blog() {
         </ul>
       </div>
       </div>
-      <div className="bg-[#263041] md:px-[45px] md:py-[7px] p-[34px]">
+      <div className="bg-[#263041] md:px-[45px] md:py-[7px] p-[18px]">
         <div className="flex flex-col lg:flex-row items-center">
           <div className="md:p-[35px] lg:flex-1 w-[100%] flex lg:flex-col md:items-start items-center">
             <div className="lg:pb-[42px]">
