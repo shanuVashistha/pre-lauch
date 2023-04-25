@@ -33,7 +33,7 @@ export const Input: React.FC<InputInterface> = (
                 value={value}
                 onChange={onChange}
                 placeholder={placeholder}
-                className={`input md:px-[16px] px-[1.4px] py-[15px] ${className}`}
+                className={`input md:px-[16px]  py-[15px] ${className}`}
             />
             {error && <p className="error">{error}</p>}
         </div>
