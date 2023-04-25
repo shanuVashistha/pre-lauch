@@ -61,7 +61,7 @@ export const TextArea: React.FC<InputInterface> = (
                 rows={rows || 5}
                 onChange={onChange}
                 placeholder={placeholder}
-                className={`input px-[16px] py-[15px] ${className}`}
+                className={`input  px-[16px] py-[15px] ${className}`}
             />
             {error && <p className="error">{error}</p>}
         </div>

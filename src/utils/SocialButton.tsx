@@ -1,4 +1,6 @@
 import React from "react";
+import { Img } from "./Img";
+
 
 interface SocialButtonInterface {
   icon: string;
@@ -19,7 +21,7 @@ export const SocialButton: React.FC<SocialButtonInterface> = ({
       target={target || "_blank"}
       className="social-button lg:w-[40px] lg:h-[40px]"
     >
-      <img src={icon} alt={"Social Icon"} className={className} />
+      <Img src={icon} alt={"Social Icon"} className={className} />
     </a>
   );
 };

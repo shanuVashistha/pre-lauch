@@ -289,7 +289,7 @@ const Home: React.FC = () => {
               talk shop about the job market today.
             </p>
           </div>
-          <div className=" flex md:mx-[25px]  md:mt-[70px] mt-[50px] md:gap-16 gap-[10px] rounded-3xl     md:w-auto  md:h-auto  md:mb-[160px] mb-[100px] ">
+          <div className=" flex md:mx-[28px] mx-[] md:gap-[70px] gap-[8px]  md:mt-[70px] mt-[50px]  rounded-3xl     md:w-auto  md:h-auto  md:mb-[160px] mb-[100px] ">
             <BlogCards
               img="/images/card11.png"
               title="How to build strong
@@ -310,7 +310,7 @@ const Home: React.FC = () => {
               background="card-number-two"
               description="Lorem ipsum dolor sit amet, consectetur
                adipiscing elit, sed do eiusmod."
-               className=" md:w-auto w-auto md:h-auto h-auto"
+               className=" "
           url=" /Blog"
             />
             <BlogCards
@@ -321,13 +321,14 @@ const Home: React.FC = () => {
               background="card-number-two"
               description="Lorem ipsum dolor sit amet, consectetur
                 adipiscing elit, sed do eiusmod."
-                className=" md:w-auto w-auto md:h-auto h-auto"
+                className=" "
                 url="/Blog"
             />
           </div>
         </div>
       </div>
-      <div className="bg-[#263041] md:px-[45px] md:py-[7px] p-[34px]">
+      {/* p- 40px  */}
+      <div className="bg-[#263041] md:px-[45px] md:py-[7px] p-[18px]">
         <div className="flex flex-col lg:flex-row items-center">
           <div className="md:p-[35px] lg:flex-1 w-[100%] flex lg:flex-col md:items-start items-center">
             <div className="lg:pb-[42px]">
@@ -370,7 +371,7 @@ const Home: React.FC = () => {
             <h3 className="text-[31.5px] text-center leading-[40.5px] font-bold text-[#FFFFFF] pb-[40px]">
               Got any questions?
             </h3>
-            <div className="mb-[24px] w-[100%]">
+            <div className="mb-[24px] md: w-[100%] ">
               <Input
                 type={"text"}
                 placeholder={"Enter Your Email"}

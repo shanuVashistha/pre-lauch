@@ -24,7 +24,7 @@ export const BlogCards: React.FC<CardBlog> = ({
       <Img
                 src={img || ""}
                 alt="Avatar "
-                className=" md:rounded-t-3xl rounded-t-lg md:w-[360px] w-[100px] md:h-[250px] h-[90px]"
+                className=" md:rounded-t-3xl rounded-t-lg md:w-[360px] w-[120px] md:h-[250px] h-[90px]"
               />
         <h3 className="  md:my-[12px] my-[10px]  md:pl-[17px] pl-[5px] md:mx-[20px] md:text-[20.88px] md:leading-[37.12px] text-[11px] leading-[16px] font-bold text-[#363848]">
           {title}
