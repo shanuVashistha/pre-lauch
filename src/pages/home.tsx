@@ -289,7 +289,7 @@ const Home: React.FC = () => {
               talk shop about the job market today.
             </p>
           </div>
-          <div className=" flex md:mx-[28px] mx-[] md:gap-[70px] gap-[8px]  md:mt-[70px] mt-[50px]  rounded-3xl     md:w-auto  md:h-auto  md:mb-[160px] mb-[100px] ">
+          <div className="flex md:flex-row flex-col md:justify-normal md:ml-[] ml-[32px]  md:mx-[28px]  md:gap-[70px]  md:mt-[70px] mt-[60px] md:space-y-0 space-y-14    md:w-auto  md:h-auto  md:mb-[160px] mb-[100px] ">
             <BlogCards
               img="/images/card11.png"
               title="How to build strong
@@ -298,7 +298,7 @@ const Home: React.FC = () => {
               background="card-number-one"
               description="Lorem ipsum dolor sit amet, consectetur
                 adipiscing elit, sed do eiusmod."
-              className=" "
+              className="  "
                 url="/Blog"
             />
 
@@ -377,7 +377,7 @@ const Home: React.FC = () => {
                 placeholder={"Enter Your Email"}
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
-                className=" md:pl-[0px] pl-[5px] "
+                className=" "
               />
             </div>
             <div className="mb-[40px] w-[100%]">
