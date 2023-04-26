@@ -25,7 +25,7 @@ export const Input: React.FC<InputInterface> = (
     }
 ) => {
     return (
-        <div className="input-container h-[100%]">
+        <div className="input-container  h-[100%]">
             {label && <label htmlFor={name}>{label}</label>}
             <input
                 type={type}
@@ -33,7 +33,7 @@ export const Input: React.FC<InputInterface> = (
                 value={value}
                 onChange={onChange}
                 placeholder={placeholder}
-                className={`input md:px-[16px] px-[1px] py-[15px] ${className}`}
+                className={`input px-[16px] py-[15px]  ${className}`}
             />
             {error && <p className="error">{error}</p>}
         </div>

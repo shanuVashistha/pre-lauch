@@ -10,7 +10,7 @@ interface CardInterface {
 
 export const Card: React.FC<CardInterface> = ({ number, title, description, background, className }) => {
     return (
-        <div className={`card flex px-[11px] py-[8px] ${className}`}>
+        <div className={`card flex px-[11px] py-[8px]  md:shadow-2xl shadow-2xl${className}`}>
             <div
                 className={`card-number ${background} flex items-center md:text-[19.42px] md:leading-[29.12px] text-[15px] leading-[22.5px] font-semibold text-[#fff] md:px-[18px] md:py-[8px] p-[8px] md:w-[44.78px] md:h-[45.3px] w-[22px] h-[22px]`}>
                 {number}

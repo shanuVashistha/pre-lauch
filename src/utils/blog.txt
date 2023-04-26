@@ -1,25 +1,14 @@
-import Link from "next/link";
-import React from "react";
-import Image from "next/image";
-import { Img } from "@/utils/Img";
-import { Button } from "@/utils/Button";
-import { SocialButton } from "@/utils/SocialButton";
-import { Input,TextArea } from "@/utils/Input";
-// import { info} from "@/utils/Info";
-
-export default function Blog() {
-    const [email, setEmail] = React.useState("");
-    const [message, setMessage] = React.useState("");
-  return (
-    <div>
-      <Link href="/Blog"></Link>
+<div>
+      
       <div className=" md:mx-[50px] mx-[30px] md:my-[35px] my-[18px]">
         <Img
           src={"/images/logo.png"}
           alt={"logo"}
           className=" md:w-[105px] md:h-[64px] w-[73.93px] h-[45px]"
         />
+        
       </div>
+      
       <div>
         <h3 className=" flex justify-center md:text-[37px] md:pt-[105px] pt-[35px] font-semibold md:leading-[74.27px] text-bannerHeading text-[13px] leading-[40px] tracking-normal">
           Top 5 In-Demand Skills Employers Want in 2023
@@ -205,5 +194,4 @@ export default function Blog() {
       </div>
 
     </div>
-  );
-}
+  

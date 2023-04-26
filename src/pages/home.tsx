@@ -5,8 +5,40 @@ import { SocialButton } from "@/utils/SocialButton";
 import { Input, TextArea } from "@/utils/Input";
 import { Button } from "@/utils/Button";
 import { Img } from "@/utils/Img";
+import {BlogInterface, BlogBodyInterface, BlogListInterface} from "@/utils/types";
 import { BlogCards } from "@/utils/BlogCards";
 
+
+
+// const BLOG_CARD = [
+//   {
+//     img: "/images/card11.png",
+//     title: "How to build strong portfolio and get a Job in UI/UX",
+//     background: "card-number-one",
+//     description:
+//       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.",
+//     className: " ",
+//     slug: "1",
+//   },
+//   {
+//     img: "/images/card11.png",
+//     title: "How to build strong portfolio and get a Job in UI/UX",
+//     background: "card-number-one",
+//     description:
+//       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.",
+//     className: " ",
+//     slug: "2",
+//   },
+//   {
+//     img: "/images/card11.png",
+//     title: "How to build strong portfolio and get a Job in UI/UX",
+//     background: "card-number-one",
+//     description:
+//       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.",
+//     className: " ",
+//     slug: "3",
+//   },
+// ];
 const Home: React.FC = () => {
   const [email, setEmail] = React.useState("");
   const [message, setMessage] = React.useState("");
@@ -18,49 +50,49 @@ const Home: React.FC = () => {
             src={"/images/moving-items/1.svg"}
             alt={"moving item"}
             id="moving-item-1"
-            className="moving-item"
+            className="moving-item  "
           />
           <Img
             src={"/images/moving-items/2.svg"}
             alt={"moving item"}
             id="moving-item-2"
-            className="moving-item"
+            className="moving-item md:block hidden "
           />
           <Img
             src={"/images/moving-items/3.svg"}
             alt={"moving item"}
             id="moving-item-3"
-            className="moving-item"
+            className="moving-item  "
           />
           <Img
             src={"/images/moving-items/4.svg"}
             alt={"moving item"}
             id="moving-item-4"
-            className="moving-item"
+            className="moving-item  "
           />
           <Img
             src={"/images/moving-items/5.svg"}
             alt={"moving item"}
             id="moving-item-5"
-            className="moving-item"
+            className="moving-item "
           />
           <Img
             src={"/images/moving-items/6.svg"}
             alt={"moving item"}
             id="moving-item-6"
-            className="moving-item"
+            className="moving-item md:block hidden "
           />
           <Img
             src={"/images/moving-items/7.svg"}
             alt={"moving item"}
             id="moving-item-7"
-            className="moving-item"
+            className="moving-item "
           />
           <Img
             src={"/images/moving-items/8.svg"}
             alt={"moving item"}
             id="moving-item-8"
-            className="moving-item"
+            className="moving-item md:block hidden"
           />
         </div>
         <div className="logo">
@@ -79,7 +111,7 @@ const Home: React.FC = () => {
               Match with great employers - no applying, no stress, just quality
               opportunities.
             </p>
-            <p className=" my-3 md:text-[19px] md:leading-[32px] md:pt[32px] pt-[8px] text-[12px]  font-normal text-bannerSubHeading">
+            <p className=" my-3 md:text-[17px] md:leading-[24px] md:pt[32px] pt-[8px] text-[12px]  font-normal text-bannerSubHeading">
               Spend less time looking and more time matching with fulfilling
               jobs in Tech, Engineering, Sales, Marketing, Accounting, and
               Finance.
@@ -89,12 +121,12 @@ const Home: React.FC = () => {
                 First 500 sign-ups get a FREE $250 Resume Assessment.
               </h3>
               <div className="flex md:flex-row flex-col gap-2 md:mt-[25px] mt-[10px]">
-                <div className="md:flex-1">
+                <div className="md:flex-1 ">
                   <Input
                     value={email}
                     placeholder="Enter your email address..."
                     onChange={(e) => setEmail(e.target.value)}
-                    className="fill h-[100%]"
+                    className="  fill h-[100%] bg-white  "
                   />
                 </div>
                 <div>
@@ -102,12 +134,12 @@ const Home: React.FC = () => {
                     color="primary"
                     label="Count me in"
                     onClick={() => console.log(email)}
-                    className="md:text-[19.86px] md:leading-[39.71px] text-[12px] leading-[17.63px] font-semibold"
+                    className="md:w-[180px]  md:text-[19.86px] md:leading-[39.71px] text-[12px] leading-[17.63px] font-semibold"
                   />
                 </div>
               </div>
             </div>
-            <h3 className="md:text-[19px] md:leading-[37.13px] text-[12px] leading-[17.6px] md:pt-0 pt-[21px] font-medium text-bannerFooterHeading">
+            <h3 className="md:text-[19px] md:leading-[30.13px] text-[12px] leading-[17.6px] md:pt-0 pt-[21px] font-medium text-bannerFooterHeading">
               Enjoy Mondays again! Join our pre-launch list and take the first
               step to a better career.
             </h3>
@@ -143,7 +175,7 @@ const Home: React.FC = () => {
                 number={1}
                 background="card-number-one"
                 description="Create your profile and career wishlist and you're done! Employers will match with and reach out to you."
-                className="md:h-auto h-[100%]"
+                className="md:h-auto h-[100%] "
               />
             </div>
             <div className="lg:w-[346px] w-[50%] lg:mr-[88px] lg:p-0 p-[6px]">
@@ -256,15 +288,15 @@ const Home: React.FC = () => {
             <h3 className="md:text-[42px] md:leading-[47px] text-[20px] leading-[30px] text-[#363848] font-semibold pb-[10px]">
               Claim your free resume assessment now
             </h3>
-            <p className="md:text-[18px] text-[10px] leading-[15px] font-normal md:leading-[32px] text-[#363848]">
+            <p className="md:text-[19px] text-[10px] leading-[15px] font-medium md:leading-[32px]">
               Upgrade your job search game and get a free $250 resume appraisal
               today.
             </p>
 
             <div className="mt-[32px]">
-              <div className="flex justify-between claim-input-container md:px-[8px] md:py-[12px] p-[8px]">
+              <div className="flex justify-between md:w-[510px] claim-input-container md:px-[10px] md:py-[5px] p-[8px]">
                 <input
-                  className="claim-input md:flex-1 md:w-auto w-[220px] md:p-[16px] p-[8px] bg-transparent"
+                  className="claim-input md:flex-1 md:w-auto w-[190px]   md:p-[16px] p-[8px] bg-transparent"
                   placeholder="Enter your email address..."
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -273,18 +305,18 @@ const Home: React.FC = () => {
                   label="Sign me up"
                   onClick={() => console.log(email)}
                   color="primary"
-                  className="font-medium md:text-[18px] md:leading-[21px]"
+                  className=" font-medium md:text-[16px] md:w-[150px] text-[10px] md:leading-[21px] "
                 />
               </div>
             </div>
           </div>
         </div>
-        <div>
+        <div className="md:mt-[150px] mt-[50px]">
           <div>
-            <h3 className=" flex justify-center md:text-[42px] font-bold md:leading-[74.27px] text-bannerHeading text-[31px] leading-[55px]">
+            <h3 className=" flex justify-center md:text-[44px] font-bold md:leading-[74.27px] text-bannerHeading text-[31px] leading-[55px]">
               Enjoy our Blogs
             </h3>
-            <p className="text-center md:text-[16px] font-normal md:leading-[26px] text-[#363848] md:w-[490px] m-auto text-[12px] leading-[18.41px]">
+            <p className="text-center md:text-[15px]  md:leading-[24px] text-[#363848] md:w-[490px] w-[300px] m-auto text-[12px] leading-[18.41px]">
               We will give you industry tips, discuss booming industries, and
               talk shop about the job market today.
             </p>
@@ -293,56 +325,52 @@ const Home: React.FC = () => {
             <BlogCards
               img="/images/card11.png"
               title="How to build strong
-              portfolio and get a Job
-              in UI/UX"
+portfolio and get a Job
+in UI/UX"
               background="card-number-one"
-              description="Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit, sed do eiusmod."
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod."
               className="  "
-              url="/Blog"
-            />
-
-            <BlogCards
-              img="/images/card11.png"
-              title="How to build strong
-              portfolio and get a Job
-              in UI/UX"
-              background="card-number-two"
-              description="Lorem ipsum dolor sit amet, consectetur
-               adipiscing elit, sed do eiusmod."
-              className=" "
-              url=" /Blog"
+              url="1"
             />
             <BlogCards
               img="/images/card11.png"
               title="How to build strong
-              portfolio and get a Job
-              in UI/UX"
-              background="card-number-two"
-              description="Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit, sed do eiusmod."
-              className=" "
-              url="/Blog"
+portfolio and get a Job
+in UI/UX"
+              background="card-number-one"
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod."
+              className="  "
+              url="1"
+            />
+            <BlogCards
+              img="/images/card11.png"
+              title="How to build strong
+portfolio and get a Job
+in UI/UX"
+              background="card-number-one"
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod."
+              className="  "
+              url="1"
             />
           </div>
         </div>
       </div>
       {/* p- 40px  */}
-      <div className="bg-[#263041] md:px-[45px] md:py-[7px] p-[18px]">
+      <div className="bg-[#263041] md:px-[45px] md:py-[7px] p-[21px] md:pt[] pt-[30px] ">
         <div className="flex flex-col lg:flex-row items-center">
           <div className="md:p-[35px] lg:flex-1 w-[100%] flex lg:flex-col md:items-start items-center">
-            <div className="lg:pb-[42px]">
+            <div className="lg:pb-[59px]">
               <Img
                 src={"/images/logo-white.svg"}
                 alt={"Footer Logo"}
-                className="md:w-[91px] w-[70.6px]"
+                className="md:w-[91px] w-[70.6px] "
               />
             </div>
             <div className="lg:flex-auto flex-1 flex flex-col lg:items-start items-end">
-              <h3 className="md:text-[25px] md:leading-[40.5px] text-[12px] leading-[10.6px] font-semibold text-[#FFFFFF] pb-[16px]">
+              <h3 className="md:text-[25px] md:leading-[40.5px] text-[15px] leading-[11.6px] font-semibold text-[#FFFFFF] pb-[16px]">
                 Social Media
               </h3>
-              <div className="flex items-center">
+              <div className="flex items-center md:mt-[20px]">
                 <div className="lg:pr-8 pr-4">
                   <SocialButton icon={"/images/icons/facebook.svg"} url={"#"} />
                 </div>
@@ -371,13 +399,13 @@ const Home: React.FC = () => {
             <h3 className="text-[31.5px] text-center leading-[40.5px] font-bold text-[#FFFFFF] pb-[40px]">
               Got any questions?
             </h3>
-            <div className="mb-[24px] md: w-[100%] ">
+            <div className="mb-[24px] w-[100%]  ">
               <Input
                 type={"text"}
                 placeholder={"Enter Your Email"}
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
-                className=" "
+                className=" w-full md:w-[296px]"
               />
             </div>
             <div className="mb-[40px] w-[100%]">
@@ -385,7 +413,7 @@ const Home: React.FC = () => {
                 placeholder={"Enter Your Message"}
                 onChange={(e) => setMessage(e.target.value)}
                 value={message}
-                className="pb-0"
+                className="w-[] md:w-[296px]"
               />
             </div>
             <div>
@@ -401,6 +429,9 @@ const Home: React.FC = () => {
             © Copyright 2023. All rights reserved. Privacy policy.
           </p>
         </div>
+      </div>
+      <div>
+        
       </div>
     </div>
   );
