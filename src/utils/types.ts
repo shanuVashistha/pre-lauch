@@ -19,6 +19,6 @@ export interface BlogBodyInterface {
 
 export interface BlogListInterface {
   title?: string
-  desciprtion?: string
+  description?: string
   content?: string[]
 }

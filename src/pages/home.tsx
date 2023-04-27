@@ -1,5 +1,8 @@
 import React from "react";
+import MyVideo from "./Components/video";
 import Link from "next/link";
+import ReactPlayer from 'react-player'
+
 import { Card } from "@/utils/Card";
 import { SocialButton } from "@/utils/SocialButton";
 import { Input, TextArea } from "@/utils/Input";
@@ -10,35 +13,7 @@ import { BlogCards } from "@/utils/BlogCards";
 
 
 
-// const BLOG_CARD = [
-//   {
-//     img: "/images/card11.png",
-//     title: "How to build strong portfolio and get a Job in UI/UX",
-//     background: "card-number-one",
-//     description:
-//       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.",
-//     className: " ",
-//     slug: "1",
-//   },
-//   {
-//     img: "/images/card11.png",
-//     title: "How to build strong portfolio and get a Job in UI/UX",
-//     background: "card-number-one",
-//     description:
-//       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.",
-//     className: " ",
-//     slug: "2",
-//   },
-//   {
-//     img: "/images/card11.png",
-//     title: "How to build strong portfolio and get a Job in UI/UX",
-//     background: "card-number-one",
-//     description:
-//       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.",
-//     className: " ",
-//     slug: "3",
-//   },
-// ];
+
 const Home: React.FC = () => {
   const [email, setEmail] = React.useState("");
   const [message, setMessage] = React.useState("");
@@ -52,6 +27,7 @@ const Home: React.FC = () => {
             id="moving-item-1"
             className="moving-item  "
           />
+         
           <Img
             src={"/images/moving-items/2.svg"}
             alt={"moving item"}
@@ -253,15 +229,22 @@ const Home: React.FC = () => {
               alt={"Video Thumbnail"}
               className="md:w-[60%] w-[100%] "
             />
+            
             <div className="absolute top-0 left-0 w-[100%] h-[100%] flex justify-center items-center">
-              <button className="video-button-wrapper">
+              <button className="video-button-wrapper " >
+                
                 <div className="video-button ">
                   <Img
                     src={"/images/play.svg"}
                     alt={"Play"}
                     className=" w-auto h-auto"
+                     
                   />
+           
+                  
+           <ReactPlayer width="200px" height="200px" url="/video1.mp4" controls={true}/>
                 </div>
+                
               </button>
             </div>
           </div>
@@ -433,6 +416,9 @@ in UI/UX"
       <div>
         
       </div>
+<div>
+  
+</div>
     </div>
   );
 };

@@ -1,73 +1,67 @@
 import React from "react";
-import { Img } from "@/utils/Img";
-import { BlogInterface ,BlogBodyInterface} from "@/utils/types";
+import { BlogP } from "@/utils/BlogPage";
+import { BlogInterface } from "@/utils/types";
 
-const Data = {
-  id: "1",
-  slug: "first",
-  title: " Top 5 In-Demand Skills Employers Want in 2023",
-  subTitle: "",
-  description: " Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam placerat tortor commodo lectus laoreet venenatis. Donec ultricies, metus vitae bibendum consequat, tortor neque euismod lectus",
-  img:"/bloglogo.svg",
-  body: {
-    title: "Lorem Ipsum is that it has a more-or-less normal",
-    description: "body 1 description",
-    content: [" qwerty", "pan", "new data"],
-    list: [
-      {
-        title: "1",
-        description: "1 des",
-        content: [" list content", "list content 2"],
-      },
-      {
-        title: "2",
-        description: "2 des",
-        content: [" 2list content", "2list content 2"],
-      },
-      {
-        title: "3",
-        description: "3 des",
-        content: [" 3list content", "3list content 2"],
-      },
-    ],
-  },
-};
-
-const Blog = ({ props }: any) => {
-  console.log("Data :", Data);
+const BlogP1: React.FC = () => {
+  const BlogData: BlogInterface = {
+    id: "1",
+    slug: "first",
+    title: " Top 5 In-Demand Skills Employers Want in 2023",
+    subTitle: "",
+    description:
+      "Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam placerat tortor commodo lectus laoreet venenatis. Donec ultricies, metus vitae bibendum consequat, tortor neque euismod lectus",
+    img: "/bloglogo.svg",
+    body: {
+      title: " Lorem Ipsum is that it has a more-or-less normal",
+      description:
+        "In lacinia sapien a libero accumsan facilisis. Donec vitae lorem massa. Aliquam tristique vehicula enim ut luctus. Vivamus gravida dignissim ligula, dictum laoreet elit malesuada ac. Praesent est justo, posuere a nisl porta, pharetra posuere lectus. Nulla velit odio, tincidunt vel metus a, viverra placerat ligula. ",
+      content: ["", "", " "],
+      list: [
+        {
+          title: "Heading for subtopic",
+          description: "",
+          content: [
+            "Morbi pellentesque finibus libero, in blandit lorem eleifend eget. Praesent egestas hendrerit augue a vestibulum. Nullam fringilla, eros malesuada eleifend placerat, lacus tellus egestas erat, nec varius sem lorem ut mauris. Morbi libero felis.",
+            "Cras eget dolor accumsan, blandit risus vitae, faucibus erat. Aliquam scelerisque, diam ut feugiat scelerisque, diam felis venenatis purus, eget cursus enim turpis at sem. Fusce nec tristique dolor, sit amet tristique purus.",
+            "Morbi pellentesque finibus libero, in blandit lorem eleifend eget. Praesent egestas hendrerit augue a vestibulum. Nullam flavoring, eros malesuada eleifend placerat, lacus tellus egestas erat, nec varius sem lorem ut mauris. Morbi libero felis.",
+            "Cras eget dolor accumsan, blandit risus vitae, faucibus erat. Aliquam scelerisque, diam ut feugiat scelerisque, diam felis venenatis purus, eget cursus enim turpis at sem. Fusce nec tristique dolor, sit amet tristique purus.",
+          ],
+        },
+        {
+          title: "Heading for subtopic",
+          description: "",
+          content: [
+            "Morbi pellentesque finibus libero, in blandit lorem eleifend eget. Praesent egestas hendrerit augue a vestibulum. Nullam fringilla, eros malesuada eleifend placerat, lacus tellus egestas erat, nec varius sem lorem ut mauris. Morbi libero felis.",
+            "Cras eget dolor accumsan, blandit risus vitae, faucibus erat. Aliquam scelerisque, diam ut feugiat scelerisque, diam felis venenatis purus, eget cursus enim turpis at sem. Fusce nec tristique dolor, sit amet tristique purus.",
+            "Morbi pellentesque finibus libero, in blandit lorem eleifend eget. Praesent egestas hendrerit augue a vestibulum. Nullam flavoring, eros malesuada eleifend placerat, lacus tellus egestas erat, nec varius sem lorem ut mauris. Morbi libero felis.",
+            "Cras eget dolor accumsan, blandit risus vitae, faucibus erat. Aliquam scelerisque, diam ut feugiat scelerisque, diam felis venenatis purus, eget cursus enim turpis at sem. Fusce nec tristique dolor, sit amet tristique purus.",
+          ],
+        },
+        {
+          title: "Heading for subtopic",
+          description: "",
+          content: [
+            "Morbi pellentesque finibus libero, in blandit lorem eleifend eget. Praesent egestas hendrerit augue a vestibulum. Nullam flavoring, eros malesuada eleifend placerat, lacus tellus egestas erat, nec varius sem lorem ut mauris. Morbi lib",
+            "Morbi pellentesque finibus libero, in blandit lorem eleifend eget. Praesent egestas hendrerit augue a vestibulum. Nullam flavoring, eros malesuada eleifend placerat, lacus tellus egestas erat, nec varius sem lorem ut mauris. Morbi lib",
+          ],
+        },
+      ],
+    },
+  };
 
   return (
-    
-      <div>
-        <div>
-      <Img className=" md:w-[105px] md:h-[64px] w-[73.93px] h-[45px]" src="/images/logo.png" alt=""/>
-        </div>
-
-        <h3 className=" flex justify-center md:text-[37px] md:pt-[105px] pt-[35px] font-semibold md:leading-[74.27px] text-bannerHeading text-[13px] leading-[40px] tracking-normal">
-          {Data.title}
-        </h3>
-        <p className="flex md:text-center text-start md:pt-[15px] pt-[7px] md:text-[18px] font-normal md:leading-[26px] text-[#77838F] md:w-[790px] w-[290px] m-auto text-[12px] leading-[12.41px]">
-          {Data.description}
-        </p>
-        <h3 className="md:text-[28px] text-[15px] md:mt-[35px] font-semibold  text-bannerHeading md:mx-[185px] mx-[47px]">
-          {Data.subTitle}
-        </h3>
-        <div className="flex justify-center md:pt-[60px] pt-[25px]">
-      <Img
-       src={Data.img}
-       alt="ll "
-       className="md:w-auto w-[300px] md:h-auto h-[190px]"/>
-        </div>
-          <div>
-
-          </div>
-            <div>
-             
-          {/* <BlogBodyInterface/> */}
-        
-              
-            </div>
-      </div>
+    <div>
+      <BlogP
+        id={BlogData.id}
+        slug={BlogData.slug}
+        title={BlogData.title}
+        subTitle={BlogData.subTitle}
+        description={BlogData.description}
+        img={BlogData.img}
+        body={BlogData.body}
+      />
+    </div>
   );
 };
-export default Blog;
+
+export default BlogP1;
