@@ -241,8 +241,8 @@ const Home: React.FC = () => {
                      
                   />
            
-                  
-           <ReactPlayer width="200px" height="200px" url="/video1.mp4" controls={true}/>
+          
+           {/* <ReactPlayer width="50px" height="30px" url="/video1.mp4" controls={true}/> */}
                 </div>
                 
               </button>
@@ -323,7 +323,7 @@ in UI/UX"
               background="card-number-one"
               description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod."
               className="  "
-              url="1"
+              url="2"
             />
             <BlogCards
               img="/images/card11.png"
@@ -333,11 +333,14 @@ in UI/UX"
               background="card-number-one"
               description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod."
               className="  "
-              url="1"
+              url="3"
             />
           </div>
         </div>
       </div>
+      <iframe>
+
+      </iframe>
       {/* p- 40px  */}
       <div className="bg-[#263041] md:px-[45px] md:py-[7px] p-[21px] md:pt[] pt-[30px] ">
         <div className="flex flex-col lg:flex-row items-center">

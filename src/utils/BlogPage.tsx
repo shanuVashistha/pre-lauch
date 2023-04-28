@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+import fs from 'fs';
+import path from 'path';
 import {
   BlogInterface,
   BlogBodyInterface,
@@ -11,15 +13,17 @@ import { SocialButton } from "@/utils/SocialButton";
 import { Input, TextArea } from "@/utils/Input";
 
 export const BlogP: React.FC<BlogInterface> = (props) => {
+ 
   const { id, slug, title, subTitle, img, description, body } = props;
   const [email, setEmail] = React.useState("");
   const [message, setMessage] = React.useState("");
+ 
 
   return (
-    <div id="Blog_page_1">
+    <div key={id}>
       <div>
         <Img
-          className=" md:w-[105px] md:h-[64px] w-[73.93px] h-[45px]"
+          className=" md:w-[105px] md:mx-[60px] mx-[35px] md:my-[40px] my-[20px] md:h-[64px] w-[73.93px] h-[45px]"
           src="/images/logo.png"
           alt=""
         />
@@ -28,33 +32,43 @@ export const BlogP: React.FC<BlogInterface> = (props) => {
       <h3 className=" flex justify-center md:text-[37px] md:pt-[105px] pt-[35px] font-semibold md:leading-[74.27px] text-bannerHeading text-[13px] leading-[40px] tracking-normal">
         {title}
       </h3>
-      <p className="flex md:text-center text-start md:pt-[15px] pt-[7px] md:text-[18px] font-normal md:leading-[26px] text-[#77838F] md:w-[790px] w-[290px] m-auto text-[12px] leading-[12.41px]">
-        {description}
-      </p>
-      <h3 className="md:text-[28px] text-[15px] md:mt-[35px] font-semibold  text-bannerHeading md:mx-[185px] mx-[47px]">
+
+       <h3 className="md:text-[28px] text-[15px] md:mt-[5px] font-semibold  text-bannerHeading md:mx-[185px] mx-[47px]">
         {subTitle}
       </h3>
+      <div className="md:mx-[185px] mx-[47px]  md:pt-[15px] pt-[7px] md:text-[18px]  font-normal md:leading-[26px] text-[#77838F]  text-[12px] leading-[12.41px]">
+        <ul>
+          {description?.map((item, index) => (
+            <li className="gap-y-11"  key={index}>{item}</li>
+          ))}
+        </ul>
+      </div>
+      
+    
       <div className="flex justify-center md:pt-[60px] pt-[25px]">
         <Img
           src="/bloglogo.svg"
           alt="ll "
           className="md:w-auto w-[300px] md:h-auto h-[190px]"
         />
+        {img}
       </div>
 
       <div>
         <h3 className="md:text-[28px] text-[15px] md:mt-[35px] font-semibold  text-bannerHeading md:mx-[185px] mx-[47px]">
           {body.title}
         </h3>
-        <h3 className="md:mx-[185px] mx-[47px] md:pt-[15px] pt-[7px] md:text-[18px]  font-normal md:leading-[26px] text-[#77838F]  text-[12px] leading-[12.41px]">
-          {body.description}
-        </h3>
-        <h3 className="md:mx-[185px] mx-[47px] md:pt-[15px] pt-[7px] md:text-[18px]  font-normal md:leading-[26px] text-[#77838F]  text-[12px] leading-[12.41px]">
-          {body.description}
-        </h3>
+
+        <div className="md:mx-[185px] mx-[47px] md:pt-[15px] pt-[7px] md:text-[18px]  font-normal md:leading-[26px] text-[#77838F]  text-[12px] leading-[12.41px]">
+          <ul>
+            {body.description?.map((item, index) => (
+              <li className="md:pt-2" key={index}>{item}</li>
+            ))}
+          </ul>
+        </div>
       </div>
 
-      <div>
+      <div className="md:mx-[225px] mx-[47px] md:pt-[15px] pt-[7px] md:text-[18px]  font-normal md:leading-[26px] text-[#77838F]  text-[12px] leading-[12.41px]">
         <ul>
           {body.content?.map((item, index) => (
             <li key={index}>{item}</li>
@@ -62,21 +76,31 @@ export const BlogP: React.FC<BlogInterface> = (props) => {
         </ul>
       </div>
 
-      <div className="mb-[290px]">
+      <div className="mb-[230px]">
         <ul>
           {body.list?.map((item, index) => (
             <li key={index}>
-              <h3 className="md:text-[28px] text-[15px] md:mt-[35px] font-semibold  text-bannerHeading md:mx-[185px] mx-[47px]">
+              <h3 className="md:text-[28px] text-[15px] md:mt-[20px] font-semibold  text-bannerHeading md:mx-[185px] mx-[47px]">
                 {item.title}
               </h3>
-              <p className="md:mx-[185px] mx-[47px] md:pt-[15px] pt-[7px] md:text-[18px]  font-normal md:leading-[26px] text-[#77838F]  text-[12px] leading-[12.41px]">
-                {item.description}
+              <p className="md:mx-[185px] mx-[47px] md:pt-[15px] pt-[7px] md:text-[18px]  font-semibold md:leading-[26px] text-black  text-[12px] leading-[12.41px]">
+                {item.subTitle}
               </p>
+              <ul>
+                {item.description?.map((listItem, index) => (
+                  <li
+                    key={index}
+                    className="  md:mx-[195px] mx-[47px] md:my[11px] my-[6px] md:pt-[15px] pt-[7px] md:text-[17px] font-normal md:leading-[26px] text-[#77838F]  text-[12px] leading-[12.41px]"
+                  >
+                    {listItem}
+                  </li>
+                ))}
+              </ul>
               <ul>
                 {item.content?.map((listItem, index) => (
                   <li
                     key={index}
-                    className=" list-disc md:mx-[195px] mx-[47px] md:my[11px] my-[6px] md:pt-[15px] pt-[7px] md:text-[17px] font-normal md:leading-[26px] text-[#77838F]  text-[12px] leading-[12.41px]"
+                    className=" list-disc md:mx-[225px] mx-[47px] md:my[11px] my-[6px]  md:text-[15px] font-normal md:leading-[26px] text-[#77838F]  text-[12px] leading-[12.41px]"
                   >
                     {listItem}
                   </li>
