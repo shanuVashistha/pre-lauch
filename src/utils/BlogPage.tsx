@@ -23,23 +23,23 @@ export const BlogP: React.FC<BlogInterface> = (props) => {
     <div key={id}>
       <div>
         <Img
-          className=" md:w-[105px] md:mx-[60px] mx-[35px] md:my-[40px] my-[20px] md:h-[64px] w-[73.93px] h-[45px]"
+          className=" md:w-[105px] md:mx-[95px] mx-[35px] md:my-[40px] my-[20px] md:h-[64px] w-[73.93px] h-[45px]"
           src="/images/logo.png"
           alt=""
         />
       </div>
 
-      <h3 className=" flex justify-center md:text-[37px] md:pt-[105px] pt-[35px] font-semibold md:leading-[74.27px] text-bannerHeading text-[13px] leading-[40px] tracking-normal">
+      <h3 className=" flex justify-center md:px-[50px] md:text-[37px] md:pt-[105px] pt-[35px] font-semibold md:leading-[40.27px] text-bannerHeading text-[13px] leading-[20px] tracking-normal">
         {title}
       </h3>
 
-       <h3 className="md:text-[28px] text-[15px] md:mt-[5px] font-semibold  text-bannerHeading md:mx-[185px] mx-[47px]">
+       <h3 className="md:text-[28px] text-[15px] md:mt-[5px] font-semibold  text-bannerHeading md:mx-[195px] mx-[47px]">
         {subTitle}
       </h3>
-      <div className="md:mx-[185px] mx-[47px]  md:pt-[15px] pt-[7px] md:text-[18px]  font-normal md:leading-[26px] text-[#77838F]  text-[12px] leading-[12.41px]">
+      <div className="md:mx-[195px] mx-[47px]  md:pt-[15px] pt-[7px] md:text-[18px]  font-normal md:leading-[26px] text-[#77838F]  text-[12px] leading-[12.41px]">
         <ul>
           {description?.map((item, index) => (
-            <li className="gap-y-11"  key={index}>{item}</li>
+            <li   key={index}>{item}</li>
           ))}
         </ul>
       </div>
@@ -55,20 +55,20 @@ export const BlogP: React.FC<BlogInterface> = (props) => {
       </div>
 
       <div>
-        <h3 className="md:text-[28px] text-[15px] md:mt-[35px] font-semibold  text-bannerHeading md:mx-[185px] mx-[47px]">
+        <h3 className="md:text-[28px] text-[15px] md:mt-[35px] font-semibold  text-bannerHeading md:mx-[195px] mx-[47px]">
           {body.title}
         </h3>
 
-        <div className="md:mx-[185px] mx-[47px] md:pt-[15px] pt-[7px] md:text-[18px]  font-normal md:leading-[26px] text-[#77838F]  text-[12px] leading-[12.41px]">
+        <div className="md:mx-[195px] mx-[47px] md:pt-[5px] pt-[4px] md:text-[18px]  font-normal md:leading-[26px] text-[#77838F]  text-[12px] leading-[12.41px]">
           <ul>
             {body.description?.map((item, index) => (
-              <li className="md:pt-2" key={index}>{item}</li>
+              <li className="md:pt-3" key={index}>{item}</li>
             ))}
           </ul>
         </div>
       </div>
 
-      <div className="md:mx-[225px] mx-[47px] md:pt-[15px] pt-[7px] md:text-[18px]  font-normal md:leading-[26px] text-[#77838F]  text-[12px] leading-[12.41px]">
+      <div className="md:mx-[225px] mx-[47px] md:pt-[5px] pt-[4px] md:text-[18px]  font-normal md:leading-[26px] text-[#77838F]  text-[12px] leading-[12.41px]">
         <ul>
           {body.content?.map((item, index) => (
             <li key={index}>{item}</li>
@@ -76,21 +76,21 @@ export const BlogP: React.FC<BlogInterface> = (props) => {
         </ul>
       </div>
 
-      <div className="mb-[230px]">
+      <div className="mb-[240px]">
         <ul>
           {body.list?.map((item, index) => (
             <li key={index}>
-              <h3 className="md:text-[28px] text-[15px] md:mt-[20px] font-semibold  text-bannerHeading md:mx-[185px] mx-[47px]">
+              <h3 className="md:text-[28px] text-[15px] md:mt-[20px] font-semibold  text-bannerHeading md:mx-[195px] mx-[47px]">
                 {item.title}
               </h3>
-              <p className="md:mx-[185px] mx-[47px] md:pt-[15px] pt-[7px] md:text-[18px]  font-semibold md:leading-[26px] text-black  text-[12px] leading-[12.41px]">
+              <p className="md:mx-[195px] mx-[47px] md:pt-[15px] pt-[7px] md:text-[18px]  font-semibold md:leading-[26px] text-black  text-[12px] leading-[12.41px]">
                 {item.subTitle}
               </p>
               <ul>
                 {item.description?.map((listItem, index) => (
                   <li
                     key={index}
-                    className="  md:mx-[195px] mx-[47px] md:my[11px] my-[6px] md:pt-[15px] pt-[7px] md:text-[17px] font-normal md:leading-[26px] text-[#77838F]  text-[12px] leading-[12.41px]"
+                    className="  md:mx-[195px] mx-[47px]  md:pt-[15px] pt-[7px] md:text-[17px] font-normal md:leading-[26px] text-[#77838F]  text-[12px] leading-[12.41px]"
                   >
                     {listItem}
                   </li>

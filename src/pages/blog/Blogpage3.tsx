@@ -5,8 +5,8 @@ import { BlogInterface } from "@/utils/types";
 import fs from "fs";
 
 const BlogP1: React.FC = () => {
-  const BlogData2: BlogInterface = {
-    id: "2",
+  const BlogData3: BlogInterface = {
+    id: "3",
     slug: "my-second-blog-post",
     title: "A Guide for woman to break into information technology",
     subTitle: "",
@@ -215,13 +215,13 @@ const BlogP1: React.FC = () => {
   };
   return (
     <BlogP
-      id={BlogData2.id}
-      slug={BlogData2.slug}
-      title={BlogData2.title}
-      subTitle={BlogData2.subTitle}
-      description={BlogData2.description}
-      img={BlogData2.img}
-      body={BlogData2.body}
+      id={BlogData3.id}
+      slug={BlogData3.slug}
+      title={BlogData3.title}
+      subTitle={BlogData3.subTitle}
+      description={BlogData3.description}
+      img={BlogData3.img}
+      body={BlogData3.body}
     />
   );
 };
