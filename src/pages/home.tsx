@@ -88,7 +88,7 @@ const Home: React.FC = () => {
                 </div>
                 <div className="logo">
                     <Img
-                        src="/images/logo.png"
+                        src="/images/logo.svg"
                         alt={"logo"}
                         className="md:w-[105px] md:h-[64px] w-[73.93px] h-[45px]"
                     />
