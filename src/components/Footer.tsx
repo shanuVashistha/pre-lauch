@@ -12,7 +12,7 @@ export const Footer: React.FC = () => {
             <div className="md:p-[35px] lg:flex-1 w-[100%] flex lg:flex-col md:items-start items-center">
                 <div className="lg:pb-[59px]">
                     <Img
-                        src={"/images/logo-white.svg"}
+                        src={"/images/logowhite.svg"}
                         alt={"Footer Logo"}
                         className="md:w-[91px] w-[70.6px] "
                     />
