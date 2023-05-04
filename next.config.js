@@ -4,7 +4,7 @@ const nextConfig = {
     experimental: {
         runtime: 'edge'
     },
-    assetPrefix: "/public"
+    formats: ['image/webp', 'image/png', 'image/svg']
 }
 
 module.exports = nextConfig
