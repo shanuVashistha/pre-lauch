@@ -1,12 +1,47 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Img } from "@/utils/Img";
 import { SocialButton } from "@/utils/SocialButton";
 import { Input, TextArea } from "@/utils/Input";
 import { Button } from "@/utils/Button";
+import { LoaderContext } from "@/context/LoaderContext";
 
 export const Footer: React.FC = () => {
+    const { setIsLoading } = useContext(LoaderContext);
     const [email, setEmail] = React.useState("");
     const [message, setMessage] = React.useState("");
+    const [errors, setErrors] = React.useState("");
+
+    const signUp = async () => {
+        setErrors("");
+        if (!email) {
+            setErrors("Please enter a email address");
+            return;
+        } else if (email && !/\S+@\S+\.\S+/.test(email)) {
+            setErrors("Please enter a valid email address");
+            return;
+        }
+        if (!message) {
+            setErrors("Please enter a message");
+            return;
+        }
+        setIsLoading(true);
+        const response = await fetch("/api/signup", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, message }),
+        });
+        const data = await response.json();
+
+        if (data.success) {
+            setMessage("");
+            setEmail("");
+            setErrors("");
+        }
+        setIsLoading(false);
+    }
+
     return <div className="bg-[#263041] md:px-[45px] md:py-[7px] p-[21px] md:pt[] pt-[30px] ">
         <div className="flex flex-col lg:flex-row items-center">
             <div className="md:p-[35px] lg:flex-1 w-[100%] flex lg:flex-col md:items-start items-center">
@@ -67,11 +102,16 @@ export const Footer: React.FC = () => {
                         value={message}
                         className="w-[] md:w-[296px]"
                     />
+                    {
+                        errors && <p className="text-red-500 font-medium text-[13px] py-[8px]">
+                            {errors}
+                        </p>
+                    }
                 </div>
                 <div>
                     <Button
                         label="Send your message"
-                        onClick={() => console.log(email, message)}
+                        onClick={signUp}
                         color="primary"
                         className="text-[16.2px] leading-[16px] font-semibold"
                     />

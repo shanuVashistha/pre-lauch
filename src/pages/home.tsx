@@ -1,14 +1,44 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Card } from "@/utils/Card";
 import { Input } from "@/utils/Input";
 import { Button } from "@/utils/Button";
 import { Img } from "@/utils/Img";
 import { BlogCards } from "@/utils/BlogCards";
 import { Footer } from "@/components/Footer";
+import { LoaderContext } from "@/context/LoaderContext";
 
 
 const Home: React.FC = () => {
+    const { setIsLoading } = useContext(LoaderContext);
     const [email, setEmail] = React.useState("");
+    const [errors, setErrors] = React.useState("");
+
+    const signUp = async () => {
+        setErrors("");
+        if (!email) {
+            setErrors("Please enter a email address");
+            return;
+        } else if (email && !/\S+@\S+\.\S+/.test(email)) {
+            setErrors("Please enter a valid email address");
+            return;
+        }
+        setIsLoading(true);
+        const response = await fetch("/api/subscribe", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email }),
+        });
+        const data = await response.json();
+
+        if (data.success) {
+            setEmail("");
+            setErrors("");
+        }
+        setIsLoading(false);
+    }
+
     const blogs = [
         {
             tag: "Article",
@@ -117,18 +147,23 @@ const Home: React.FC = () => {
                                         value={email}
                                         placeholder="Enter your email address..."
                                         onChange={(e) => setEmail(e.target.value)}
-                                        className="  fill h-[100%] bg-white  "
+                                        className="fill h-[100%] bg-white  "
                                     />
                                 </div>
                                 <div>
                                     <Button
                                         color="primary"
                                         label="Count me in"
-                                        onClick={() => console.log(email)}
+                                        onClick={signUp}
                                         className="md:w-[180px]  md:text-[19.86px] md:leading-[39.71px] text-[12px] leading-[17.63px] font-semibold"
                                     />
                                 </div>
                             </div>
+                            {
+                                errors && <p className="text-red-500 font-medium text-[13px] pt-[8px]">
+                                    {errors}
+                                </p>
+                            }
                         </div>
                         <h3 className="md:text-[19px] md:leading-[30.13px] text-[12px] leading-[17.6px] md:pt-0 pt-[21px] font-medium text-bannerFooterHeading">
                             Enjoy Mondays again! Join our pre-launch list and take the first
@@ -306,11 +341,16 @@ const Home: React.FC = () => {
                                 />
                                 <Button
                                     label="Sign me up"
-                                    onClick={() => console.log(email)}
+                                    onClick={signUp}
                                     color="primary"
                                     className=" font-medium md:text-[16px] md:w-[150px] text-[10px] md:leading-[21px] "
                                 />
                             </div>
+                            {
+                                errors && <p className="text-red-500 font-medium text-[13px] pt-[8px]">
+                                    {errors}
+                                </p>
+                            }
                         </div>
                     </div>
                 </div>
