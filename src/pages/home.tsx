@@ -192,7 +192,7 @@ const Home: React.FC = () => {
                     </div>
                     <div className="px-[16px] md:py-0 py-[20px]">
                         <Img
-                            src="/images/featured.svg"
+                            src="/images/featured.png"
                             alt={""}
                             className="w-[300px] mx-auto"
                         />
