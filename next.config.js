@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     experimental: {
-        runtime: 'experimental-edge',
+        runtime: 'edge'
     },
     env: {
         FIREBASE_API_KEY: 'AIzaSyDNyaO4eGjOFGKtGRJhv4bQ-1t1T3Rp-hM',
