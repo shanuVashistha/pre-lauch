@@ -1,14 +1,14 @@
 {
-  "name": "launch",
-  "version": "0.1.0",
-  "private": true,
+  "name": "launch" ,
+  "version": "0.1.0" ,
+  "private": true ,
   "scripts": {
-    "dev": "next dev",
-    "build": "NODE_ENV=development next build",
-    "start": "next start",
-    "test": "jest",
+    "dev": "next dev" ,
+    "build": "NODE_ENV=development next build" ,
+    "start": "next start" ,
+    "test": "jest" ,
     "lint": "next lint"
-  },
+  } ,
   "dependencies": {
     "@firebase/firestore": "^3.11.0" ,
     "@next/bundle-analyzer": "^13.3.4" ,
@@ -28,7 +28,7 @@
     "react-spinners": "^0.13.8" ,
     "tailwindcss": "^3.3.2" ,
     "typescript": "^5.0.4"
-  },
+  } ,
   "devDependencies": {
     "jest": "^29.5.0"
   }
