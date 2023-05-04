@@ -31,7 +31,6 @@ const Home: React.FC = () => {
             body: JSON.stringify({ email }),
         });
         const data = await response.json();
-
         if (data.success) {
             setEmail("");
             setErrors("");
@@ -154,7 +153,7 @@ const Home: React.FC = () => {
                                     <Button
                                         color="primary"
                                         label="Count me in"
-                                        onClick={signUp}
+                                        onClick={() => console.log('done')}
                                         className="md:w-[180px]  md:text-[19.86px] md:leading-[39.71px] text-[12px] leading-[17.63px] font-semibold"
                                     />
                                 </div>
@@ -227,7 +226,7 @@ const Home: React.FC = () => {
                     </div>
                     <div className="px-[16px] md:py-0 py-[20px]">
                         <Img
-                            src={"/images/Featured.png"}
+                            src={"/images/featured.png"}
                             alt={""}
                             className="w-[300px] mx-auto"
                         />
@@ -268,7 +267,7 @@ const Home: React.FC = () => {
             <div className="video-banner relative md:py-[142px] px-[30px]">
                 <div className="video-banner-liners right">
                     <Img
-                        src={"/images/who-uses-right.png"}
+                        src="/images/right.png"
                         alt={"right liner"}
                         className="md:w-[400px]  w-[100px]"
                     />
@@ -279,7 +278,7 @@ const Home: React.FC = () => {
                 <div className="">
                     <div className="video-container flex justify-center relative">
                         <Img
-                            src={"/images/video-thumbnail.png"}
+                            src="/images/thumbnail.png"
                             alt={"Video Thumbnail"}
                             className="md:w-[60%] w-[100%] "
                         />
@@ -289,7 +288,7 @@ const Home: React.FC = () => {
 
                                 <div className="video-button ">
                                     <Img
-                                        src={"/images/play.svg"}
+                                        src="/images/play.svg"
                                         alt={"Play"}
                                         className=" w-auto h-auto"
 
@@ -305,7 +304,7 @@ const Home: React.FC = () => {
                 </div>
                 <div className="video-banner-liners left">
                     <Img
-                        src={"/images/who-uses-left.png"}
+                        src="/images/left.png"
                         alt={"left liner"}
                         className="md:w-[250px] w-[70px]"
                     />
@@ -341,7 +340,7 @@ const Home: React.FC = () => {
                                 />
                                 <Button
                                     label="Sign me up"
-                                    onClick={signUp}
+                                    onClick={() => console.log('done')}
                                     color="primary"
                                     className=" font-medium md:text-[16px] md:w-[150px] text-[10px] md:leading-[21px] "
                                 />
