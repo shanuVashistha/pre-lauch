@@ -1,44 +1,62 @@
 import React from "react";
 import { Img } from "@/utils/Img";
 import Link from "next/link";
-interface CardBlog {
-  img?: string;
-  background: string;
-  title: string;
-  description: string;
-  className?: string;
-  url: string;
- 
-}
-export const BlogCards: React.FC<CardBlog> = ({
-  img,
-  title,
-  description,
-  background,
-  className,
-  url,
 
-}) => {
-  return (
-    <div className={` md:rounded-3xl rounded-lg md:bg-slate-100 bg-slate-100 md:shadow-lg shadow-lg flex px-[0px] py-[0px] md:w-[360px] w-[305px] md:h-[524px] h-[375px]     ${className}`}>
-      <div className="  rounded-3xl flex-1 md:pl-[0px] pl-[0px ]   ">
-      <Img
-                src={img || ""}
-                alt="Avatar "
-                className=" md:rounded-t-3xl rounded-t-2xl md:w-[360px] w-[305px] md:h-[250px] h-[180px]"
-              />
-        <h3 className="  md:my-[12px] my-[15px]  md:pl-[17px] pl-[7px] md:mx-[20px] mx-[7px] md:text-[20.88px] md:leading-[37.12px] text-[15px] md:mr-[] mr-[20px] leading-[25px] font-bold ">
-          {title}
-        </h3>
-        <p className="  md:mx-[20px] mx-[7px] md:pl-[17px] pl-[5px] md:text-[14px] md:mt-3 md:leading-[22px] text-[12.5px] leading-[14.25px] ">
-          {description}
-        </p>
-        <Link
-      href={`blog/${url}`}
-      className="flex  md:-my-[5px] my-[10px] md:mr-[30px] mr-[28px] justify-end pt-[40px]  md:text-[16px] text-[15px] font-semibold text-yellow-400"
-    > Read more ...</Link>
-       
-       </div>
-    </div>
-  );
+interface CardBlog {
+    img?: string;
+    title: string;
+    description: string;
+    className?: string;
+    url: string;
+
+}
+
+export const BlogCards: React.FC<CardBlog> = (
+    {
+        img,
+        title,
+        description,
+        className,
+        url,
+
+    }
+) => {
+    return (
+        <div
+            className={`rounded-[20px] bg-white overflow-hidden flex flex-col ${className}`}
+            style={{
+                boxShadow: '0px 20px 50px rgba(18, 17, 39, 0.08)'
+            }}
+        >
+            <div className="relative">
+                <Img
+                    src={img || ""}
+                    alt="Avatar"
+                    className="w-full h-[250px] object-cover"
+                />
+                <div
+                    className="absolute top-[21px] left-[31px] rounded-[20px] px-[10px] xxl:text-[16px] md:text-[14px] leading-[28px] text-[white] font-medium"
+                    style={{ background: "rgba(237, 232, 254, 0.2)" }}
+                >
+                    Article
+                </div>
+            </div>
+            <div className="flex-1 p-[16px] xxl:pb-[16px] pb-[8px] mt-[5px]">
+                <h3 className="font-semibold xl:text-[17px] md:text-[17px] text-[16px] leading-[32px] text-dark xxl:mb-[24px] mb-[18px]">
+                    {title}
+                </h3>
+                <p className="font-normal xxl:text-[16px] md:text-[14px] text-[12px] xxl:leading-[28px] md:leading-[26px] leading-[24px] text-[#464646]">
+                    {description}
+                </p>
+            </div>
+            <div className="text-right p-[18px]">
+                <Link
+                    href={`blog/${url}`}
+                    className="text-[#382E53] xxl:text-[16px] md:text-[14px] text-[12px] leading-[29px] font-medium"
+                >
+                    {`Read more >>`}
+                </Link>
+            </div>
+        </div>
+    );
 };

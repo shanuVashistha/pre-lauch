@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     content: [
+        './src/components/**/*.{js,ts,jsx,tsx}',
         './src/pages/**/*.{js,ts,jsx,tsx}',
         './src/utils/**/*.{js,ts,jsx,tsx}',
         './src/app/**/*.{js,ts,jsx,tsx}',
@@ -12,13 +13,20 @@ module.exports = {
                 'gradient-conic':
                     'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
             },
+            screens: {
+                'xxl': '1441px',
+            },
             colors: {
                 'bannerHeading': 'rgba(38, 48, 65, 1)',
                 'bannerSubHeading': 'rgba(82, 92, 122, 1)',
                 'bannerFormHeading': 'rgba(74, 74, 74, 1)',
                 'bannerFooterHeading': 'rgba(82, 92, 122, 1)',
+                'dark': '#1A1A1A',
             }
         },
+        fontFamily: {
+            primary: ['Poppins', 'sans-serif'],
+        }
     },
     plugins: [],
 }
