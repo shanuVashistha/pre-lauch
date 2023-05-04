@@ -12,21 +12,21 @@ const Home: React.FC = () => {
     const blogs = [
         {
             tag: "Article",
-            img: "/images/blog.png",
+            img: "/images/blog.svg",
             title: "Make Your Dreams Come True: A Guide to Finding the Perfect Job",
             description: "Are you ready to take the next step in your professional journey and start searching for your dream job? You’ve come to the right place! In this blog post, you will learn the practical...",
             slug: "makeYourDreamsComeTrueAGuideToFindingThePerfectJob"
         },
         {
             tag: "Article",
-            img: "/images/blog.png",
+            img: "/images/blog.svg",
             title: "Overview of Enjoy Mondays - How our marketplace works for job-seekers",
             description: "Are you tired of having unproductive conversations with recruiters about jobs that don't fit your needs? Maybe the job isn't remote, or the compensation doesn't match your expectations...",
             slug: "overviewOfEnjoyMondaysHowOurMarketplaceWorksForJobSeekers"
         },
         {
             tag: "Article",
-            img: "/images/blog.png",
+            img: "/images/blog.svg",
             title: "A Guide for woman to break into information technology",
             description: "According to the Bureau of Labor Statistics (BLS), careers in computer and information technology (IT) are projected to grow by 12% in the next decade, making it one of the fastest-growing...",
             slug: "aGuideForWomanToBreakIntoInformationTechnology"
@@ -192,7 +192,7 @@ const Home: React.FC = () => {
                     </div>
                     <div className="px-[16px] md:py-0 py-[20px]">
                         <Img
-                            src="/images/featured.png"
+                            src="/images/featured.svg"
                             alt={""}
                             className="w-[300px] mx-auto"
                         />
@@ -233,7 +233,7 @@ const Home: React.FC = () => {
             <div className="video-banner relative md:py-[142px] px-[30px]">
                 <div className="video-banner-liners right">
                     <Img
-                        src="/images/right.png"
+                        src="/images/right.svg"
                         alt={"right liner"}
                         className="md:w-[400px]  w-[100px]"
                     />
@@ -244,7 +244,7 @@ const Home: React.FC = () => {
                 <div className="">
                     <div className="video-container flex justify-center relative">
                         <Img
-                            src="/images/thumbnail.png"
+                            src="/images/thumbnail.svg"
                             alt={"Video Thumbnail"}
                             className="md:w-[60%] w-[100%] "
                         />
@@ -267,7 +267,7 @@ const Home: React.FC = () => {
                 </div>
                 <div className="video-banner-liners left">
                     <Img
-                        src="/images/left.png"
+                        src="/images/left.svg"
                         alt={"left liner"}
                         className="md:w-[250px] w-[70px]"
                     />

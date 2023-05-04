@@ -11,14 +11,14 @@ const Blog: React.FC = () => {
     const blogs = [
         {
             tag: "Article",
-            img: "/images/blog.png",
+            img: "/images/blog.svg",
             title: "Make Your Dreams Come True: A Guide to Finding the Perfect Job",
             description: "Are you ready to take the next step in your professional journey and start searching for your dream job? You’ve come to the right place! In this blog post, you will learn the practical...",
             slug: "makeYourDreamsComeTrueAGuideToFindingThePerfectJob"
         },
         {
             tag: "Article",
-            img: "/images/blog.png",
+            img: "/images/blog.svg",
             title: "Overview of Enjoy Mondays - How our marketplace works for job-seekers",
             description: "Are you tired of having unproductive conversations with recruiters about jobs that don't fit your needs? Maybe the job isn't remote, or the compensation doesn't match your expectations...",
             slug: "overviewOfEnjoyMondaysHowOurMarketplaceWorksForJobSeekers"
@@ -47,7 +47,7 @@ const Blog: React.FC = () => {
                 </h1>
                 <div className="max-w-[980px] w-full md:mt-[68px] mt-[12px] md:p-[12px] p-[32px]">
                     <Img
-                        src="/images/blog.png"
+                        src="/images/blog.svg"
                         alt=""
                         className="w-full"
                     />

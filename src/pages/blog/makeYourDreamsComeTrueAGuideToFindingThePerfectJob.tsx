@@ -11,14 +11,14 @@ const Blog: React.FC = () => {
     const blogs = [
         {
             tag: "Article",
-            img: "/images/blog.png",
+            img: "/images/blog.svg",
             title: "Overview of Enjoy Mondays - How our marketplace works for job-seekers",
             description: "Are you tired of having unproductive conversations with recruiters about jobs that don't fit your needs? Maybe the job isn't remote, or the compensation doesn't match your expectations...",
             slug: "overviewOfEnjoyMondaysHowOurMarketplaceWorksForJobSeekers"
         },
         {
             tag: "Article",
-            img: "/images/blog.png",
+            img: "/images/blog.svg",
             title: "A Guide for woman to break into information technology",
             description: "According to the Bureau of Labor Statistics (BLS), careers in computer and information technology (IT) are projected to grow by 12% in the next decade, making it one of the fastest-growing...",
             slug: "aGuideForWomanToBreakIntoInformationTechnology"
@@ -71,7 +71,7 @@ const Blog: React.FC = () => {
                 </p>
                 <div className="max-w-[980px] w-full mt-[68px] p-[12px]">
                     <Img
-                        src="/images/blog.png"
+                        src="/images/blog.svg"
                         alt=""
                         className="w-full"
                     />
