@@ -88,7 +88,7 @@ const Home: React.FC = () => {
                 </div>
                 <div className="logo">
                     <Img
-                        src={"/images/logo.png"}
+                        src="/images/logo.png"
                         alt={"logo"}
                         className="md:w-[105px] md:h-[64px] w-[73.93px] h-[45px]"
                     />
@@ -192,7 +192,7 @@ const Home: React.FC = () => {
                     </div>
                     <div className="px-[16px] md:py-0 py-[20px]">
                         <Img
-                            src={"/images/Featured.png"}
+                            src="/images/featured.png"
                             alt={""}
                             className="w-[300px] mx-auto"
                         />
@@ -233,7 +233,7 @@ const Home: React.FC = () => {
             <div className="video-banner relative md:py-[142px] px-[30px]">
                 <div className="video-banner-liners right">
                     <Img
-                        src={"/images/who-uses-right.png"}
+                        src="/images/right.png"
                         alt={"right liner"}
                         className="md:w-[400px]  w-[100px]"
                     />
@@ -244,7 +244,7 @@ const Home: React.FC = () => {
                 <div className="">
                     <div className="video-container flex justify-center relative">
                         <Img
-                            src={"/images/video-thumbnail.png"}
+                            src="/images/thumbnail.png"
                             alt={"Video Thumbnail"}
                             className="md:w-[60%] w-[100%] "
                         />
@@ -259,9 +259,6 @@ const Home: React.FC = () => {
                                         className=" w-auto h-auto"
 
                                     />
-
-
-                                    {/* <ReactPlayer width="50px" height="30px" url="/video1.mp4" controls={true}/> */}
                                 </div>
 
                             </button>
@@ -270,7 +267,7 @@ const Home: React.FC = () => {
                 </div>
                 <div className="video-banner-liners left">
                     <Img
-                        src={"/images/who-uses-left.png"}
+                        src="/images/left.png"
                         alt={"left liner"}
                         className="md:w-[250px] w-[70px]"
                     />
