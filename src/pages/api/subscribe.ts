@@ -2,6 +2,10 @@ import fs from 'fs';
 import path from 'path';
 import { NextApiRequest, NextApiResponse } from 'next';
 
+export const config = {
+    runtime: 'edge',
+}
+
 type Subscriber = {
     email: string;
 };
@@ -28,9 +32,3 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
     }
 }
 export default handler;
-
-export const config = {
-    api: {
-        externalResolver: true,
-    },
-};
