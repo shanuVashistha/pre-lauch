@@ -11,7 +11,7 @@ export const LoaderContext = createContext<LoaderContextProps>({
     },
 });
 
-export const LoaderProvider: React.FC = ({ children }) => {
+export const LoaderProvider: React.FC<any> = ({ children }) => {
     const [isLoading, setIsLoading] = useState(false);
 
     return (
