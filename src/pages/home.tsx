@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Card } from "@/utils/Card";
 import { Input } from "@/utils/Input";
 import { Button } from "@/utils/Button";
@@ -10,8 +10,9 @@ import { LoaderContext } from "@/context/LoaderContext";
 
 const Home: React.FC = () => {
     const { setIsLoading } = useContext(LoaderContext);
-    const [email, setEmail] = React.useState("");
-    const [errors, setErrors] = React.useState("");
+    const [email, setEmail] = useState("");
+    const [errors, setErrors] = useState("");
+    const [showGreetings, setShowGreetings] = useState(false);
 
     const signUp = async () => {
         setErrors("");
@@ -23,7 +24,7 @@ const Home: React.FC = () => {
             return;
         }
         setIsLoading(true);
-        const response = await fetch("/api/subscribe", {
+        const response = await fetch("/api/signups", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -34,6 +35,7 @@ const Home: React.FC = () => {
         if (data.success) {
             setEmail("");
             setErrors("");
+            setShowGreetings(true);
         }
         setIsLoading(false);
     }
@@ -140,24 +142,30 @@ const Home: React.FC = () => {
                             <h3 className="md:text-[28px] md:leading-[37.13px] text-[15px] leading-[17.6px] font-medium text-bannerFormHeading">
                                 First 500 sign-ups get a FREE $250 Resume Assessment.
                             </h3>
-                            <div className="flex md:flex-row flex-col gap-2 md:mt-[25px] mt-[10px]">
-                                <div className="md:flex-1 ">
-                                    <Input
-                                        value={email}
-                                        placeholder="Enter your email address..."
-                                        onChange={(e) => setEmail(e.target.value)}
-                                        className="fill h-[100%] bg-white  "
-                                    />
-                                </div>
-                                <div>
-                                    <Button
-                                        color="primary"
-                                        label="Count me in"
-                                        onClick={signUp}
-                                        className="md:w-[180px]  md:text-[19.86px] md:leading-[39.71px] text-[12px] leading-[17.63px] font-semibold"
-                                    />
-                                </div>
-                            </div>
+                            {
+                                !showGreetings ?
+                                    <div className="flex md:flex-row flex-col gap-2 md:mt-[25px] mt-[10px] ">
+                                        <div className="md:flex-1 ">
+                                            <Input
+                                                value={email}
+                                                placeholder="Enter your email address..."
+                                                onChange={(e) => setEmail(e.target.value)}
+                                                className="fill h-[100%] bg-white  "
+                                            />
+                                        </div>
+                                        <div>
+                                            <Button
+                                                color="primary"
+                                                label="Count me in"
+                                                onClick={signUp}
+                                                className="md:w-[180px]  md:text-[19.86px] md:leading-[39.71px] text-[12px] leading-[17.63px] font-semibold"
+                                            />
+                                        </div>
+                                    </div> :
+                                    <h3 className="text-center md:text-[15px] md:leading-[30.13px] text-[12px] leading-[17.6px] pt-[21px] font-medium text-bannerFooterHeading">
+                                        Great you take your first step to a better career. We'll be in touch soon!
+                                    </h3>
+                            }
                             {
                                 errors && <p className="text-red-500 font-medium text-[13px] pt-[8px]">
                                     {errors}
@@ -330,21 +338,26 @@ const Home: React.FC = () => {
                         </p>
 
                         <div className="mt-[32px]">
-                            <div
-                                className="flex justify-between md:w-[510px] claim-input-container md:px-[10px] md:py-[5px] p-[8px]">
-                                <input
-                                    className="claim-input md:flex-1 md:w-auto w-[190px]   md:p-[16px] p-[8px] bg-transparent"
-                                    placeholder="Enter your email address..."
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                />
-                                <Button
-                                    label="Sign me up"
-                                    onClick={signUp}
-                                    color="primary"
-                                    className=" font-medium md:text-[16px] md:w-[150px] text-[10px] md:leading-[21px] "
-                                />
-                            </div>
+                            {
+                                !showGreetings ? <div
+                                        className="flex justify-between md:w-[510px] claim-input-container md:px-[10px] md:py-[5px] p-[8px]">
+                                        <input
+                                            className="claim-input md:flex-1 md:w-auto w-[190px]   md:p-[16px] p-[8px] bg-transparent"
+                                            placeholder="Enter your email address..."
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                        />
+                                        <Button
+                                            label="Sign me up"
+                                            onClick={signUp}
+                                            color="primary"
+                                            className=" font-medium md:text-[16px] md:w-[150px] text-[10px] md:leading-[21px] "
+                                        />
+                                    </div> :
+                                    <h3 className="text-center md:text-[15px] md:leading-[30.13px] text-[12px] leading-[17.6px] pt-[21px] font-medium text-bannerFooterHeading">
+                                        Great you take your first step to a better career. We'll be in touch soon!
+                                    </h3>
+                            }
                             {
                                 errors && <p className="text-red-500 font-medium text-[13px] pt-[8px]">
                                     {errors}

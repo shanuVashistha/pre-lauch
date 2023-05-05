@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Img } from "@/utils/Img";
 import { SocialButton } from "@/utils/SocialButton";
 import { Input, TextArea } from "@/utils/Input";
@@ -7,9 +7,10 @@ import { LoaderContext } from "@/context/LoaderContext";
 
 export const Footer: React.FC = () => {
     const { setIsLoading } = useContext(LoaderContext);
-    const [email, setEmail] = React.useState("");
-    const [message, setMessage] = React.useState("");
-    const [errors, setErrors] = React.useState("");
+    const [email, setEmail] = useState("");
+    const [message, setMessage] = useState("");
+    const [errors, setErrors] = useState("");
+    const [showGreetings, setShowGreetings] = useState(false);
 
     const signUp = async () => {
         setErrors("");
@@ -25,7 +26,7 @@ export const Footer: React.FC = () => {
             return;
         }
         setIsLoading(true);
-        const response = await fetch("/api/signup", {
+        const response = await fetch("/api/subscribe", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -38,6 +39,7 @@ export const Footer: React.FC = () => {
             setMessage("");
             setEmail("");
             setErrors("");
+            setShowGreetings(true);
         }
         setIsLoading(false);
     }
@@ -82,40 +84,49 @@ export const Footer: React.FC = () => {
                 </div>
             </div>
             <div
-                className="md:p-[35px] p-[16px] md:mt-0 mt-[20px] flex-1 flex flex-col items-center lg:w-auto md:w-[70%] w-[100%]">
-                <h3 className="text-[31.5px] text-center leading-[40.5px] font-bold text-[#FFFFFF] pb-[40px]">
-                    Got any questions?
-                </h3>
-                <div className="mb-[24px] w-[100%]  ">
-                    <Input
-                        type={"text"}
-                        placeholder={"Enter Your Email"}
-                        onChange={(e) => setEmail(e.target.value)}
-                        value={email}
-                        className=" w-full md:w-[296px]"
-                    />
-                </div>
-                <div className="mb-[40px] w-[100%]">
-                    <TextArea
-                        placeholder={"Enter Your Message"}
-                        onChange={(e) => setMessage(e.target.value)}
-                        value={message}
-                        className="w-[] md:w-[296px]"
-                    />
-                    {
-                        errors && <p className="text-red-500 font-medium text-[13px] py-[8px]">
-                            {errors}
-                        </p>
-                    }
-                </div>
-                <div>
-                    <Button
-                        label="Send your message"
-                        onClick={signUp}
-                        color="primary"
-                        className="text-[16.2px] leading-[16px] font-semibold"
-                    />
-                </div>
+                className="md:p-[35px] p-[16px] md:mt-0 mt-[20px] flex-1 lg:w-auto md:w-[70%] w-[100%]"
+            >
+                {!showGreetings ?
+                    <div className="w-full flex flex-col items-center">
+                        <h3 className="text-[31.5px] text-center leading-[40.5px] font-bold text-[#FFFFFF] pb-[40px]">
+                            Got any questions?
+                        </h3>
+                        <div className="mb-[24px] w-[100%]  ">
+                            <Input
+                                type={"text"}
+                                placeholder={"Enter Your Email"}
+                                onChange={(e) => setEmail(e.target.value)}
+                                value={email}
+                                className=" w-full md:w-[296px]"
+                            />
+                        </div>
+                        <div className="mb-[40px] w-[100%]">
+                            <TextArea
+                                placeholder={"Enter Your Message"}
+                                onChange={(e) => setMessage(e.target.value)}
+                                value={message}
+                                className="w-[] md:w-[296px]"
+                            />
+                            {
+                                errors && <p className="text-red-500 font-medium text-[13px] py-[8px]">
+                                    {errors}
+                                </p>
+                            }
+                        </div>
+                        <div>
+                            <Button
+                                label="Send your message"
+                                onClick={signUp}
+                                color="primary"
+                                className="text-[16.2px] leading-[16px] font-semibold"
+                            />
+                        </div>
+                    </div>
+                    :
+                    <h3 className="text-center md:text-[15px] md:leading-[30.13px] text-[12px] leading-[17.6px] pt-[21px] font-medium text-white">
+                        Thanks for contacting us! We will get back to you soon.
+                    </h3>
+                }
             </div>
             <p className="pt-[26px] text-[#F3F3F3] text-[14px] leading-[24px] font-normal opacity-50 lg:hidden text-center">
                 © Copyright 2023. All rights reserved. Privacy policy.
