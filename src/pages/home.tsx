@@ -163,7 +163,7 @@ const Home: React.FC = () => {
                                         </div>
                                     </div> :
                                     <h3 className="text-center md:text-[15px] md:leading-[30.13px] text-[12px] leading-[17.6px] pt-[21px] font-medium text-bannerFooterHeading">
-                                        Great you take your first step to a better career. We'll be in touch soon!
+                                        Great you take your first step to a better career. We will be in touch soon!
                                     </h3>
                             }
                             {
@@ -355,7 +355,7 @@ const Home: React.FC = () => {
                                         />
                                     </div> :
                                     <h3 className="text-center md:text-[15px] md:leading-[30.13px] text-[12px] leading-[17.6px] pt-[21px] font-medium text-bannerFooterHeading">
-                                        Great you take your first step to a better career. We'll be in touch soon!
+                                        Great you take your first step to a better career. We will be in touch soon!
                                     </h3>
                             }
                             {
