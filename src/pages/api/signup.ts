@@ -2,10 +2,6 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from '@/utils/Firebase';
 
-export const config = {
-    runtime: 'edge',
-}
-
 type SignupData = {
     email: string;
     message: string;

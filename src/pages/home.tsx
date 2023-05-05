@@ -153,7 +153,7 @@ const Home: React.FC = () => {
                                     <Button
                                         color="primary"
                                         label="Count me in"
-                                        onClick={() => console.log('done')}
+                                        onClick={signUp}
                                         className="md:w-[180px]  md:text-[19.86px] md:leading-[39.71px] text-[12px] leading-[17.63px] font-semibold"
                                     />
                                 </div>
@@ -340,7 +340,7 @@ const Home: React.FC = () => {
                                 />
                                 <Button
                                     label="Sign me up"
-                                    onClick={() => console.log('done')}
+                                    onClick={signUp}
                                     color="primary"
                                     className=" font-medium md:text-[16px] md:w-[150px] text-[10px] md:leading-[21px] "
                                 />

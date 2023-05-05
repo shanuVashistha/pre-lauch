@@ -111,7 +111,7 @@ export const Footer: React.FC = () => {
                 <div>
                     <Button
                         label="Send your message"
-                        onClick={() => console.log('done')}
+                        onClick={signUp}
                         color="primary"
                         className="text-[16.2px] leading-[16px] font-semibold"
                     />

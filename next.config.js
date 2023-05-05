@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    experimental: {
-        runtime: 'edge'
-    },
+    // experimental: {
+    //     runtime: 'edge',
+    // },
     env: {
         FIREBASE_API_KEY: 'AIzaSyDNyaO4eGjOFGKtGRJhv4bQ-1t1T3Rp-hM',
         FIREBASE_AUTH_DOMAIN: 'loan-application-6e366.firebaseapp.com',
