@@ -60,21 +60,30 @@ export const Footer: React.FC = () => {
                     </h3>
                     <div className="flex items-center md:mt-[20px]">
                         <div className="lg:pr-8 pr-4">
-                            <SocialButton icon={"/images/icons/facebook.svg"} url={"#"}/>
+                            <SocialButton
+                                icon={"/images/icons/facebook.svg"}
+                                url={"https://www.facebook.com/profile.php?id=100090762161323&mibextid=LQQJ4d"}
+                            />
                         </div>
                         <div className="lg:pr-8 pr-4">
                             <SocialButton icon={"/images/icons/twitter.svg"} url={"#"}/>
                         </div>
                         <div className="lg:pr-8 pr-4">
-                            <SocialButton icon={"/images/icons/youtube.svg"} url={"#"}/>
+                            <SocialButton
+                                icon={"/images/icons/youtube.svg"}
+                                url={"https://www.youtube.com/channel/UC1xFBqHYciLGdpon3H21-xw/"}
+                            />
                         </div>
                         <div className="lg:pr-8 pr-4">
-                            <SocialButton icon={"/images/icons/linkedIn.svg"} url={"#"}/>
+                            <SocialButton
+                                icon={"/images/icons/linkedIn.svg"}
+                                url={"https://www.linkedin.com/company/enjoy-mondays/"}
+                            />
                         </div>
                         <div>
                             <SocialButton
                                 icon={"/images/icons/instagram.svg"}
-                                url={"#"}
+                                url={"https://www.instagram.com/enjoymondaysinc"}
                             />
                         </div>
                     </div>
