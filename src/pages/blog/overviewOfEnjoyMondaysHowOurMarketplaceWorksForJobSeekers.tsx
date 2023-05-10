@@ -36,7 +36,7 @@ const Blog: React.FC = () => {
         <div style={{ background: "linear-gradient(109.04deg, #FFFCF3 0%, #EFF7FF 43.23%, #E8FAF3 98.1%)" }}>
             <Header/>
             <div className="xl:pt-[144px] md:pt-[100px] sm:pt-[65px] pt-[27px] flex flex-col items-center">
-                <h1 className="max-w-[1242px] p-[12px] font-semibold xl:text-[35px] md:text-[30px] sm:text-[22px] text-[16px] leading-[52px] sm:leading-[24px] tracking-[1.42px] text-center text-[#313131]">
+                <h1 className="max-w-[1242px] p-[12px] font-semibold xl:text-[35px] md:text-[30px] sm:text-[22px] text-[16px] sm:leading-[52px] leading-[24px] tracking-[1.42px] text-center text-[#313131]">
                     Overview of Enjoy Mondays - How our marketplace works for job-seekers
                 </h1>
                 <div className="max-w-[980px] w-full mt-[68px] p-[12px]">
