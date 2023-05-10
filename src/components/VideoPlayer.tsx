@@ -3,8 +3,8 @@ import React from 'react';
 interface VideoPlayerProps {
     src: string;
     type: string;
-    width?: number;
-    height?: number;
+    width?: any;
+    height?: any;
     controls?: boolean;
     autoplay?: boolean;
     loop?: boolean;
