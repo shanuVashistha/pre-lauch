@@ -21,9 +21,9 @@ export const SocialButton: React.FC<SocialButtonInterface> = (
         <a
             href={url}
             target={target || "_blank"}
-            className="social-button w-[25px] h-[25px]"
+            className="social-button p-[12px]"
         >
-            <Img src={icon} alt={"Social Icon"} className={`w-full h-full ${className}`}/>
+            <Img src={icon} alt={"Social Icon"} className={`w-[25px] h-[25px] ${className}`}/>
         </a>
     );
 };
