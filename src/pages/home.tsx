@@ -6,6 +6,8 @@ import { Img } from "@/utils/Img";
 import { BlogCards } from "@/utils/BlogCards";
 import { Footer } from "@/components/Footer";
 import { LoaderContext } from "@/context/LoaderContext";
+import VideoPlayer from "@/components/VideoPlayer";
+import Dialog from "@/components/Dialog";
 
 
 const Home: React.FC = () => {
@@ -13,6 +15,7 @@ const Home: React.FC = () => {
     const [email, setEmail] = useState("");
     const [errors, setErrors] = useState("");
     const [showGreetings, setShowGreetings] = useState(false);
+    const [open, setOpen] = useState(false);
 
     const signUp = async () => {
         setErrors("");
@@ -290,22 +293,15 @@ const Home: React.FC = () => {
                             alt={"Video Thumbnail"}
                             className="md:w-[60%] w-[100%] "
                         />
-
                         <div className="absolute top-0 left-0 w-[100%] h-[100%] flex justify-center items-center">
-                            <button className="video-button-wrapper ">
-
+                            <button className="video-button-wrapper" onClick={() => setOpen(true)}>
                                 <div className="video-button ">
                                     <Img
                                         src="/images/play.svg"
                                         alt={"Play"}
                                         className=" w-auto h-auto"
-
                                     />
-
-
-                                    {/* <ReactPlayer width="50px" height="30px" url="/video1.mp4" controls={true}/> */}
                                 </div>
-
                             </button>
                         </div>
                     </div>
@@ -392,7 +388,23 @@ const Home: React.FC = () => {
                     }
                 </div>
             </div>
+
             <Footer/>
+
+            <Dialog
+                content={
+                    <VideoPlayer
+                        src="/images/video/intro.mp4"
+                        type="video/mp4"
+                        width="100%"
+                        height="100%"
+                        loop
+                        autoplay
+                    />
+                }
+                isOpen={open}
+                onCancel={() => setOpen(false)}
+            />
         </div>
     );
 };

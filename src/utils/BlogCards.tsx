@@ -35,7 +35,7 @@ export const BlogCards: React.FC<CardBlog> = (
                     className="w-full h-[250px] object-cover"
                 />
                 <div
-                    className="absolute top-[21px] left-[31px] rounded-[20px] px-[10px] xxl:text-[16px] md:text-[14px] leading-[28px] text-[white] font-medium"
+                    className="absolute top-[21px] left-[31px] hidden rounded-[20px] px-[10px] xxl:text-[16px] md:text-[14px] leading-[28px] text-[white] font-medium"
                     style={{ background: "rgba(237, 232, 254, 0.2)" }}
                 >
                     Article
