@@ -1,4 +1,3 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import multer from 'multer';
 import { S3UploadService } from "@/services/upload";
 import fs from 'fs';
@@ -18,8 +17,8 @@ export const config = {
     },
 };
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
-    upload.single('file')(req, {}, async (err) => {
+export default async (req: any, res: any) => {
+    upload.single('file')(req, res, async (err) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }

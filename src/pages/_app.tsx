@@ -6,7 +6,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { LoaderContext, LoaderProvider } from '@/context/LoaderContext';
 import Loader from '@/utils/Loader';
 import { useRouter } from 'next/router';
-import { AuthProvider, login, logout } from '@/context/AuthContext';
+import { AuthProvider, useAuth } from '@/context/AuthContext';
 import authReducer from "@/store/reducers/authReducer";
 
 const store = configureStore({
@@ -17,6 +17,7 @@ const store = configureStore({
 
 export default function App ({ Component, pageProps }: AppProps) {
     const { isLoading, setIsLoading } = useContext(LoaderContext);
+    const { login, logout, token } = useAuth();
     const router = useRouter();
     const blogRoutePattern = /^\/blog(\/.*)?$/;
     const isBlogRoute = router.pathname.match(blogRoutePattern);
@@ -32,7 +33,7 @@ export default function App ({ Component, pageProps }: AppProps) {
                 <LoaderProvider>
                     {
                         !isBlogRoute && !unprotectedRoutes.includes(router.pathname) ?
-                            <AuthProvider login={login} logout={logout}>
+                            <AuthProvider login={login} logout={logout} token={token}>
                                 <Component {...pageProps} />
                             </AuthProvider>
                             : <Component {...pageProps} />

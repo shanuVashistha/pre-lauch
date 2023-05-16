@@ -11,7 +11,7 @@ interface EmailParams {
 
 export class EmailService {
     static async sendEmail ({ to, subject, text }: EmailParams): Promise<void> {
-        const msg = {
+        const msg: any = {
             to,
             from: verfiedEmail,
             subject,

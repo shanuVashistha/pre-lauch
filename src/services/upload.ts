@@ -15,7 +15,7 @@ export class S3UploadService {
     }
 
     async uploadFile (key: string, body: Buffer): Promise<ManagedUpload.SendData> {
-        const params = {
+        const params: any = {
             Bucket: process.env.AWS_BUCKET_NAME,
             Key: key,
             Body: body,

@@ -8,6 +8,7 @@ import { login, logout } from "@/store/middleware/authMiddleware";
 interface AuthContextProps {
     login: (params: LoginInterface) => void;
     logout: () => void;
+    token?: string;
 }
 
 const AuthContext = createContext<AuthContextProps>({
@@ -15,13 +16,14 @@ const AuthContext = createContext<AuthContextProps>({
     },
     logout: () => {
     },
+    token: "",
 });
 
-export const AuthProvider: React.FC = ({ children }: { children: any }) => {
-    const dispatch = useDispatch();
-    const router = useRouter();
+export const AuthProvider: React.FC<any> = ({ children }: { children: any }) => {
+    const dispatch: any = useDispatch();
+    const router: any = useRouter();
     const { setIsLoading } = useContext(LoaderContext);
-    const token = useSelector((state) => state.auth.token);
+    const token: any = useSelector((state: any) => state.auth.token);
 
     const handleLogin = (params: LoginInterface) => {
         setIsLoading(true);
@@ -29,7 +31,7 @@ export const AuthProvider: React.FC = ({ children }: { children: any }) => {
             .then(() => {
                 router.push("/admin");
             })
-            .catch((error) => {
+            .catch((error: any) => {
                 console.error(error);
                 setIsLoading(false);
             });
@@ -41,7 +43,7 @@ export const AuthProvider: React.FC = ({ children }: { children: any }) => {
             .then(() => {
                 router.push("/login");
             })
-            .catch((error) => {
+            .catch((error: any) => {
                 console.error(error);
                 setIsLoading(false);
             });
@@ -67,7 +69,7 @@ export const AuthProvider: React.FC = ({ children }: { children: any }) => {
     }, [router.pathname]);
 
     return (
-        <AuthContext.Provider value={{ login: handleLogin, logout: handleLogout }}>
+        <AuthContext.Provider value={{ login: handleLogin, logout: handleLogout, token }}>
             {children}
         </AuthContext.Provider>
     );

@@ -35,7 +35,7 @@ const Home: React.FC = () => {
                 },
                 body: JSON.stringify({ email }),
             });
-            const data = await response.json();
+            const data: any = await response.json();
             if (!data.success) {
                 setErrors(data.error || "Failed to sign up. Please try again later.");
             }
@@ -45,7 +45,7 @@ const Home: React.FC = () => {
                 setErrors("");
                 setShowGreetings(true);
             }
-        } catch (error) {
+        } catch (error: any) {
             setErrors(error.message);
         }
         setIsLoading(false);

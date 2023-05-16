@@ -23,7 +23,7 @@ export const login = (credentials: { username: string; password: string }) => as
             const error = await response.text();
             dispatch(loginFailure(error));
         }
-    } catch (error) {
+    } catch (error: any) {
         dispatch(loginFailure(error.message));
     }
 };

@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import { BlogInterface } from "@/types";
 import { LoaderContext } from "@/context/LoaderContext";
 
-const EditorComponent = dynamic(() => import('@/pages/admin/blog/EditorComponent'), { ssr: false });
+// const EditorComponent = dynamic(() => import('@/pages/admin/blog/EditorComponent'), { ssr: false });
 
 const QuillNoSSRWrapper = dynamic(import('react-quill'), {
     ssr: false,
@@ -36,7 +36,7 @@ const Form: React.FC = () => {
         meta_keywords: '',
     });
 
-    const module = {
+    const moduleData: any = {
         toolbar: {
             container: [
                 [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
@@ -69,10 +69,10 @@ const Form: React.FC = () => {
             formData.append("title", params.title);
             formData.append("slug", convertToSlug(params.title || ""));
             formData.append("body", params.body);
-            formData.append("meta_title", params.meta_title);
-            formData.append("description", params.description);
-            formData.append("meta_description", params.meta_description);
-            formData.append("meta_keywords", params.meta_keywords);
+            formData.append("meta_title", params.meta_title || "");
+            formData.append("description", params.description || "");
+            formData.append("meta_description", params.meta_description || "");
+            formData.append("meta_keywords", params.meta_keywords || "");
             formData.append("file", params.image);
 
             const response = await fetch("/api/blog", {
@@ -131,7 +131,7 @@ const Form: React.FC = () => {
                         <Input
                             label="Meta Title"
                             placeholder="Meta Title"
-                            value={params.meta_title}
+                            value={params.meta_title || ""}
                             onChange={e => setParam("meta_title", e.target.value)}
                             className="admin-input"
                         />
@@ -140,7 +140,7 @@ const Form: React.FC = () => {
                         <Input
                             label="Meta Keywords"
                             placeholder="Meta Keywords"
-                            value={params.meta_keywords}
+                            value={params.meta_keywords || ""}
                             onChange={e => setParam("meta_keywords", e.target.value)}
                             className="admin-input"
                         />
@@ -149,7 +149,7 @@ const Form: React.FC = () => {
                         <TextArea
                             label="Meta Description"
                             placeholder="Meta Description"
-                            value={params.meta_description}
+                            value={params.meta_description || ""}
                             onChange={e => setParam("meta_description", e.target.value)}
                             className="admin-input"
                         />
@@ -162,7 +162,7 @@ const Form: React.FC = () => {
                         <Input
                             label="Title"
                             placeholder="Title"
-                            value={params.title}
+                            value={params.title || ""}
                             onChange={e => setParam("title", e.target.value)}
                             className="admin-input"
                         />
@@ -181,7 +181,7 @@ const Form: React.FC = () => {
                     <TextArea
                         label="Description"
                         placeholder="Description"
-                        value={params.description}
+                        value={params.description || ""}
                         onChange={e => setParam("description", e.target.value)}
                         className="admin-input"
                     />
@@ -191,13 +191,13 @@ const Form: React.FC = () => {
                 <div className="font-medium text-primary text-[14px] block pb-[10px]">
                     Body
                 </div>
-                <EditorComponent/>
+                {/*<EditorComponent/>*/}
                 <QuillNoSSRWrapper
                     theme="snow"
                     value={params.body}
                     placeholder="Blog Body"
                     onChange={setParam.bind(null, "body")}
-                    modules={module}
+                    modules={moduleData}
                 />
             </div>
         </div>

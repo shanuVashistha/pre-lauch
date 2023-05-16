@@ -11,7 +11,7 @@ const getCache = () => {
 };
 
 class MyDocument extends Document {
-    static async getInitialProps (ctx) {
+    static async getInitialProps (ctx: any) {
         const originalRenderPage = ctx.renderPage;
 
         const cache = getCache();
@@ -19,7 +19,7 @@ class MyDocument extends Document {
 
         ctx.renderPage = () =>
             originalRenderPage({
-                enhanceApp: (App) => (props) =>
+                enhanceApp: (App: any) => (props: any) =>
                     (
                         <CacheProvider value={cache}>
                             <App {...props} />

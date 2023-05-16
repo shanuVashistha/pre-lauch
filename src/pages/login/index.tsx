@@ -14,7 +14,7 @@ const LoginPage = () => {
 
     const [showPassword, setShowPassword] = useState<boolean>(false);
 
-    const { login, user } = useAuth();
+    const { login, token } = useAuth();
 
     const setParam = (key: string, value: string) => {
         setParams({
@@ -32,7 +32,7 @@ const LoginPage = () => {
             <Head>
                 <title>Search My Expert - Login</title>
             </Head>
-            {user ? (
+            {token ? (
                 <div/>
             ) : (
                 <div className="main">
@@ -88,7 +88,6 @@ const LoginPage = () => {
                         <div>
                             <Button
                                 label="Login"
-                                type="button"
                                 color="primary"
                                 className="xxl:text-[19px] xxl:leading-[22.99px] font-semibold sm:text-[17px] text-[14px] sm:leading-[20.57px] leading-[14px] tracking-[-0.22px] md:w-[145px] w-[115px] xl:h-[44px] md:h-[38px] h-[35px]"
                                 onClick={handleLogin}

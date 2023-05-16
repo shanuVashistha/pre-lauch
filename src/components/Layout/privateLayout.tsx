@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { SideNav } from "@/utils/Admin/SideNav";
 import { AdminLinksInterface } from "@/types";
 import Head from "next/head";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/router";
+import { SideNav } from "@/utils/admin/SideNav";
 
 interface PrivateLayoutInterface {
     title: string;
@@ -13,7 +13,7 @@ interface PrivateLayoutInterface {
 const PrivateLayout: React.FC<PrivateLayoutInterface> = ({ title, children }) => {
     const router = useRouter();
 
-    const { logout, user } = useAuth();
+    const { logout, token } = useAuth();
 
     const links: AdminLinksInterface[] = [
         {
@@ -98,7 +98,7 @@ const PrivateLayout: React.FC<PrivateLayoutInterface> = ({ title, children }) =>
         </Head>
         <div className="main bg-[#F5F9FF]">
             {
-                !user ?
+                !token ?
                     <div className="flex  min-h-[100vh]">
                         <div className="w-[230px] bg-white border-r-2 flex flex-col">
                             <SideNav links={activeLinks}/>

@@ -3,6 +3,8 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { dynamoDB } from "@/utils/config/aws";
 
+const jwtSecret: any = process.env.JWT_SECRET;
+
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method !== 'POST') {
         return res.status(405).end();
@@ -32,10 +34,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             return res.status(401).json({ message: "Invalid password" });
         }
 
-        const token = jwt.sign({ username: user.Item.username }, process.env.JWT_SECRET, {
+        const token = jwt.sign({ username: user.Item.username }, jwtSecret, {
             expiresIn: '24h',
         });
-        console.log(token, process.env.JWT_SECRET, match, user)
         return res.status(200).json({ message: "Login successful", token });
 
     } catch (error) {

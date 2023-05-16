@@ -1,9 +1,9 @@
 export interface BlogInterface {
     body: any
-    image?: File
+    image?: any
     slug: string
     title: string
-    description?: string[]
+    description?: string
     meta_title?: string
     meta_description?: string
     meta_keywords?: string
