@@ -20,28 +20,37 @@ const Home: React.FC = () => {
     const signUp = async () => {
         setErrors("");
         if (!email) {
-            setErrors("Please enter a email address");
+            setErrors("Please enter an email address");
             return;
-        } else if (email && !/\S+@\S+\.\S+/.test(email)) {
+        } else if (!/\S+@\S+\.\S+/.test(email)) {
             setErrors("Please enter a valid email address");
             return;
         }
         setIsLoading(true);
-        const response = await fetch("/api/signups", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ email }),
-        });
-        const data = await response.json();
-        if (data.success) {
-            setEmail("");
-            setErrors("");
-            setShowGreetings(true);
+        try {
+            const response = await fetch("/api/signups", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ email }),
+            });
+            const data = await response.json();
+            if (!data.success) {
+                setErrors(data.error || "Failed to sign up. Please try again later.");
+            }
+
+            if (data.success) {
+                setEmail("");
+                setErrors("");
+                setShowGreetings(true);
+            }
+        } catch (error) {
+            setErrors(error.message);
         }
         setIsLoading(false);
-    }
+    };
+
 
     const blogs = [
         {
@@ -148,12 +157,12 @@ const Home: React.FC = () => {
                             {
                                 !showGreetings ?
                                     <div className="flex md:flex-row flex-col gap-2 md:mt-[25px] mt-[10px] ">
-                                        <div className="md:flex-1 ">
+                                        <div className="md:flex-1">
                                             <Input
                                                 value={email}
                                                 placeholder="Enter your email address..."
                                                 onChange={(e) => setEmail(e.target.value)}
-                                                className="fill h-[100%] bg-white  "
+                                                className="fill bg-white md:h-full"
                                             />
                                         </div>
                                         <div>
@@ -166,7 +175,9 @@ const Home: React.FC = () => {
                                         </div>
                                     </div> :
                                     <h3 className="text-center md:text-[15px] md:leading-[30.13px] text-[12px] leading-[17.6px] pt-[21px] font-medium text-bannerFooterHeading">
-                                        Great you take your first step to a better career. We will be in touch soon!
+                                        Thank you for signing up for our pre-launch. We appreciate your interest in our
+                                        upcoming service and are thrilled to have you as one of our early supporters.
+                                        Better Mondays start here.
                                     </h3>
                             }
                             {

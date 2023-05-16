@@ -1,25 +1,28 @@
 export interface BlogInterface {
-  id: string
-  slug: string
-  title: string
-  subTitle?: string
-  description?: string[]
-  // imageUrl instead of Img
-  img?: string
-  body: BlogBodyInterface 
+    body: any
+    image?: File
+    slug: string
+    title: string
+    description?: string[]
+    meta_title?: string
+    meta_description?: string
+    meta_keywords?: string
 }
 
-
-export interface BlogBodyInterface {
-  title?: string
-  description?: string[]
-  content?: string[]
-  list?: BlogListInterface[]
+export interface LoginInterface {
+    username: string;
+    password: string;
 }
 
-export interface BlogListInterface {
-  title?: string
-  subTitle?:string
-  description?: string[]
-  content?: string[]
+export interface AdminLinksInterface {
+    label: string;
+    href: string;
+    active: boolean;
+    subLinks: SubLinksInterface[]
+}
+
+export interface SubLinksInterface {
+    label: string;
+    href: string;
+    active: boolean;
 }

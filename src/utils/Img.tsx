@@ -6,7 +6,7 @@ interface ImgInterface {
     alt: string;
     width?: number;
     height?: number;
-    className?: string;
+    className?: any;
     id?: string;
 }
 

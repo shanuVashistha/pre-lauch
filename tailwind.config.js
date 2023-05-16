@@ -23,6 +23,8 @@ module.exports = {
                 'bannerFormHeading': 'rgba(74, 74, 74, 1)',
                 'bannerFooterHeading': 'rgba(82, 92, 122, 1)',
                 'dark': '#1A1A1A',
+                'primary': '#263041',
+                'secondary': '#F9B400',
             }
         },
         fontFamily: {

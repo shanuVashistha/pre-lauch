@@ -1,3 +1,5 @@
+@import 'react-quill/dist/quill.snow.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,6 +13,11 @@ body {
     margin: 0;
     font-size: 15px;
     font-family: Poppins, sans-serif;
+}
+
+.main-admin-container {
+    overflow-y: auto;
+    max-height: calc(100vh - 56px);
 }
 
 .banner {
@@ -98,7 +105,7 @@ body {
 .card {
     background: #FFFFFF;
     border: 0.5px solid #DADADA;
-    box-shadow: 0px 10.2474px 15.6408px rgba(5, 5, 5, 0.11);
+    box-shadow: 0 10.2474px 15.6408px rgba(5, 5, 5, 0.11);
     border-radius: 10.7867px;
 }
 
@@ -163,6 +170,20 @@ body {
     color: rgba(255, 255, 255, 0.8);
 }
 
+.input.admin-input {
+    background: #FFFFFF;
+    border: 0.793076px solid #263041;
+    color: #263041;
+    font-size: 13px;
+    padding: 12px;
+    min-height: 50px;
+}
+
+input.admin-input::placeholder, .input.admin-input::-webkit-input-placeholder, .input.admin-input::-moz-placeholder, .input.admin-input:-ms-input-placeholder, .input.admin-input:-moz-placeholder {
+    color: #72737C;
+}
+
+
 input::placeholder, .input::-webkit-input-placeholder, .input::-moz-placeholder, .input:-ms-input-placeholder, .input:-moz-placeholder {
     font-weight: 400;
     font-size: 14.4px;
@@ -207,9 +228,20 @@ input:focus, input:focus-within, input:focus-visible, .input:focus, .input:focus
     border: 1px solid #F9B400;
 }
 
+.button.secondary {
+    background: #263041;
+    color: #FFFFFF;
+    border: 1px solid #263041;
+}
+
 .button.primary:hover {
     background: transparent;
     color: #F9B400;
+}
+
+.button.secondary:hover {
+    background: transparent;
+    color: #263041;
 }
 
 .claim-input-container {
@@ -276,7 +308,7 @@ input:focus, input:focus-within, input:focus-visible, .input:focus, .input:focus
 
     #moving-item-5 {
         bottom: 40%;
-        left: 0%;
+        left: 0;
     }
 
     #moving-item-6 {
@@ -293,4 +325,12 @@ input:focus, input:focus-within, input:focus-visible, .input:focus, .input:focus
         top: 34%;
         right: 17%;
     }
+}
+
+.quill {
+    background: white;
+}
+
+.ql-editor {
+    min-height: 400px;
 }
