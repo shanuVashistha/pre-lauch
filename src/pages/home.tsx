@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Card } from "@/utils/Card";
 import { Input } from "@/utils/Input";
 import { Button } from "@/utils/Button";
@@ -16,6 +16,7 @@ const Home: React.FC = () => {
     const [errors, setErrors] = useState("");
     const [showGreetings, setShowGreetings] = useState(false);
     const [open, setOpen] = useState(false);
+    const [blogs, setBlogs] = useState<any>([]);
 
     const signUp = async () => {
         setErrors("");
@@ -28,7 +29,7 @@ const Home: React.FC = () => {
         }
         setIsLoading(true);
         try {
-            const response = await fetch("/api/signups", {
+            const response = await fetch("/api/create/signups", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -51,30 +52,18 @@ const Home: React.FC = () => {
         setIsLoading(false);
     };
 
+    const getBlogs = async () => {
+        setIsLoading(true);
+        const response = await fetch(`/api/get/blogs`);
+        const data = await response.json();
+        setBlogs(data);
+        setIsLoading(false);
+    }
 
-    const blogs = [
-        {
-            tag: "Article",
-            img: "/images/blog.png",
-            title: "Make Your Dreams Come True: A Guide to Finding the Perfect Job",
-            description: "Are you ready to take the next step in your professional journey and start searching for your dream job? You’ve come to the right place! In this blog post, you will learn the practical...",
-            slug: "makeYourDreamsComeTrueAGuideToFindingThePerfectJob"
-        },
-        {
-            tag: "Article",
-            img: "/images/blog.png",
-            title: "Overview of Enjoy Mondays - How our marketplace works for job-seekers",
-            description: "Are you tired of having unproductive conversations with recruiters about jobs that don't fit your needs? Maybe the job isn't remote, or the compensation doesn't match your expectations...",
-            slug: "overviewOfEnjoyMondaysHowOurMarketplaceWorksForJobSeekers"
-        },
-        {
-            tag: "Article",
-            img: "/images/blog.png",
-            title: "A Guide for woman to break into information technology",
-            description: "According to the Bureau of Labor Statistics (BLS), careers in computer and information technology (IT) are projected to grow by 12% in the next decade, making it one of the fastest-growing...",
-            slug: "aGuideForWomanToBreakIntoInformationTechnology"
-        },
-    ]
+    useEffect(() => {
+        getBlogs();
+    }, []);
+
     return (
         <div>
             <div className="banner md:px-[80px] md:pt-[40px] md:pb-[160px] p-[24px] relative">
@@ -391,7 +380,7 @@ const Home: React.FC = () => {
                     {
                         blogs.map((blog, index) => <BlogCards
                             key={index}
-                            img={blog.img}
+                            img={blog.image}
                             title={blog.title}
                             description={blog.description}
                             url={blog.slug}

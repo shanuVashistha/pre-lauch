@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Img } from "@/utils/Img";
 import Link from "next/link";
 
@@ -8,17 +8,7 @@ interface SideNavInterface {
 
 export const SideNav: React.FC<SideNavInterface> = (props) => {
     const { links } = props;
-    const [showDropdownIndex, setShowDropdownIndex] = useState(() => {
-        if (typeof window !== 'undefined') {
-            const lastOpenDropdownIndex = localStorage.getItem('lastOpenDropdownIndex');
-            return lastOpenDropdownIndex ? parseInt(lastOpenDropdownIndex) : -1;
-        }
-        return -1;
-    });
-
-    useEffect(() => {
-        localStorage.setItem('lastOpenDropdownIndex', showDropdownIndex.toString());
-    }, [showDropdownIndex]);
+    const [showDropdownIndex, setShowDropdownIndex] = useState(4);
 
     return <>
         <div className="h-[120px] flex items-center justify-center p-[40px] border-b-2">

@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { dynamoDB } from "@/utils/config/aws";
 
-export async function getBlogBySlug (req: NextApiRequest, res: NextApiResponse) {
+const getBlogBySlug = async (req: NextApiRequest, res: NextApiResponse) => {
     const { slug } = req.query;
 
     const params = {
@@ -18,3 +18,4 @@ export async function getBlogBySlug (req: NextApiRequest, res: NextApiResponse) 
         res.status(500).json({ error: "Error fetching blog" });
     }
 }
+export default getBlogBySlug;

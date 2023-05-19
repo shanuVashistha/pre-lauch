@@ -62,10 +62,10 @@ export default async (req: any, res: any) => {
 
             console.log('Blog saved:', blog);
 
-            res.status(200).json({ message: 'File uploaded successfully', location: result.Location });
+            res.status(200).json({ message: 'Blog Created successfully' });
         } catch (error) {
             console.error('Error saving blog:', error);
-            res.status(500).json({ error: 'Error uploading file' });
+            res.status(500).json({ error: 'Unexpected Error' });
         }
     });
 };

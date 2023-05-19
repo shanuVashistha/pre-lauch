@@ -26,7 +26,7 @@ export const Footer: React.FC = () => {
             return;
         }
         setIsLoading(true);
-        const response = await fetch("/api/subscribe", {
+        const response = await fetch("/api/create/subscribe", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

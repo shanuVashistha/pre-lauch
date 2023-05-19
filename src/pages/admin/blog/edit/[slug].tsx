@@ -1,13 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import PrivateLayout from "@/components/Layout/privateLayout";
 import { convertToSlug } from "@/utils/utils";
 import { ImageOverlay } from "@/utils/admin/ImageOverlay";
 import dynamic from "next/dynamic";
 import { Button } from "@/utils/Button";
-import { useRouter } from "next/router";
-import { BlogInterface } from "@/types";
 import { LoaderContext } from "@/context/LoaderContext";
 import { Paper, TextField } from "@mui/material";
+import { useRouter } from "next/router";
 import { SnackbarContext } from "@/context/SnackbarContext";
 
 const EditorComponent = dynamic(() => import('@/pages/admin/blog/EditorComponent'), { ssr: false });
@@ -22,22 +21,16 @@ const fieldNames = {
     image: "Image",
 };
 
-const Form: React.FC = () => {
-    const router = useRouter();
-
-    const { slug } = router.query;
-
+const Edit: React.FC = () => {
+    const router: any = useRouter();
     const { openSnackbar } = useContext(SnackbarContext);
-
-    const [editorData, setEditorData] = useState<any>({});
-
     const { setIsLoading } = useContext(LoaderContext)
+    const [editorData, setEditorData] = useState<any>({});
+    const [errors, setErrors] = useState<any>("");
 
     const [imageUrl, setImageUrl] = useState<string>('');
 
-    const [errors, setErrors] = useState<any>("");
-
-    const [params, setParams] = useState<BlogInterface>({});
+    const [params, setParams] = useState<any>({});
 
     const setParam = (key: string, value: any) => {
         setParams((prevParams: any) => {
@@ -69,19 +62,19 @@ const Form: React.FC = () => {
             setIsLoading(false);
             return;
         }
-
         try {
             const formData = new FormData();
+            formData.append("id", params.id);
             formData.append("title", params.title);
             formData.append("slug", convertToSlug(params.title || ""));
-            formData.append("body", JSON.stringify(editorData));
+            formData.append("body", editorData);
             formData.append("meta_title", params.meta_title || "");
             formData.append("description", params.description || "");
             formData.append("meta_description", params.meta_description || "");
             formData.append("meta_keywords", params.meta_keywords || "");
             formData.append("file", params.image);
 
-            const response = await fetch("/api/create/blog", {
+            const response = await fetch("/api/update/blog", {
                 method: "POST",
                 body: formData,
             });
@@ -98,15 +91,42 @@ const Form: React.FC = () => {
         setIsLoading(false);
     };
 
+    const getBlog = async () => {
+        setIsLoading(true);
+        if (router.query?.slug) {
+            try {
+                const response = await fetch(`/api/get/singleBlog?slug=${router.query?.slug}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    setParams(data);
+                    setImageUrl(data.image);
+                    setEditorData(data.body);
+                } else {
+                    const errorData = await response.json();
+                    console.error("Error fetching blog:", errorData);
+                }
+            } catch (error) {
+                console.error("Error fetching blog:", error);
+            }
+        }
+        setIsLoading(false);
+    }
+
+
+    useEffect(() => {
+        if (router.query?.slug) {
+            getBlog();
+        }
+    }, [router.query?.slug]);
 
     return <PrivateLayout title="Enjoy Mondays Pre Launch - Blog Slug">
         <div className="flex items-center mb-[24px] gap-[12px]">
             <h1 className="flex-1 font-semibold text-[20px] tracking-[1px]">
-                {!slug ? 'Add New' : 'Update'} Blog
+                Update Blog
             </h1>
             <div>
                 <Button
-                    label={!slug ? 'Save' : 'Update'}
+                    label="Update"
                     onClick={save}
                     color="secondary"
                     className="w-[100px] h-[40px] rounded"
@@ -218,11 +238,11 @@ const Form: React.FC = () => {
             <Button
                 onClick={save}
                 color="secondary"
-                label={!slug ? 'Save' : 'Update'}
+                label="Update"
                 className="w-[100px] h-[40px] rounded"
             />
         </div>
     </PrivateLayout>
 }
 
-export default Form;
+export default Edit;

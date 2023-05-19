@@ -8,6 +8,8 @@ import Loader from '@/utils/Loader';
 import { useRouter } from 'next/router';
 import { AuthProvider, useAuth } from '@/context/AuthContext';
 import authReducer from "@/store/reducers/authReducer";
+import { SnackbarProvider } from "@/context/SnackbarContext";
+import { SnackBar } from "@/components/SnackBar";
 
 const store = configureStore({
     reducer: {
@@ -31,14 +33,17 @@ export default function App ({ Component, pageProps }: AppProps) {
         <Provider store={store}>
             <LoaderContext.Provider value={{ isLoading, setIsLoading }}>
                 <LoaderProvider>
-                    {
-                        !isBlogRoute && !unprotectedRoutes.includes(router.pathname) ?
-                            <AuthProvider login={login} logout={logout} token={token}>
-                                <Component {...pageProps} />
-                            </AuthProvider>
-                            : <Component {...pageProps} />
-                    }
-                    <Loader/>
+                    <SnackbarProvider>
+                        {
+                            !isBlogRoute && !unprotectedRoutes.includes(router.pathname) ?
+                                <AuthProvider login={login} logout={logout} token={token}>
+                                    <Component {...pageProps} />
+                                </AuthProvider>
+                                : <Component {...pageProps} />
+                        }
+                        <Loader/>
+                        <SnackBar/>
+                    </SnackbarProvider>
                 </LoaderProvider>
             </LoaderContext.Provider>
         </Provider>
