@@ -5,14 +5,13 @@ import { ImageOverlay } from "@/utils/admin/ImageOverlay";
 import dynamic from "next/dynamic";
 import { Button } from "@/utils/Button";
 import { useRouter } from "next/router";
-import { BlogInterface } from "@/types";
 import { LoaderContext } from "@/context/LoaderContext";
 import { Paper, TextField } from "@mui/material";
-import { SnackbarContext } from "@/context/SnackbarContext";
+import { useSnackbar } from "@/context/SnackbarContext";
 
 const EditorComponent = dynamic(() => import('@/pages/admin/blog/EditorComponent'), { ssr: false });
 
-const fieldNames = {
+const fieldNames: any = {
     title: "Title",
     body: "Body",
     meta_title: "Meta Title",
@@ -27,7 +26,7 @@ const Form: React.FC = () => {
 
     const { slug } = router.query;
 
-    const { openSnackbar } = useContext(SnackbarContext);
+    const { openSnackbar } = useSnackbar();
 
     const [editorData, setEditorData] = useState<any>({});
 
@@ -37,7 +36,7 @@ const Form: React.FC = () => {
 
     const [errors, setErrors] = useState<any>("");
 
-    const [params, setParams] = useState<BlogInterface>({});
+    const [params, setParams] = useState<any>({});
 
     const setParam = (key: string, value: any) => {
         setParams((prevParams: any) => {
@@ -55,14 +54,14 @@ const Form: React.FC = () => {
     const save = async () => {
         setIsLoading(true);
 
-        const emptyParams = Object.keys(params).filter(key => !params[key]);
+        const emptyParams: any = Object.keys(params).filter(key => !params[key]);
 
         if (emptyParams.length > 0) {
-            const newErrors = emptyParams.reduce((acc, cur) => {
+            const newErrors: any = emptyParams.reduce((acc: any, cur: any) => {
                 acc[cur] = `${fieldNames[cur]} is required`;
                 return acc;
             }, {});
-            setErrors(prevErrors => ({ ...prevErrors, ...newErrors }));
+            setErrors((prevErrors: any) => ({ ...prevErrors, ...newErrors }));
         }
 
         if (Object.keys(errors).length > 0 || emptyParams.length > 0) {
@@ -92,7 +91,7 @@ const Form: React.FC = () => {
                 router.push("/admin/blog/list");
                 openSnackbar(data.message, 'success');
             }
-        } catch (e) {
+        } catch (e: any) {
             openSnackbar(e.message, 'error');
         }
         setIsLoading(false);

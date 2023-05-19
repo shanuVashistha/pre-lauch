@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 import PrivateLayout from "@/components/Layout/privateLayout";
 import { Button, Grid, TextField, Typography } from "@mui/material";
 import { LoaderContext } from "@/context/LoaderContext";
-import { SnackbarContext } from "@/context/SnackbarContext";
+import { useSnackbar } from "@/context/SnackbarContext";
 
-const fieldNames = {
+const fieldNames: any = {
     username: 'Username',
     currentPassword: "Current Password",
     newPassword: "New Password",
@@ -13,7 +13,7 @@ const fieldNames = {
 
 const Security: React.FC = () => {
     const { setIsLoading } = useContext(LoaderContext);
-    const { openSnackbar } = useContext(SnackbarContext);
+    const { openSnackbar } = useSnackbar();
     const [params, setParams] = React.useState<any>({
         username: '',
         currentPassword: '',
@@ -39,18 +39,18 @@ const Security: React.FC = () => {
     const save = async () => {
         setIsLoading(true);
 
-        const emptyParams = Object.keys(params).filter(key => !params[key]);
+        const emptyParams: any = Object.keys(params).filter(key => !params[key]);
 
         if (emptyParams.length > 0) {
-            const newErrors = emptyParams.reduce((acc, cur) => {
+            const newErrors = emptyParams.reduce((acc: any, cur: any) => {
                 acc[cur] = `${fieldNames[cur]} is required`;
                 return acc;
             }, {});
-            setErrors(prevErrors => ({ ...prevErrors, ...newErrors }));
+            setErrors((prevErrors: any) => ({ ...prevErrors, ...newErrors }));
         }
 
         if (params.newPassword !== params.confirmPassword) {
-            setErrors(prevErrors => ({
+            setErrors((prevErrors: any) => ({
                 ...prevErrors,
                 confirmPassword: "New Password and Confirm Password do not match"
             }));
@@ -75,7 +75,7 @@ const Security: React.FC = () => {
             } else if (data.message) {
                 openSnackbar(data.message, 'success');
             }
-        } catch (e) {
+        } catch (e: any) {
             openSnackbar(e.message, 'error');
         }
 

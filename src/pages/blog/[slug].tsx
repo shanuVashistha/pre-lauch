@@ -12,15 +12,16 @@ const Blog: React.FC = () => {
     const { setIsLoading } = useContext(LoaderContext);
     const [blogs, setBlogs] = useState<any[]>([]);
     const [params, setParams] = useState<any>({});
-    const getBlogs = async () => {
-        setIsLoading(true);
-        const response = await fetch(`/api/get/blogs`);
-        const data = await response.json();
-        setBlogs(data.filter((blog: any) => blog.slug !== router.query?.slug));
-        setIsLoading(false);
-    }
+
 
     useEffect(() => {
+        const getBlogs = async () => {
+            setIsLoading(true);
+            const response = await fetch(`/api/get/blogs`);
+            const data = await response.json();
+            setBlogs(data.filter((blog: any) => blog.slug !== router.query?.slug));
+            setIsLoading(false);
+        }
         getBlogs();
     }, []);
 
@@ -64,7 +65,7 @@ const Blog: React.FC = () => {
                         className="w-full h-[400px] object-cover"
                     />
                     <div className="mt-[60px]">
-                        {params.body && params.body.blocks.map((block, index) => {
+                        {params.body && params.body.blocks.map((block: any, index: number) => {
                             if (block.type === 'header') {
                                 return (
                                     <h3 key={index}
@@ -83,9 +84,9 @@ const Blog: React.FC = () => {
                             }
                             if (block.type === 'list') {
                                 return (
-                                    <div className="pb-[12px] flex flex-col gap-[12px]">
+                                    <div key={index} className="pb-[12px] flex flex-col gap-[12px]">
                                         {
-                                            block.data.items.map((item, index) => (
+                                            block.data.items.map((item: any, index: number) => (
                                                 <div key={index} className="w-full flex items-center gap-[16px]">
                                                     <Img src="/images/check.svg" alt="Check"
                                                          className="w-[13px] h-[13px]"/>
@@ -114,14 +115,15 @@ const Blog: React.FC = () => {
                     </h3>
                     <div
                         className="mt-[70px] max-w-[1180px] mx-auto grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 xl:gap-[50px] gap-[30px]">
-                        {blogs.filter((b) => b.slug !== router.pathname).map((blog, index) => (
-                            <BlogCards
-                                key={index}
-                                img={blog.image}
-                                title={blog.title}
-                                description={blog.description}
-                                url={blog.slug}
-                            />
+                        {blogs.map((blog, index) => (
+                            <div key={index}>
+                                <BlogCards
+                                    img={blog.image}
+                                    title={blog.title}
+                                    description={blog.description}
+                                    url={blog.slug}
+                                />
+                            </div>
                         ))}
                     </div>
                 </div>

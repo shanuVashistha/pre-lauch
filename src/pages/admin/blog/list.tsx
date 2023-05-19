@@ -23,7 +23,7 @@ import { LoaderContext } from "@/context/LoaderContext";
 interface BlogRowInterface {
     row: any;
     index: number;
-    removeBlog: (slug: string) => void;
+    removeBlog: any;
 }
 
 const Row: React.FC<BlogRowInterface> = (props) => {
@@ -50,8 +50,8 @@ const Row: React.FC<BlogRowInterface> = (props) => {
                         <Edit size={16}/>
                     </IconButton>
                 </Link>
-                <IconButton aria-label="edit">
-                    <Trash2 size={16} className="text-red-500" onClick={removeBlog}/>
+                <IconButton aria-label="edit" onClick={removeBlog}>
+                    <Trash2 size={16} className="text-red-500"/>
                 </IconButton>
                 <IconButton aria-label="edit" onClick={() => setOpen(!open)}>
                     <ChevronDown size={16} className={`transition-all ${!open ? 'rotate-0' : 'rotate-[180deg]'}`}/>
@@ -62,14 +62,14 @@ const Row: React.FC<BlogRowInterface> = (props) => {
             <TableCell colSpan={5} className="py-0">
                 <Collapse in={open} timeout="auto" unmountOnExit>
                     <Grid container alignItems="stretch" className="py-[16px] gap-[16px]">
-                        <Grid flex md={4} sm={6} xs={12}>
+                        <Grid item md={4} sm={6} xs={12}>
                             <Img
                                 src={row.image}
                                 alt={row.title}
                                 className="w-full h-[300px] rounded object-cover border"
                             />
                         </Grid>
-                        <Grid flex xs>
+                        <Grid item xs>
                             <Grid
                                 container
                                 wrap="nowrap"
@@ -131,7 +131,7 @@ const List: React.FC = () => {
         setIsLoading(false);
     }
 
-    const removeBlog = async (slug) => {
+    const removeBlog = async (slug: any) => {
         setIsLoading(true);
         const response = await fetch(`/api/delete/blog?slug=${slug}`, { method: 'DELETE' });
         const data = await response.json();
@@ -166,7 +166,7 @@ const List: React.FC = () => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map((row, index) => <Row
+                    {rows.map((row: any, index: number) => <Row
                         key={index}
                         index={index}
                         row={row}

@@ -1,6 +1,6 @@
 import { dynamoDB } from "@/utils/config/aws";
 
-export default async (req, res) => {
+export default async (req: any, res: any) => {
     if (req.method === 'POST') {
         const socialMediaParams = req.body;
 

@@ -16,7 +16,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         try {
             const data = await dynamoDB.delete(params).promise();
             res.status(200).json({ success: true, data });
-        } catch (error) {
+        } catch (error: any) {
             res.status(500).json({ success: false, error: error.message });
         }
     } else {

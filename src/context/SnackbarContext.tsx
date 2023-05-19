@@ -1,25 +1,33 @@
-import React, { createContext, useCallback, useState } from 'react';
+import React, { createContext, ReactNode, useCallback, useContext, useState } from 'react';
 
 type SnackbarContextType = {
     openSnackbar: (message: string, type: 'success' | 'error' | 'warning' | 'info') => void;
     closeSnackbar: () => void;
-    snackbarMessage: string;
-    snackbarType: 'success' | 'error' | 'warning' | 'info';
+    snackbarMessage?: string;
+    snackbarType?: 'success' | 'error' | 'warning' | 'info';
 };
 
 export const SnackbarContext = createContext<SnackbarContextType | undefined>(undefined);
 
-export const SnackbarProvider: React.FC = ({ children }) => {
-    const [snackbarMessage, setSnackbarMessage] = useState('');
-    const [snackbarType, setSnackbarType] = useState<'success' | 'error' | 'warning' | 'info'>('success');
+type SnackbarProviderProps = {
+    children: ReactNode;
+};
 
-    const openSnackbar = useCallback((message: string, type: 'success' | 'error' | 'warning' | 'info') => {
-        setSnackbarMessage(message);
-        setSnackbarType(type);
-    }, []);
+export const SnackbarProvider: React.FC<SnackbarProviderProps> = ({ children }) => {
+    const [snackbarMessage, setSnackbarMessage] = useState<string | undefined>(undefined);
+    const [snackbarType, setSnackbarType] = useState<'success' | 'error' | 'warning' | 'info' | undefined>(undefined);
+
+    const openSnackbar = useCallback(
+        (message: string, type: 'success' | 'error' | 'warning' | 'info') => {
+            setSnackbarMessage(message);
+            setSnackbarType(type);
+        },
+        []
+    );
 
     const closeSnackbar = useCallback(() => {
-        setSnackbarMessage('');
+        setSnackbarMessage(undefined);
+        setSnackbarType(undefined);
     }, []);
 
     return (
@@ -27,4 +35,14 @@ export const SnackbarProvider: React.FC = ({ children }) => {
             {children}
         </SnackbarContext.Provider>
     );
+};
+
+export const useSnackbar = () => {
+    const snackbarContext = useContext(SnackbarContext);
+
+    if (!snackbarContext) {
+        throw new Error('useSnackbar must be used within a SnackbarProvider');
+    }
+
+    return snackbarContext;
 };

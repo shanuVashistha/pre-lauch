@@ -378,13 +378,14 @@ const Home: React.FC = () => {
                     className="mt-[70px] max-w-[1180px] mx-auto grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 xl:gap-[50px] gap-[30px]"
                 >
                     {
-                        blogs.map((blog, index) => <BlogCards
-                            key={index}
-                            img={blog.image}
-                            title={blog.title}
-                            description={blog.description}
-                            url={blog.slug}
-                        />)
+                        blogs.map((blog: any, index: number) => <div key={index}>
+                            <BlogCards
+                                img={blog.image}
+                                title={blog.title}
+                                description={blog.description}
+                                url={blog.slug}
+                            />
+                        </div>)
                     }
                 </div>
             </div>

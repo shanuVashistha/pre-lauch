@@ -1,13 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Alert, Slide, SlideProps, Snackbar } from "@mui/material";
-import { SnackbarContext } from "@/context/SnackbarContext";
+import { useSnackbar } from "@/context/SnackbarContext";
 
 const SlideTransition = (props: SlideProps) => {
     return <Slide {...props} direction="up"/>;
 }
 
 export const SnackBar: React.FC = () => {
-    const { snackbarMessage, snackbarType, closeSnackbar } = useContext(SnackbarContext);
+
+    const { snackbarMessage, snackbarType, closeSnackbar } = useSnackbar();
 
     const open = Boolean(snackbarMessage);
 
