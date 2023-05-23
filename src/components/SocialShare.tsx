@@ -7,7 +7,7 @@ interface SocialShareInterface {
 
 export const SocialShare: React.FC<SocialShareInterface> = ({ url }) => {
     const social = [
-        "/images/social/linkedin.svg",
+        "/images/social/linkedIn.svg",
         "/images/social/twitter.svg",
         "/images/social/whatsapp.svg",
         "/images/social/line.svg",
