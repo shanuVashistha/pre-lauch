@@ -8,6 +8,7 @@ import { Footer } from "@/components/Footer";
 import { LoaderContext } from "@/context/LoaderContext";
 import VideoPlayer from "@/components/VideoPlayer";
 import Dialog from "@/components/Dialog";
+import { useRouter } from "next/router";
 
 
 const Home: React.FC = () => {
@@ -17,6 +18,7 @@ const Home: React.FC = () => {
     const [showGreetings, setShowGreetings] = useState(false);
     const [open, setOpen] = useState(false);
     const [blogs, setBlogs] = useState<any>([]);
+    const router = useRouter();
 
     const signUp = async () => {
         setErrors("");
@@ -119,11 +121,13 @@ const Home: React.FC = () => {
                     />
                 </div>
                 <div className="logo">
-                    <Img
-                        src={"/images/logo.png"}
-                        alt={"logo"}
-                        className="md:w-[105px] md:h-[64px] w-[73.93px] h-[45px]"
-                    />
+                    <a onClick={() => router.push("/")} className="cursor-pointer">
+                        <Img
+                            src={"/images/logo.png"}
+                            alt={"logo"}
+                            className="md:w-[105px] md:h-[64px] w-[73.93px] h-[45px]"
+                        />
+                    </a>
                 </div>
                 <div className="flex md:flex-row flex-col gap-8 items-center pt-[30px] md:pt-0">
                     <div className="md:flex-1 w-[100%] ">

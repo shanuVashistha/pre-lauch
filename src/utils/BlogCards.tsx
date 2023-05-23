@@ -51,7 +51,7 @@ export const BlogCards: React.FC<CardBlog> = (
             </div>
             <div className="text-right p-[18px]">
                 <Link
-                    href={`blog/${url}`}
+                    href={`/blog/${url}`}
                     className="text-[#382E53] xxl:text-[16px] md:text-[14px] text-[12px] leading-[29px] font-medium"
                 >
                     {`Read more >>`}
