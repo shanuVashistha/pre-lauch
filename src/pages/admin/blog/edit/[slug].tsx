@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import PrivateLayout from "@/components/Layout/privateLayout";
-import { convertToSlug } from "@/utils/utils";
 import { ImageOverlay } from "@/utils/admin/ImageOverlay";
 import { Button } from "@/utils/Button";
 import { LoaderContext } from "@/context/LoaderContext";
@@ -80,7 +79,7 @@ const Edit: React.FC<BlogEditFormInterface> = (props) => {
             const formData = new FormData();
             formData.append("id", params.id);
             formData.append("title", params.title);
-            formData.append("slug", convertToSlug(params.title || ""));
+            formData.append("slug", params.slug);
             formData.append("body", JSON.stringify(editorData));
             formData.append("meta_title", params.meta_title || "");
             formData.append("description", params.description || "");
@@ -200,7 +199,7 @@ const Edit: React.FC<BlogEditFormInterface> = (props) => {
                             variant="outlined"
                             error={!!errors.title}
                             helperText={errors.title}
-                            value={convertToSlug(params.title || "")}
+                            value={params.slug}
                         />
                     </div>
                 </div>
