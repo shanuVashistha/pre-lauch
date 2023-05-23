@@ -10,6 +10,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@blocknote/core": "^0.6.2",
+    "@blocknote/react": "^0.6.2",
     "@ckeditor/ckeditor5-build-classic": "^37.1.0",
     "@ckeditor/ckeditor5-react": "^6.0.0",
     "@craftjs/core": "^0.2.0-beta.10",

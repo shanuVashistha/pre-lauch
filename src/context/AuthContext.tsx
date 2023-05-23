@@ -53,7 +53,7 @@ export const AuthProvider: React.FC<any> = ({ children }: { children: any }) => 
         setIsLoading(true);
         const storedToken = localStorage.getItem("token");
         if (storedToken) {
-            const lastAdminRoute = localStorage.getItem("lastAdminRoute");
+            const lastAdminRoute = "/admin"
             router.push(lastAdminRoute || "/admin");
         } else {
             router.push("/login");

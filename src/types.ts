@@ -1,4 +1,5 @@
 export interface BlogInterface {
+    id?: number
     body: any
     image?: any
     slug: string
@@ -25,4 +26,10 @@ export interface SubLinksInterface {
     label: string;
     href: string;
     active: boolean;
+}
+
+export interface BlogPageInterface {
+    slug: string;
+    blog: BlogInterface;
+    blogs: BlogInterface[];
 }

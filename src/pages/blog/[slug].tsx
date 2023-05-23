@@ -7,8 +7,12 @@ import { useRouter } from "next/router";
 import { BlogCards } from "@/utils/BlogCards";
 import { LoaderContext } from "@/context/LoaderContext";
 import Head from "next/head";
+import { GetServerSideProps } from "next";
+import { blogApi } from "@/helper/Lookups/blog";
+import { BlogInterface, BlogPageInterface } from "@/types";
+import { BlogBody } from "@/components/BlogBody";
 
-const Blog: React.FC = () => {
+const Blog: React.FC<BlogPageInterface> = (props) => {
     const router = useRouter();
     const { setIsLoading } = useContext(LoaderContext);
     const [blogs, setBlogs] = useState<any[]>([]);
@@ -16,38 +20,11 @@ const Blog: React.FC = () => {
 
 
     useEffect(() => {
-        const getBlogs = async () => {
-            setIsLoading(true);
-            const response = await fetch(`/api/get/blogs`);
-            const data = await response.json();
-            setBlogs(data.filter((blog: any) => blog.slug !== router.query?.slug));
-            setIsLoading(false);
-        }
-        getBlogs();
-    }, []);
-
-    useEffect(() => {
-        const fetchBlogPost = async () => {
-            setIsLoading(true);
-            if (router.query?.slug) {
-                try {
-                    const response = await fetch(`/api/get/singleBlog?slug=${router.query?.slug}`);
-                    if (response.ok) {
-                        const data = await response.json();
-                        const parsedBody = JSON.parse(data.body);
-                        setParams({ ...data, body: parsedBody });
-                    } else {
-                        const errorData = await response.json();
-                        console.error("Error fetching blog:", errorData);
-                    }
-                } catch (error) {
-                    console.error("Error fetching blog:", error);
-                }
-            }
-            setIsLoading(false);
-        };
-        fetchBlogPost();
-    }, []);
+        setIsLoading(true);
+        setParams({ ...props.blog, body: JSON.parse(props.blog?.body || null) });
+        setBlogs(props?.blogs.filter((blog: BlogInterface) => blog.slug !== props.blog.slug));
+        setIsLoading(false);
+    }, [props]);
 
     return (
         <>
@@ -73,42 +50,9 @@ const Blog: React.FC = () => {
                             className="w-full h-[400px] object-cover"
                         />
                         <div className="mt-[60px]">
-                            {params.body && params.body.blocks.map((block: any, index: number) => {
-                                if (block.type === 'header') {
-                                    return (
-                                        <h3 key={index}
-                                            className="font-medium xxl:text-[30px] xl:text-[25px] md:text-[20px] text-[15px] md:leading-[42px] leading-[21px] tracking-[-2%] text-[#1D1E25] my-[20px]">
-                                            {block.data.text}
-                                        </h3>
-                                    );
-                                }
-                                if (block.type === 'paragraph') {
-                                    return (
-                                        <p key={index}
-                                           className="font-normal xxl:text-[16px] md:text-[14px] sm:text-[12px] text-[10px] md:leading-[27px] leading-[15px] tracking-[0.6px] text-[#5B6570] my-[10px]">
-                                            {block.data.text}
-                                        </p>
-                                    );
-                                }
-                                if (block.type === 'list') {
-                                    return (
-                                        <div key={index} className="pb-[12px] flex flex-col gap-[12px]">
-                                            {
-                                                block.data.items.map((item: any, index: number) => (
-                                                    <div key={index} className="w-full flex items-center gap-[16px]">
-                                                        <Img src="/images/check.svg" alt="Check"
-                                                             className="w-[13px] h-[13px]"/>
-                                                        <p className="font-normal xxl:text-[16px] md:text-[14px] sm:text-[12px] text-[10px] md:leading-[27px] leading-[15px] tracking-[0.6px] text-[#5B6570]">
-                                                            {item}
-                                                        </p>
-                                                    </div>
-                                                ))
-                                            }
-                                        </div>
-                                    );
-                                }
-                                return null;
-                            })}
+                            {
+                                params.body && <BlogBody content={params.body}/>
+                            }
                         </div>
                         <div className="flex flex-col items-center mt-[30px] md:mb-[200px]">
                             <p className="font-semibold text-[16px] leading-[20px] text-center text-[#1D1E25] mb-[16px]">
@@ -143,3 +87,16 @@ const Blog: React.FC = () => {
 };
 
 export default Blog;
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const slug: any = context.query.slug;
+    const data: BlogInterface = await blogApi.getSingleBlog(slug);
+    const blogs: BlogInterface[] = await blogApi.getBlogs();
+    return {
+        props: {
+            blog: data || null,
+            blogs: blogs || null,
+            slug: slug
+        }
+    }
+}

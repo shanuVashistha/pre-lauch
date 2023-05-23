@@ -2,14 +2,14 @@ import React, { useContext, useState } from "react";
 import PrivateLayout from "@/components/Layout/privateLayout";
 import { convertToSlug } from "@/utils/utils";
 import { ImageOverlay } from "@/utils/admin/ImageOverlay";
-import dynamic from "next/dynamic";
 import { Button } from "@/utils/Button";
 import { useRouter } from "next/router";
 import { LoaderContext } from "@/context/LoaderContext";
 import { Paper, TextField } from "@mui/material";
 import { useSnackbar } from "@/context/SnackbarContext";
-
-const EditorComponent = dynamic(() => import('@/pages/admin/blog/EditorComponent'), { ssr: false });
+import { BlockNoteEditor } from "@blocknote/core";
+import { BlockNoteView, useBlockNote } from "@blocknote/react";
+import "@blocknote/core/style.css";
 
 const fieldNames: any = {
     title: "Title",
@@ -29,6 +29,12 @@ const Form: React.FC = () => {
     const { openSnackbar } = useSnackbar();
 
     const [editorData, setEditorData] = useState<any>({});
+
+    const editor: BlockNoteEditor | null = useBlockNote({
+        onEditorContentChange: (editor: BlockNoteEditor) =>
+            setEditorData(editor.topLevelBlocks)
+    });
+
 
     const { setIsLoading } = useContext(LoaderContext)
 
@@ -208,8 +214,8 @@ const Form: React.FC = () => {
                 <div className="font-medium text-primary text-[14px] block pb-[10px]">
                     Body
                 </div>
-                <Paper>
-                    <EditorComponent setEditorData={setEditorData} body={editorData}/>
+                <Paper className="min-h-[500px] pt-[20px]">
+                    <BlockNoteView editor={editor}/>
                 </Paper>
             </div>
         </div>

@@ -2,14 +2,17 @@ import React, { useContext, useEffect, useState } from "react";
 import PrivateLayout from "@/components/Layout/privateLayout";
 import { convertToSlug } from "@/utils/utils";
 import { ImageOverlay } from "@/utils/admin/ImageOverlay";
-import dynamic from "next/dynamic";
 import { Button } from "@/utils/Button";
 import { LoaderContext } from "@/context/LoaderContext";
 import { Paper, TextField } from "@mui/material";
 import { useRouter } from "next/router";
 import { useSnackbar } from "@/context/SnackbarContext";
-
-const EditorComponent = dynamic(() => import('@/pages/admin/blog/EditorComponent'), { ssr: false });
+import { BlockNoteView, useBlockNote } from "@blocknote/react";
+import { BlockNoteEditor } from "@blocknote/core";
+import "@blocknote/core/style.css";
+import { GetServerSideProps } from "next";
+import { blogApi } from "@/helper/Lookups/blog";
+import { BlogInterface } from "@/types";
 
 const fieldNames: any = {
     title: "Title",
@@ -21,12 +24,23 @@ const fieldNames: any = {
     image: "Image",
 };
 
-const Edit: React.FC = () => {
+interface BlogEditFormInterface {
+    blog: BlogInterface;
+}
+
+const Edit: React.FC<BlogEditFormInterface> = (props) => {
     const router: any = useRouter();
     const { openSnackbar } = useSnackbar()
     const { setIsLoading } = useContext(LoaderContext)
     const [editorData, setEditorData] = useState<any>({});
     const [errors, setErrors] = useState<any>("");
+    const initialContent: null = props.blog ? JSON.parse(props.blog.body) : null;
+
+    const editor: BlockNoteEditor | null = useBlockNote({
+        initialContent: initialContent ? initialContent : undefined,
+        onEditorContentChange: (editor: BlockNoteEditor) =>
+            setEditorData(editor.topLevelBlocks)
+    });
 
     const [imageUrl, setImageUrl] = useState<string>('');
 
@@ -91,33 +105,12 @@ const Edit: React.FC = () => {
         setIsLoading(false);
     };
 
-    const getBlog = async () => {
-        setIsLoading(true);
-        if (router.query?.slug) {
-            try {
-                const response = await fetch(`/api/get/singleBlog?slug=${router.query?.slug}`);
-                if (response.ok) {
-                    const data = await response.json();
-                    setParams(data);
-                    setImageUrl(data.image);
-                    setEditorData(data.body);
-                } else {
-                    const errorData = await response.json();
-                    console.error("Error fetching blog:", errorData);
-                }
-            } catch (error) {
-                console.error("Error fetching blog:", error);
-            }
-        }
-        setIsLoading(false);
-    }
-
-
     useEffect(() => {
-        if (router.query?.slug) {
-            getBlog();
-        }
-    }, [router.query?.slug]);
+        setIsLoading(true);
+        setParams(props.blog ? props.blog : {});
+        setImageUrl(props.blog ? props.blog.image : '');
+        setIsLoading(false);
+    }, [props]);
 
     return <PrivateLayout title="Enjoy Mondays Pre Launch - Blog Slug">
         <div className="flex items-center mb-[24px] gap-[12px]">
@@ -229,8 +222,8 @@ const Edit: React.FC = () => {
                 <div className="font-medium text-primary text-[14px] block pb-[10px]">
                     Body
                 </div>
-                <Paper>
-                    <EditorComponent setEditorData={setEditorData} body={editorData}/>
+                <Paper className="min-h-[500px] pt-[20px]">
+                    <BlockNoteView editor={editor}/>
                 </Paper>
             </div>
         </div>
@@ -243,6 +236,17 @@ const Edit: React.FC = () => {
             />
         </div>
     </PrivateLayout>
+}
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const slug: any = context.query.slug;
+    const data: BlogInterface = await blogApi.getSingleBlog(slug);
+    return {
+        props: {
+            blog: data || null,
+            slug: slug
+        }
+    }
 }
 
 export default Edit;
