@@ -67,7 +67,7 @@ const Edit: React.FC = () => {
             formData.append("id", params.id);
             formData.append("title", params.title);
             formData.append("slug", convertToSlug(params.title || ""));
-            formData.append("body", editorData);
+            formData.append("body", JSON.stringify(editorData));
             formData.append("meta_title", params.meta_title || "");
             formData.append("description", params.description || "");
             formData.append("meta_description", params.meta_description || "");

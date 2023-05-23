@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import PrivateLayout from "@/components/Layout/privateLayout";
 import {
+    Button,
     Grid,
     Paper,
     Table,
@@ -12,6 +13,7 @@ import {
     Typography
 } from "@mui/material";
 import { LoaderContext } from "@/context/LoaderContext";
+import { exportToExcel } from "@/helper/exportData";
 
 const Enquiries: React.FC = () => {
     const [rows, setRows] = React.useState<any[]>([]);
@@ -26,6 +28,10 @@ const Enquiries: React.FC = () => {
         setIsLoading(false);
     }
 
+    const download = () => {
+        exportToExcel(rows, `enquiries-${new Date().toLocaleString()}`);
+    };
+
     React.useEffect(() => {
         getEnquires();
     }, []);
@@ -34,6 +40,7 @@ const Enquiries: React.FC = () => {
             <Typography variant="h5" component={Grid} item xs className="font-medium">
                 Enquires
             </Typography>
+            <Button size="small" variant="outlined" onClick={download}>Download</Button>
         </Grid>
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
