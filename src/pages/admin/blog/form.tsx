@@ -114,7 +114,7 @@ const Form: React.FC = () => {
             </h1>
             <div>
                 <Button
-                    label={!isFeatured ? 'Add to Featured' : 'Remove from Featured'}
+                    label={isFeatured === 'false' ? 'Add to Featured' : 'Remove from Featured'}
                     color="secondary"
                     className="h-[40px] rounded"
                     onClick={() => setIsFeatured(!isFeatured)}

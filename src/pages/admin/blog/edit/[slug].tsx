@@ -110,7 +110,7 @@ const Edit: React.FC<BlogEditFormInterface> = (props) => {
         setIsLoading(true);
         setParams(props.blog ? props.blog : {});
         setImageUrl(props.blog ? props.blog.image : '');
-        setIsFeatured(props.blog ? props.blog.is_featured : false)
+        setIsFeatured(props.blog ? props.blog.is_featured : "false")
         setIsLoading(false);
     }, [props]);
 
@@ -121,7 +121,7 @@ const Edit: React.FC<BlogEditFormInterface> = (props) => {
             </h1>
             <div>
                 <Button
-                    label={!isFeatured ? 'Add to Featured' : 'Remove from Featured'}
+                    label={isFeatured === 'false' ? 'Add to Featured' : 'Remove from Featured'}
                     color="secondary"
                     className="h-[40px] rounded"
                     onClick={() => setIsFeatured(!isFeatured)}
