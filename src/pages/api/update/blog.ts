@@ -31,6 +31,7 @@ export default async (req: any, res: any) => {
         const description = req.body.description;
         const meta_description = req.body.meta_description;
         const meta_keywords = req.body.meta_keywords;
+        const is_featured = req.body.is_featured;
         let imageLocation = req.body.file;
 
         try {
@@ -49,6 +50,7 @@ export default async (req: any, res: any) => {
                 description,
                 meta_description,
                 meta_keywords,
+                is_featured,
                 image: imageLocation,
             };
 
@@ -57,7 +59,7 @@ export default async (req: any, res: any) => {
                 Key: {
                     slug: slug
                 },
-                UpdateExpression: "set title = :title, id = :id,  body = :body, meta_title = :meta_title, description = :description, meta_description = :meta_description, meta_keywords = :meta_keywords, image = :image",
+                UpdateExpression: "set title = :title, id = :id,  body = :body, meta_title = :meta_title, description = :description, meta_description = :meta_description, meta_keywords = :meta_keywords, is_featured = :is_featured, image = :image",
                 ExpressionAttributeValues: {
                     ':title': title,
                     ':id': id,
@@ -66,6 +68,7 @@ export default async (req: any, res: any) => {
                     ':description': description,
                     ':meta_description': meta_description,
                     ':meta_keywords': meta_keywords,
+                    ':is_featured': is_featured,
                     ':image': imageLocation
                 },
                 ReturnValues: "UPDATED_NEW"

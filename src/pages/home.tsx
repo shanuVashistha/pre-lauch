@@ -9,6 +9,7 @@ import { LoaderContext } from "@/context/LoaderContext";
 import VideoPlayer from "@/components/VideoPlayer";
 import Dialog from "@/components/Dialog";
 import { useRouter } from "next/router";
+import { BlogInterface } from "@/types";
 
 
 const Home: React.FC = () => {
@@ -382,14 +383,15 @@ const Home: React.FC = () => {
                     className="mt-[70px] max-w-[1180px] mx-auto grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 xl:gap-[50px] gap-[30px]"
                 >
                     {
-                        blogs.map((blog: any, index: number) => <div key={index}>
-                            <BlogCards
-                                img={blog.image}
-                                title={blog.title}
-                                description={blog.description}
-                                url={blog.slug}
-                            />
-                        </div>)
+                        blogs.filter((b: BlogInterface) => b.is_featured === 'true').map((blog: any, index: number) =>
+                            <div key={index}>
+                                <BlogCards
+                                    img={blog.image}
+                                    title={blog.title}
+                                    description={blog.description}
+                                    url={blog.slug}
+                                />
+                            </div>)
                     }
                 </div>
             </div>

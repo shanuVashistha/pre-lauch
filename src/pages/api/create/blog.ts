@@ -35,6 +35,7 @@ export default async (req: any, res: any) => {
         const description = req.body.description;
         const meta_description = req.body.meta_description;
         const meta_keywords = req.body.meta_keywords;
+        const is_featured = req.body.is_featured;
 
         try {
             const buffer = await readFile(file.path);
@@ -50,6 +51,7 @@ export default async (req: any, res: any) => {
                 description,
                 meta_description,
                 meta_keywords,
+                is_featured,
                 image: result.Location,
             };
 

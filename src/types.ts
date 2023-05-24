@@ -4,6 +4,7 @@ export interface BlogInterface {
     image?: any
     slug: string
     title: string
+    is_featured: string
     description?: string
     meta_title?: string
     meta_description?: string
