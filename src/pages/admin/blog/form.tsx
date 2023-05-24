@@ -110,7 +110,7 @@ const Form: React.FC = () => {
     return <PrivateLayout title="Enjoy Mondays Pre Launch - Blog Slug">
         <div className="flex items-center mb-[24px] gap-[12px]">
             <h1 className="flex-1 font-semibold text-[20px] tracking-[1px]">
-                {!slug ? 'Add New' : 'Update'} Blog
+                {!slug ? 'Add New' : 'Update'} Blog (Image Size: 1920x1080)
             </h1>
             <div>
                 <Button
