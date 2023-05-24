@@ -8,10 +8,10 @@ import { useRouter } from "next/router";
 import { useSnackbar } from "@/context/SnackbarContext";
 import { BlockNoteView, useBlockNote } from "@blocknote/react";
 import { BlockNoteEditor } from "@blocknote/core";
-import "@blocknote/core/style.css";
 import { GetServerSideProps } from "next";
 import { blogApi } from "@/helper/Lookups/blog";
 import { BlogInterface } from "@/types";
+import "@blocknote/core/style.css";
 
 const fieldNames: any = {
     title: "Title",
