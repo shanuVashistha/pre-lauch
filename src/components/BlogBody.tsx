@@ -23,25 +23,74 @@ interface BlockItemHeadingInterface {
 const Heading: FC<BlockItemHeadingInterface> = (props) => {
     const { textColor, backgroundColor, textAlignment, children, level } = props;
     const HeadingTag: any = `h${level}`;
-
+    const getClass = (level: any) => {
+        const defaultClasses = 'font-medium text-[#1D1E25] my-[20px]';
+        switch (level) {
+            case '1':
+                return `${defaultClasses} xl:text-[35px] md:text-[30px] sm:text-[22px] text-[16px] xl:leading-[52px] md:leading-[45px] leading-[24px] tracking-[1.42px] `;
+            case '2':
+                return `${defaultClasses} xl:text-[30px] md:text-[25px] sm:text-[20px] text-[16px] xl:leading-[44px] md:leading-[40px] leading-[24px] tracking-[1.42px] `;
+            case '3':
+                return `${defaultClasses} xl:text-[24px] md:text-[22px] sm:text-[18px] text-[16px] xl:leading-[38px] md:leading-[35px] leading-[24px] tracking-[1.42px] `;
+            default:
+                return defaultClasses;
+        }
+    }
+    const className = getClass(level);
     return (
         <HeadingTag
             style={{ color: textColor, backgroundColor, textAlign: textAlignment }}
-            className="font-medium text-[#1D1E25] my-[20px]"
+            className={className}
         >
             {children}
         </HeadingTag>
     );
 };
 
-const Paragraph: FC<BlockItemInterface> = ({ textColor, backgroundColor, textAlignment, children }) => (
-    <p
-        style={{ color: textColor, backgroundColor, textAlign: textAlignment }}
-        className="font-normal xxl:text-[16px] md:text-[14px] sm:text-[12px] text-[10px] md:leading-[27px] leading-[15px] tracking-[0.6px] text-[#5B6570] my-[10px]"
-    >
-        {children}
-    </p>
-);
+const Paragraph: FC<BlockItemInterface> = ({ textColor, backgroundColor, textAlignment, children }) => {
+    const linkItem = children?.find((item: any) => item.type === 'link');
+    if (linkItem) {
+        return (<>
+                {
+                    children.map((item: any, index: number) => {
+                        switch (item.type) {
+                            case 'text':
+                                return (
+                                    <p
+                                        key={index}
+                                        style={{ color: textColor, backgroundColor, textAlign: textAlignment }}
+                                        className="inline font-normal xxl:text-[16px] md:text-[14px] sm:text-[12px] text-[10px] md:leading-[27px] leading-[15px] tracking-[0.6px] text-[#5B6570] my-[10px]"
+                                    >
+                                        {item.text}
+                                    </p>
+                                );
+                            case 'link':
+                                return (
+                                    <a
+                                        key={index}
+                                        href={item.href}
+                                        target="_blank"
+                                        className="inline underline underline-offset-[4px] decoration-[1.5px] decoration-[#44B480] xxl:text-[16px] md:text-[14px] sm:text-[12px] text-[10px] md:leading-[27px] leading-[15px] tracking-[0.6px] my-[10px] text-[#44B480]"
+                                    >
+                                        {item.content.map((t: string, i: number) => <span key={i}>{t.text}</span>)}
+                                    </a>
+                                );
+                        }
+                    })
+                }
+            </>
+        );
+    } else {
+        return (
+            <p
+                style={{ color: textColor, backgroundColor, textAlign: textAlignment }}
+                className="font-normal xxl:text-[16px] md:text-[14px] sm:text-[12px] text-[10px] md:leading-[27px] leading-[15px] tracking-[0.6px] text-[#5B6570] my-[10px]"
+            >
+                {children[0]?.text}
+            </p>
+        )
+    }
+};
 
 const BulletListItem: FC<BlockItemInterface> = ({ textColor, backgroundColor, textAlignment, children }) => (
     <div
@@ -58,7 +107,7 @@ const BulletListItem: FC<BlockItemInterface> = ({ textColor, backgroundColor, te
 
 export const BlogBody: FC<BlogBodyInterface> = (props) => {
     const { content } = props;
-
+    console.log(content)
     return (
         <>
             {
@@ -84,7 +133,7 @@ export const BlogBody: FC<BlogBodyInterface> = (props) => {
                                     backgroundColor={item.props.backgroundColor}
                                     textAlignment={item.props.textAlignment}
                                 >
-                                    {item.content[0]?.text}
+                                    {item.content}
                                 </Paragraph>
                             );
                         case 'bulletListItem':
