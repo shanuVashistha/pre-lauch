@@ -72,7 +72,7 @@ const Paragraph: FC<BlockItemInterface> = ({ textColor, backgroundColor, textAli
                                         target="_blank"
                                         className="inline underline underline-offset-[4px] decoration-[1.5px] decoration-[#44B480] xxl:text-[16px] md:text-[14px] sm:text-[12px] text-[10px] md:leading-[27px] leading-[15px] tracking-[0.6px] my-[10px] text-[#44B480]"
                                     >
-                                        {item.content.map((t: string, i: number) => <span key={i}>{t.text}</span>)}
+                                        {item.content.map((t: any, i: number) => <span key={i}>{t?.text}</span>)}
                                     </a>
                                 );
                         }

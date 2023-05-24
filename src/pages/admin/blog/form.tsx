@@ -214,7 +214,7 @@ const Form: React.FC = () => {
                 <div className="font-medium text-primary text-[14px] block pb-[10px]">
                     Body
                 </div>
-                <Paper className="min-h-[500px] pt-[20px]">
+                <Paper className="min-h-[500px] pt-[20px] block-editor">
                     <BlockNoteView editor={editor}/>
                 </Paper>
             </div>
