@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { AdminLinksInterface } from "@/types";
+import React, {useEffect, useState} from 'react';
+import {AdminLinksInterface} from "@/types";
 import Head from "next/head";
-import { useAuth } from "@/context/AuthContext";
-import { useRouter } from "next/router";
-import { SideNav } from "@/utils/admin/SideNav";
+import {useAuth} from "@/context/AuthContext";
+import {useRouter} from "next/router";
+import {SideNav} from "@/utils/admin/SideNav";
 
 interface PrivateLayoutInterface {
     title: string;
     children: React.ReactNode;
 }
 
-const PrivateLayout: React.FC<PrivateLayoutInterface> = ({ title, children }) => {
+const PrivateLayout: React.FC<PrivateLayoutInterface> = ({title, children}) => {
     const router = useRouter();
-    const { logout } = useAuth();
+    const {logout} = useAuth();
 
     const links: AdminLinksInterface[] = [
         {
@@ -44,11 +44,11 @@ const PrivateLayout: React.FC<PrivateLayoutInterface> = ({ title, children }) =>
             href: '',
             active: false,
             subLinks: [
-                // {
-                //     label: 'SEO',
-                //     href: '/admin/config/seo',
-                //     active: false
-                // },
+                {
+                    label: 'SEO',
+                    href: '/admin/config/seo',
+                    active: false
+                },
                 // {
                 //     label: 'Logos',
                 //     href: '/admin/config/logos',
