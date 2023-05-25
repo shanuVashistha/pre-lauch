@@ -4,7 +4,7 @@ import Link from "next/link";
 import {Skeleton} from "@mui/material";
 
 interface CardBlog {
-    img?: string;
+    img: string;
     title: string;
     description: string;
     className?: string;

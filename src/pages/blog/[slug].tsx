@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { Header } from "@/components/Header";
-import { Img } from "@/utils/Img";
-import { Footer } from "@/components/Footer";
-import { SocialShare } from "@/components/SocialShare";
-import { useRouter } from "next/router";
-import { BlogCards } from "@/utils/BlogCards";
+import React, {useEffect, useState} from "react";
+import {Header} from "@/components/Header";
+import {Img} from "@/utils/Img";
+import {Footer} from "@/components/Footer";
+import {SocialShare} from "@/components/SocialShare";
+import {useRouter} from "next/router";
+import {BlogCards} from "@/utils/BlogCards";
 import Head from "next/head";
-import { GetServerSideProps } from "next";
-import { blogApi } from "@/helper/Lookups/blog";
-import { BlogInterface, BlogPageInterface } from "@/types";
-import { BlogBody } from "@/components/BlogBody";
-import { Skeleton } from "@mui/material";
+import {GetServerSideProps} from "next";
+import {blogApi} from "@/helper/Lookups/blog";
+import {BlogInterface, BlogPageInterface} from "@/types";
+import {BlogBody} from "@/components/BlogBody";
+import {Grid, Skeleton} from "@mui/material";
+import {Button} from "@/utils/Button";
 
 const Blog: React.FC<BlogPageInterface> = (props) => {
     const router = useRouter();
@@ -19,8 +20,8 @@ const Blog: React.FC<BlogPageInterface> = (props) => {
 
 
     useEffect(() => {
-        setParams({ ...props.blog, body: JSON.parse(props.blog?.body || null) });
-        setBlogs(props?.blogs.filter((blog: BlogInterface) => blog.slug !== props.blog.slug));
+        setParams({...props.blog, body: JSON.parse(props.blog?.body || null)});
+        setBlogs(props?.blogs.filter((blog: BlogInterface) => blog.slug !== props.blog.slug).slice(0, 3));
     }, [props]);
 
     return (
@@ -31,7 +32,7 @@ const Blog: React.FC<BlogPageInterface> = (props) => {
                 <meta name="keywords" content={params.meta_keywords}/>
                 <meta name="title" content={params.meta_title}/>
             </Head>
-            <div style={{ background: "linear-gradient(109.04deg, #FFFCF3 0%, #EFF7FF 43.23%, #E8FAF3 98.1%)" }}>
+            <div style={{background: "linear-gradient(109.04deg, #FFFCF3 0%, #EFF7FF 43.23%, #E8FAF3 98.1%)"}}>
                 <Header/>
                 <div className="xl:pt-[144px] md:pt-[100px] sm:pt-[65px] flex flex-col items-center">
                     {
@@ -82,9 +83,20 @@ const Blog: React.FC<BlogPageInterface> = (props) => {
                         </div>
                     </div>
                     <div className="md:mb-[126px] mb-[50px] md:p-0 p-[32px]">
-                        <h3 className="flex justify-center md:text-[44px] font-bold md:leading-[74.27px] text-bannerHeading text-[31px] leading-[55px]">
-                            Featured Posts
-                        </h3>
+                        <Grid container alignItems="center">
+                            <Grid item xs component={"h3"}
+                                  className="md:text-[44px] font-bold md:leading-[74.27px] text-bannerHeading text-[31px] leading-[55px]">
+                                Featured Posts
+                            </Grid>
+                            <Grid>
+                                <Button
+                                    label="See All"
+                                    color="secondary"
+                                    className="w-[100px] h-[40px] md:text-[16px] text-[14px]"
+                                    onClick={() => router.push("/blogs")}
+                                />
+                            </Grid>
+                        </Grid>
                         <div
                             className="mt-[70px] max-w-[1180px] mx-auto grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 xl:gap-[50px] gap-[30px]">
                             {
@@ -113,7 +125,7 @@ export default Blog;
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const slug: any = context.query.slug;
     const data: BlogInterface = await blogApi.getSingleBlog(slug);
-    const blogs: BlogInterface[] = await blogApi.getBlogs();
+    const blogs: BlogInterface[] = await blogApi.getAllBlogs();
     return {
         props: {
             blog: data || null,

@@ -57,7 +57,7 @@ const Home: React.FC = () => {
 
     const getBlogs = async () => {
         setIsLoading(true);
-        const response = await fetch(`/api/get/blogs`);
+        const response = await fetch(`/api/get/blogs?withoutPagination=true`);
         const data = await response.json();
         setBlogs(data);
         setIsLoading(false);
