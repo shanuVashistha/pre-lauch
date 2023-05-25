@@ -1,14 +1,14 @@
-import React, { useContext, useState } from "react";
+import React, {useContext, useState} from "react";
 import PrivateLayout from "@/components/Layout/privateLayout";
-import { convertToSlug } from "@/utils/utils";
-import { ImageOverlay } from "@/utils/admin/ImageOverlay";
-import { Button } from "@/utils/Button";
-import { useRouter } from "next/router";
-import { LoaderContext } from "@/context/LoaderContext";
-import { Paper, TextField } from "@mui/material";
-import { useSnackbar } from "@/context/SnackbarContext";
-import { BlockNoteEditor } from "@blocknote/core";
-import { BlockNoteView, useBlockNote } from "@blocknote/react";
+import {convertToSlug} from "@/utils/utils";
+import {ImageOverlay} from "@/utils/admin/ImageOverlay";
+import {Button} from "@/utils/Button";
+import {useRouter} from "next/router";
+import {LoaderContext} from "@/context/LoaderContext";
+import {Paper, TextField} from "@mui/material";
+import {useSnackbar} from "@/context/SnackbarContext";
+import {BlockNoteEditor} from "@blocknote/core";
+import {BlockNoteView, useBlockNote} from "@blocknote/react";
 import "@blocknote/core/style.css";
 
 const fieldNames: any = {
@@ -24,13 +24,13 @@ const fieldNames: any = {
 const Form: React.FC = () => {
     const router = useRouter();
 
-    const { slug } = router.query;
+    const {slug} = router.query;
 
-    const { openSnackbar } = useSnackbar();
+    const {openSnackbar} = useSnackbar();
 
     const [editorData, setEditorData] = useState<any>({});
 
-    const [isFeatured, setIsFeatured] = useState<any>('false');
+    const [isFeatured, setIsFeatured] = useState<any>(false);
 
     const editor: BlockNoteEditor | null = useBlockNote({
         onEditorContentChange: (editor: BlockNoteEditor) =>
@@ -38,7 +38,7 @@ const Form: React.FC = () => {
     });
 
 
-    const { setIsLoading } = useContext(LoaderContext)
+    const {setIsLoading} = useContext(LoaderContext)
 
     const [imageUrl, setImageUrl] = useState<string>('');
 
@@ -54,11 +54,10 @@ const Form: React.FC = () => {
             };
         });
         setErrors((prevErrors: any) => {
-            const { [key]: deletedKey, ...restErrors } = prevErrors;
+            const {[key]: deletedKey, ...restErrors} = prevErrors;
             return restErrors;
         });
     };
-
     const save = async () => {
         setIsLoading(true);
 
@@ -69,7 +68,7 @@ const Form: React.FC = () => {
                 acc[cur] = `${fieldNames[cur]} is required`;
                 return acc;
             }, {});
-            setErrors((prevErrors: any) => ({ ...prevErrors, ...newErrors }));
+            setErrors((prevErrors: any) => ({...prevErrors, ...newErrors}));
         }
 
         if (Object.keys(errors).length > 0 || emptyParams.length > 0) {
@@ -86,7 +85,7 @@ const Form: React.FC = () => {
             formData.append("description", params.description || "");
             formData.append("meta_description", params.meta_description || "");
             formData.append("meta_keywords", params.meta_keywords || "");
-            formData.append("is_featured", isFeatured || 'false');
+            formData.append("is_featured", JSON.stringify(isFeatured));
             formData.append("file", params.image);
 
             const response = await fetch("/api/create/blog", {
@@ -114,7 +113,7 @@ const Form: React.FC = () => {
             </h1>
             <div>
                 <Button
-                    label={isFeatured === 'false' ? 'Add to Featured' : 'Remove from Featured'}
+                    label={!isFeatured ? 'Add to Featured' : 'Remove from Featured'}
                     color="secondary"
                     className="h-[40px] rounded"
                     onClick={() => setIsFeatured(!isFeatured)}

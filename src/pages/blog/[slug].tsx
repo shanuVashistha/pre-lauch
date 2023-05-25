@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Header } from "@/components/Header";
 import { Img } from "@/utils/Img";
 import { Footer } from "@/components/Footer";
 import { SocialShare } from "@/components/SocialShare";
 import { useRouter } from "next/router";
 import { BlogCards } from "@/utils/BlogCards";
-import { LoaderContext } from "@/context/LoaderContext";
 import Head from "next/head";
 import { GetServerSideProps } from "next";
 import { blogApi } from "@/helper/Lookups/blog";
@@ -15,16 +14,13 @@ import { Skeleton } from "@mui/material";
 
 const Blog: React.FC<BlogPageInterface> = (props) => {
     const router = useRouter();
-    const { setIsLoading } = useContext(LoaderContext);
     const [blogs, setBlogs] = useState<any[]>([]);
     const [params, setParams] = useState<any>({});
 
 
     useEffect(() => {
-        setIsLoading(true);
         setParams({ ...props.blog, body: JSON.parse(props.blog?.body || null) });
         setBlogs(props?.blogs.filter((blog: BlogInterface) => blog.slug !== props.blog.slug));
-        setIsLoading(false);
     }, [props]);
 
     return (

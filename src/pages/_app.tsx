@@ -29,18 +29,19 @@ export default function App ({ Component, pageProps }: AppProps) {
         "/home",
         "/calculator",
     ];
+
     return (
         <Provider store={store}>
             <LoaderContext.Provider value={{ isLoading, setIsLoading }}>
                 <LoaderProvider>
                     <SnackbarProvider>
-                        {
-                            !isBlogRoute && !unprotectedRoutes.includes(router.pathname) ?
-                                <AuthProvider login={login} logout={logout} token={token}>
-                                    <Component {...pageProps} />
-                                </AuthProvider>
-                                : <Component {...pageProps} />
-                        }
+                        {!isBlogRoute && !unprotectedRoutes.includes(router.pathname) ? (
+                            <AuthProvider login={login} logout={logout} token={token}>
+                                <Component {...pageProps} />
+                            </AuthProvider>
+                        ) : (
+                            <Component {...pageProps} />
+                        )}
                         <Loader/>
                         <SnackBar/>
                     </SnackbarProvider>

@@ -34,3 +34,12 @@ export interface BlogPageInterface {
     blog: BlogInterface;
     blogs: BlogInterface[];
 }
+
+export interface CalculatorInterface {
+    occupation: string;
+    experience: string;
+    location: string;
+    skills: string[];
+    industry: string;
+    company_size: string;
+}

@@ -1,19 +1,19 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Card } from "@/utils/Card";
-import { Input } from "@/utils/Input";
-import { Button } from "@/utils/Button";
-import { Img } from "@/utils/Img";
-import { BlogCards } from "@/utils/BlogCards";
-import { Footer } from "@/components/Footer";
-import { LoaderContext } from "@/context/LoaderContext";
+import React, {useContext, useEffect, useState} from "react";
+import {Card} from "@/utils/Card";
+import {Input} from "@/utils/Input";
+import {Button} from "@/utils/Button";
+import {Img} from "@/utils/Img";
+import {BlogCards} from "@/utils/BlogCards";
+import {Footer} from "@/components/Footer";
 import VideoPlayer from "@/components/VideoPlayer";
 import Dialog from "@/components/Dialog";
-import { useRouter } from "next/router";
-import { BlogInterface } from "@/types";
+import {useRouter} from "next/router";
+import {BlogInterface} from "@/types";
+import {LoaderContext} from "@/context/LoaderContext";
 
 
 const Home: React.FC = () => {
-    const { setIsLoading } = useContext(LoaderContext);
+    const {setIsLoading} = useContext(LoaderContext);
     const [email, setEmail] = useState("");
     const [errors, setErrors] = useState("");
     const [showGreetings, setShowGreetings] = useState(false);
@@ -37,7 +37,7 @@ const Home: React.FC = () => {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ email }),
+                body: JSON.stringify({email}),
             });
             const data: any = await response.json();
             if (!data.success) {

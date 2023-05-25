@@ -107,7 +107,6 @@ const BulletListItem: FC<BlockItemInterface> = ({ textColor, backgroundColor, te
 
 export const BlogBody: FC<BlogBodyInterface> = (props) => {
     const { content } = props;
-    console.log(content)
     return (
         <>
             {
