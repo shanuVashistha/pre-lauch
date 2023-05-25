@@ -8,7 +8,6 @@ import {Footer} from "@/components/Footer";
 import VideoPlayer from "@/components/VideoPlayer";
 import Dialog from "@/components/Dialog";
 import {useRouter} from "next/router";
-import {BlogInterface} from "@/types";
 import {LoaderContext} from "@/context/LoaderContext";
 import Head from "next/head";
 
@@ -401,7 +400,7 @@ const Home: React.FC = () => {
                         className="mt-[70px] max-w-[1180px] mx-auto grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 xl:gap-[50px] gap-[30px]"
                     >
                         {
-                            blogs.filter((b: BlogInterface) => b.is_featured === 'true').map((blog: any, index: number) =>
+                            blogs.slice(0, 3).map((blog: any, index: number) =>
                                 <div key={index}>
                                     <BlogCards
                                         img={blog.image}

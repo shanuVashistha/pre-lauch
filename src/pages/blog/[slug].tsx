@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {Header} from "@/components/Header";
 import {Img} from "@/utils/Img";
 import {Footer} from "@/components/Footer";
@@ -12,16 +12,20 @@ import {BlogInterface, BlogPageInterface} from "@/types";
 import {BlogBody} from "@/components/BlogBody";
 import {Grid, Skeleton} from "@mui/material";
 import {Button} from "@/utils/Button";
+import {LoaderContext} from "@/context/LoaderContext";
 
 const Blog: React.FC<BlogPageInterface> = (props) => {
     const router = useRouter();
+    const {setIsLoading} = useContext(LoaderContext);
     const [blogs, setBlogs] = useState<any[]>([]);
     const [params, setParams] = useState<any>({});
 
 
     useEffect(() => {
+        setIsLoading(true);
         setParams({...props.blog, body: JSON.parse(props.blog?.body || null)});
         setBlogs(props?.blogs.filter((blog: BlogInterface) => blog.slug !== props.blog.slug).slice(0, 3));
+        setIsLoading(false);
     }, [props]);
 
     return (

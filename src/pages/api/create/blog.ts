@@ -1,14 +1,14 @@
 import multer from 'multer';
-import { S3UploadService } from "@/services/upload";
+import {S3UploadService} from "@/services/upload";
 import fs from 'fs';
 import util from 'util';
-import { v4 as uuidv4 } from 'uuid';
-import { dynamoDB } from "@/utils/config/aws";
+import {v4 as uuidv4} from 'uuid';
+import {dynamoDB} from "@/utils/config/aws";
 
 const readFile = util.promisify(fs.readFile);
 const unlink = util.promisify(fs.unlink);
 
-const upload = multer({ dest: '/tmp' });
+const upload = multer({dest: '/tmp'});
 const s3Service = new S3UploadService();
 
 export const config = {
@@ -20,12 +20,12 @@ export const config = {
 export default async (req: any, res: any) => {
     upload.single('file')(req, res, async (err) => {
         if (err) {
-            return res.status(500).json({ error: err.message });
+            return res.status(500).json({error: err.message});
         }
 
         const file = req.file;
         if (!file) {
-            return res.status(400).send({ error: 'No file uploaded' });
+            return res.status(400).send({error: 'No file uploaded'});
         }
 
         const title = req.body.title;
@@ -35,7 +35,7 @@ export default async (req: any, res: any) => {
         const description = req.body.description;
         const meta_description = req.body.meta_description;
         const meta_keywords = req.body.meta_keywords;
-        const is_featured = req.body.is_featured;
+        // const is_featured = req.body.is_featured;
 
         try {
             const buffer = await readFile(file.path);
@@ -51,7 +51,7 @@ export default async (req: any, res: any) => {
                 description,
                 meta_description,
                 meta_keywords,
-                is_featured,
+                // is_featured,
                 image: result.Location,
             };
 
@@ -64,10 +64,10 @@ export default async (req: any, res: any) => {
 
             console.log('Blog saved:', blog);
 
-            res.status(200).json({ message: 'Blog Created successfully' });
+            res.status(200).json({message: 'Blog Created successfully'});
         } catch (error) {
             console.error('Error saving blog:', error);
-            res.status(500).json({ error: 'Unexpected Error' });
+            res.status(500).json({error: 'Unexpected Error'});
         }
     });
 };
