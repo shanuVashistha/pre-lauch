@@ -1,9 +1,9 @@
-import React, { createContext, useContext, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useRouter } from "next/router";
-import { LoaderContext } from "@/context/LoaderContext";
-import { LoginInterface } from "@/types";
-import { login, logout } from "@/store/middleware/authMiddleware";
+import React, {createContext, useContext, useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {useRouter} from "next/router";
+import {LoaderContext} from "@/context/LoaderContext";
+import {LoginInterface} from "@/types";
+import {login, logout} from "@/store/middleware/authMiddleware";
 
 interface AuthContextProps {
     login: (params: LoginInterface) => void;
@@ -19,17 +19,21 @@ const AuthContext = createContext<AuthContextProps>({
     token: "",
 });
 
-export const AuthProvider: React.FC<any> = ({ children }: { children: any }) => {
+export const AuthProvider: React.FC<any> = ({children}: { children: any }) => {
     const dispatch: any = useDispatch();
     const router: any = useRouter();
-    const { setIsLoading } = useContext(LoaderContext);
+    const {setIsLoading} = useContext(LoaderContext);
     const token: any = useSelector((state: any) => state.auth.token);
 
     const handleLogin = (params: LoginInterface) => {
         setIsLoading(true);
         dispatch(login(params))
             .then(() => {
-                router.push("/admin");
+                setIsLoading(false);
+                let token = localStorage.getItem("token");
+                if (token) {
+                    router.push("/admin");
+                }
             })
             .catch((error: any) => {
                 console.error(error);
@@ -69,7 +73,7 @@ export const AuthProvider: React.FC<any> = ({ children }: { children: any }) => 
     }, [router.pathname]);
 
     return (
-        <AuthContext.Provider value={{ login: handleLogin, logout: handleLogout, token }}>
+        <AuthContext.Provider value={{login: handleLogin, logout: handleLogout, token}}>
             {children}
         </AuthContext.Provider>
     );

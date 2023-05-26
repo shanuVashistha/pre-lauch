@@ -13,7 +13,7 @@ export const LoaderContext = createContext<LoaderContextProps>({
 });
 
 export const LoaderProvider: React.FC<any> = ({children}) => {
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
     // useEffect(() => {
     //     const handleStart = () => {
