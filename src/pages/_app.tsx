@@ -29,6 +29,7 @@ export default function App({Component, pageProps}: AppProps) {
         "/home",
         "/calculator",
         "/blogs",
+        "/404"
     ];
 
     return (

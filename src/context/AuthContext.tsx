@@ -29,7 +29,11 @@ export const AuthProvider: React.FC<any> = ({ children }: { children: any }) => 
         setIsLoading(true);
         dispatch(login(params))
             .then(() => {
-                router.push("/admin");
+                setIsLoading(false);
+                let token = localStorage.getItem("token");
+                if(token){
+                    router.push("/admin");
+                }
             })
             .catch((error: any) => {
                 console.error(error);

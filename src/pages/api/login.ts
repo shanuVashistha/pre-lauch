@@ -23,7 +23,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         };
 
         const user = await dynamoDB.get(params).promise();
-
         if (!user || !user.Item) {
             return res.status(404).json({ message: "User not found" });
         }
