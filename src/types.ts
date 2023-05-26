@@ -43,3 +43,11 @@ export interface CalculatorInterface {
     industry: string;
     company_size: string;
 }
+
+export interface SeoInterface {
+    page: string;
+    title: string;
+    keywords: string;
+    page_title: string;
+    description: string;
+}

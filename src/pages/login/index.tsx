@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { LoginInterface } from "@/types";
-import { Img } from "@/utils/Img";
-import { Input } from "@/utils/Input";
-import { Button } from "@/utils/Button";
+import React, {useState} from 'react';
+import {LoginInterface} from "@/types";
+import {Img} from "@/utils/Img";
+import {Input} from "@/utils/Input";
+import {Button} from "@/utils/Button";
 import Head from "next/head";
-import { useAuth } from "@/context/AuthContext";
+import {useAuth} from "@/context/AuthContext";
 
 const LoginPage = () => {
     const [params, setParams] = useState<LoginInterface>({
@@ -14,7 +14,7 @@ const LoginPage = () => {
 
     const [showPassword, setShowPassword] = useState<boolean>(false);
 
-    const { login, token } = useAuth();
+    const {login, token} = useAuth();
 
     const setParam = (key: string, value: string) => {
         setParams({
@@ -30,7 +30,7 @@ const LoginPage = () => {
     return (
         <>
             <Head>
-                <title>Search My Expert - Login</title>
+                <title>Enjoy Mondays Pre Launch - Login</title>
             </Head>
             {token ? (
                 <div/>

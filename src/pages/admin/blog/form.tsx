@@ -30,7 +30,7 @@ const Form: React.FC = () => {
 
     const [editorData, setEditorData] = useState<any>({});
 
-    const [isFeatured, setIsFeatured] = useState<any>(false);
+    // const [isFeatured, setIsFeatured] = useState<any>(false);
 
     const editor: BlockNoteEditor | null = useBlockNote({
         onEditorContentChange: (editor: BlockNoteEditor) =>
@@ -85,7 +85,7 @@ const Form: React.FC = () => {
             formData.append("description", params.description || "");
             formData.append("meta_description", params.meta_description || "");
             formData.append("meta_keywords", params.meta_keywords || "");
-            formData.append("is_featured", JSON.stringify(isFeatured));
+            // formData.append("is_featured", JSON.stringify(isFeatured));
             formData.append("file", params.image);
 
             const response = await fetch("/api/create/blog", {
@@ -111,14 +111,14 @@ const Form: React.FC = () => {
             <h1 className="flex-1 font-semibold text-[20px] tracking-[1px]">
                 {!slug ? 'Add New' : 'Update'} Blog (Image Size: 1920x1080)
             </h1>
-            <div>
-                <Button
-                    label={!isFeatured ? 'Add to Featured' : 'Remove from Featured'}
-                    color="secondary"
-                    className="h-[40px] rounded"
-                    onClick={() => setIsFeatured(!isFeatured)}
-                />
-            </div>
+            {/*<div>*/}
+            {/*    <Button*/}
+            {/*        label={!isFeatured ? 'Add to Featured' : 'Remove from Featured'}*/}
+            {/*        color="secondary"*/}
+            {/*        className="h-[40px] rounded"*/}
+            {/*        onClick={() => setIsFeatured(!isFeatured)}*/}
+            {/*    />*/}
+            {/*</div>*/}
             <div>
                 <Button
                     label={!slug ? 'Save' : 'Update'}

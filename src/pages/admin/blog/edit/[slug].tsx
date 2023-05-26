@@ -33,7 +33,7 @@ const Edit: React.FC<BlogEditFormInterface> = (props) => {
     const {setIsLoading} = useContext(LoaderContext)
     const [editorData, setEditorData] = useState<any>({});
     const [errors, setErrors] = useState<any>("");
-    const [isFeatured, setIsFeatured] = useState<any>(false);
+    // const [isFeatured, setIsFeatured] = useState<any>(false);
     const initialContent: null = props.blog ? JSON.parse(props.blog.body) : null;
 
     const editor: BlockNoteEditor | null = useBlockNote({
@@ -86,7 +86,7 @@ const Edit: React.FC<BlogEditFormInterface> = (props) => {
             formData.append("description", params.description || "");
             formData.append("meta_description", params.meta_description || "");
             formData.append("meta_keywords", params.meta_keywords || "");
-            formData.append("is_featured", JSON.stringify(isFeatured));
+            // formData.append("is_featured", JSON.stringify(isFeatured));
             formData.append("file", params.image);
 
             const response = await fetch("/api/update/blog", {
@@ -110,7 +110,7 @@ const Edit: React.FC<BlogEditFormInterface> = (props) => {
         setIsLoading(true);
         setParams(props.blog ? props.blog : {});
         setImageUrl(props.blog ? props.blog.image : '');
-        setIsFeatured(props.blog ? JSON.parse(props.blog.is_featured) : false);
+        // setIsFeatured(props.blog ? JSON.parse(props.blog.is_featured) : false);
         setIsLoading(false);
     }, [props]);
 
@@ -119,14 +119,14 @@ const Edit: React.FC<BlogEditFormInterface> = (props) => {
             <h1 className="flex-1 font-semibold text-[20px] tracking-[1px]">
                 Update Blog (Image Size: 1920x1080)
             </h1>
-            <div>
-                <Button
-                    label={!isFeatured ? 'Add to Featured' : 'Remove from Featured'}
-                    color="secondary"
-                    className="h-[40px] rounded"
-                    onClick={() => setIsFeatured(!isFeatured)}
-                />
-            </div>
+            {/*<div>*/}
+            {/*    <Button*/}
+            {/*        label={!isFeatured ? 'Add to Featured' : 'Remove from Featured'}*/}
+            {/*        color="secondary"*/}
+            {/*        className="h-[40px] rounded"*/}
+            {/*        onClick={() => setIsFeatured(!isFeatured)}*/}
+            {/*    />*/}
+            {/*</div>*/}
             <div>
                 <Button
                     label="Update"

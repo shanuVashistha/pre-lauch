@@ -35,11 +35,15 @@ export const BlogCards: React.FC<CardBlog> = (
                         variant="rectangular"
                         className="p-[12px]"
                         height={250}
-                    /> : <Img
-                        src={img || ""}
-                        alt="Avatar"
-                        className="w-full h-[250px] object-cover"
-                    />
+                    /> : <div>
+                        <Link href={`/blog/${url}`}>
+                            <Img
+                                src={img || ""}
+                                alt="Avatar"
+                                className="w-full h-[250px] object-cover"
+                            />
+                        </Link>
+                    </div>
                 }
                 <div
                     className="absolute top-[21px] left-[31px] hidden rounded-[20px] px-[10px] xxl:text-[16px] md:text-[14px] leading-[28px] text-[white] font-medium"
