@@ -8,10 +8,10 @@ const Admin: React.FC = () => {
     return <PrivateLayout title="Enjoy Mondays Pre Launch - Admin">
         <div className="flex flex-col items-center justify-center text-center h-full gap-[10px]">
             <p className="font-medium tracking-[1px] text-[25px]">
-                Welcome {user.name}, <br/>
+                Welcome To <br/>
             </p>
             <p className="font-medium tracking-[1px] text-[25px]">
-                To <span className="text-secondary">Pre Launch</span> Admin Panel
+                <span className="text-secondary">Pre Launch</span> Admin Panel
             </p>
         </div>
     </PrivateLayout>

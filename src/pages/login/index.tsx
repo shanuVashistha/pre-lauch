@@ -29,7 +29,7 @@ const LoginPage = () => {
     const handleLogin = async () => {
         setIsLoading(true);
         await $user.login(params);
-        const user = await $user.current();
+        const user = await $user.getToken();
         if (user)
             router.push("/admin");
         setIsLoading(false);

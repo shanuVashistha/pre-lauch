@@ -23,6 +23,7 @@ const Security: React.FC = () => {
     const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
 
     const [params, setParams] = React.useState<any>({
+        username: user.username,
         currentPassword: '',
         newPassword: '',
         confirmPassword: ''
@@ -74,7 +75,7 @@ const Security: React.FC = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ username: user.username || "", ...params })
+                body: JSON.stringify(params)
             });
             const data = await response.json();
             if (data.error) {
@@ -113,7 +114,7 @@ const Security: React.FC = () => {
                     label="Username"
                     variant="outlined"
                     disabled
-                    value={user.username || ""}
+                    value={params.username}
                 />
             </Grid>
             <Grid item md sm={6} xs={12}>

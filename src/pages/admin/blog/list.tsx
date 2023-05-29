@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import PrivateLayout from "@/components/Layout/privateLayout";
 import {
     Button,
@@ -16,9 +16,10 @@ import {
     Typography
 } from "@mui/material";
 import Link from "next/link";
-import {ChevronDown, Edit, Trash2} from "react-feather";
-import {Img} from "@/utils/Img";
-import {LoaderContext} from "@/context/LoaderContext";
+import { ChevronDown, Edit, Trash2 } from "react-feather";
+import { Img } from "@/utils/Img";
+import { LoaderContext } from "@/context/LoaderContext";
+import { useCurrentUserData } from "@/factories/UserFactory";
 
 interface BlogRowInterface {
     row: any;
@@ -27,12 +28,13 @@ interface BlogRowInterface {
 }
 
 const Row: React.FC<BlogRowInterface> = (props) => {
-    const {row, index, removeBlog} = props;
+    const { row, index, removeBlog } = props;
+    const user = useCurrentUserData();
     const [open, setOpen] = React.useState(false);
 
     return <React.Fragment>
         <TableRow
-            sx={{'&:last-child td, &:last-child th': {border: 0}}}
+            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
         >
             <TableCell component="th" scope="row">
                 {index + 1}
@@ -50,9 +52,11 @@ const Row: React.FC<BlogRowInterface> = (props) => {
                         <Edit size={16}/>
                     </IconButton>
                 </Link>
-                <IconButton aria-label="edit" onClick={removeBlog}>
-                    <Trash2 size={16} className="text-red-500"/>
-                </IconButton>
+                {
+                    user?.role === 'super_admin' ? <IconButton aria-label="edit" onClick={removeBlog}>
+                        <Trash2 size={16} className="text-red-500"/>
+                    </IconButton> : ''
+                }
                 <IconButton aria-label="edit" onClick={() => setOpen(!open)}>
                     <ChevronDown size={16} className={`transition-all ${!open ? 'rotate-0' : 'rotate-[180deg]'}`}/>
                 </IconButton>
@@ -121,19 +125,19 @@ const Row: React.FC<BlogRowInterface> = (props) => {
 
 const List: React.FC = () => {
     const [rows, setRows] = React.useState([]);
-    const {setIsLoading} = useContext(LoaderContext)
+    const { setIsLoading } = useContext(LoaderContext)
 
     const getBlogs = async () => {
         setIsLoading(true);
         const response = await fetch(`/api/get/blogs`);
-        const {data} = await response.json();
+        const { data } = await response.json();
         setRows(data);
         setIsLoading(false);
     }
 
     const removeBlog = async (slug: any) => {
         setIsLoading(true);
-        const response = await fetch(`/api/delete/blog?slug=${slug}`, {method: 'DELETE'});
+        const response = await fetch(`/api/delete/blog?slug=${slug}`, { method: 'DELETE' });
         const data = await response.json();
         if (data.success) {
             getBlogs();
@@ -155,7 +159,7 @@ const List: React.FC = () => {
             </Link>
         </Grid>
         <TableContainer component={Paper}>
-            <Table sx={{minWidth: 650}} aria-label="simple table">
+            <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
                     <TableRow>
                         <TableCell className="font-semibold">#</TableCell>

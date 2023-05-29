@@ -133,7 +133,6 @@ const PrivateLayout: React.FC<PrivateLayoutInterface> = ({ title, children }) =>
                 }
             }
         }
-        console.log(user);
     }, [user]);
 
     return (
