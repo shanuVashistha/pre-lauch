@@ -20,7 +20,7 @@ export const SideNav: React.FC<SideNavInterface> = (props) => {
         </div>
         <div className="flex-1 overflow-y-auto  p-[10px]" style={{ maxHeight: 'calc(100vh - 120px)' }}>
             {
-                links.map((link, index) => {
+                links?.map((link, index) => {
                     return <div key={index} className="w-full">
                         {
                             link.subLinks.length !== 0 ?

@@ -45,3 +45,5 @@ export const LoaderProvider: React.FC<any> = ({children}) => {
         </LoaderContext.Provider>
     );
 };
+
+export const useLoader = () => React.useContext(LoaderContext);

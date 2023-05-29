@@ -1,16 +1,16 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import PrivateLayout from "@/components/Layout/privateLayout";
-import {ImageOverlay} from "@/utils/admin/ImageOverlay";
-import {Button} from "@/utils/Button";
-import {LoaderContext} from "@/context/LoaderContext";
-import {Paper, TextField} from "@mui/material";
-import {useRouter} from "next/router";
-import {useSnackbar} from "@/context/SnackbarContext";
-import {BlockNoteView, useBlockNote} from "@blocknote/react";
-import {BlockNoteEditor} from "@blocknote/core";
-import {GetServerSideProps} from "next";
-import {blogApi} from "@/helper/Lookups/blog";
-import {BlogInterface} from "@/types";
+import { ImageOverlay } from "@/utils/admin/ImageOverlay";
+import { Button } from "@/utils/Button";
+import { LoaderContext } from "@/context/LoaderContext";
+import { Paper, TextField } from "@mui/material";
+import { useRouter } from "next/router";
+import { useSnackbar } from "@/context/SnackbarContext";
+import { BlockNoteView, useBlockNote } from "@blocknote/react";
+import { BlockNoteEditor } from "@blocknote/core";
+import { GetServerSideProps } from "next";
+import { blogApi } from "@/helper/Lookups/blog";
+import { BlogInterface } from "@/types";
 import "@blocknote/core/style.css";
 
 const fieldNames: any = {
@@ -29,8 +29,8 @@ interface BlogEditFormInterface {
 
 const Edit: React.FC<BlogEditFormInterface> = (props) => {
     const router: any = useRouter();
-    const {openSnackbar} = useSnackbar()
-    const {setIsLoading} = useContext(LoaderContext)
+    const { openSnackbar } = useSnackbar()
+    const { setIsLoading } = useContext(LoaderContext)
     const [editorData, setEditorData] = useState<any>({});
     const [errors, setErrors] = useState<any>("");
     // const [isFeatured, setIsFeatured] = useState<any>(false);
@@ -54,7 +54,7 @@ const Edit: React.FC<BlogEditFormInterface> = (props) => {
             };
         });
         setErrors((prevErrors: any) => {
-            const {[key]: deletedKey, ...restErrors} = prevErrors;
+            const { [key]: deletedKey, ...restErrors } = prevErrors;
             return restErrors;
         });
     };
@@ -69,7 +69,7 @@ const Edit: React.FC<BlogEditFormInterface> = (props) => {
                 acc[cur] = `${fieldNames[cur]} is required`;
                 return acc;
             }, {});
-            setErrors((prevErrors: any) => ({...prevErrors, ...newErrors}));
+            setErrors((prevErrors: any) => ({ ...prevErrors, ...newErrors }));
         }
 
         if (Object.keys(errors).length > 0 || emptyParams.length > 0) {
@@ -116,9 +116,14 @@ const Edit: React.FC<BlogEditFormInterface> = (props) => {
 
     return <PrivateLayout title="Enjoy Mondays Pre Launch - Blog Slug">
         <div className="flex items-center mb-[24px] gap-[12px]">
-            <h1 className="flex-1 font-semibold text-[20px] tracking-[1px]">
-                Update Blog (Image Size: 1920x1080)
-            </h1>
+            <div className="flex-1">
+                <h1 className="font-semibold text-[20px] tracking-[1px]">
+                    Update Blog
+                </h1>
+                <h3 className="font-medium text-[12px] tracking-[1px]">
+                    Recommended Image Size: 1920x1080 & Allowed Image Format: .png, .jpg, .jpeg, .webp
+                </h3>
+            </div>
             {/*<div>*/}
             {/*    <Button*/}
             {/*        label={!isFeatured ? 'Add to Featured' : 'Remove from Featured'}*/}
@@ -147,6 +152,13 @@ const Edit: React.FC<BlogEditFormInterface> = (props) => {
                             setParam("image", file);
                             setImageUrl(url);
                         }}
+                        helper={<div className="pl-2">
+                            <div className="inline text-[13px] font-medium text-red-700 p-2 w-auto rounded"
+                                 style={{ background: "rgba(255,255,255,.75)" }}
+                            >
+                                Allowed Maximum Size: 4MB
+                            </div>
+                        </div>}
                         className="object-cover w-full h-[265px]"
                         wrapperHeightClass="h-full"
                     />

@@ -1,0 +1,27 @@
+import {NextApiRequest, NextApiResponse} from 'next';
+import {dynamoDB} from "@/utils/config/aws";
+
+
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+    const {username} = req.query;
+
+    if (req.method === 'DELETE') {
+        const params = {
+            TableName: 'users',
+            Key: {
+                username
+            }
+        };
+
+        try {
+            const data = await dynamoDB.delete(params).promise();
+            res.status(200).json({success: true, data});
+        } catch (error: any) {
+            res.status(500).json({success: false, error: error.message});
+        }
+    } else {
+        res.status(400).json({success: false, error: 'Invalid request method'});
+    }
+};
+
+export default handler;

@@ -1,25 +1,20 @@
 import '@/styles/globals.css';
-import React, {useContext} from 'react';
-import type {AppProps} from 'next/app';
-import {Provider} from 'react-redux';
-import {configureStore} from '@reduxjs/toolkit';
-import {LoaderContext, LoaderProvider} from '@/context/LoaderContext';
+import React, { useContext } from 'react';
+import type { AppProps } from 'next/app';
+import { Provider } from 'react-redux';
+import { LoaderContext, LoaderProvider } from '@/context/LoaderContext';
 import Loader from '@/utils/Loader';
-import {useRouter} from 'next/router';
-import {AuthProvider, useAuth} from '@/context/AuthContext';
-import authReducer from "@/store/reducers/authReducer";
-import {SnackbarProvider} from "@/context/SnackbarContext";
-import {SnackBar} from "@/components/SnackBar";
+import { useRouter } from 'next/router';
+import { AuthProvider, useAuth } from '@/context/AuthContext';
+import { SnackbarProvider } from "@/context/SnackbarContext";
+import { SnackBar } from "@/components/SnackBar";
+import { ThemeProvider } from "@mui/material";
+import { theme } from "@/theme";
+import { store } from "@/store";
 
-const store = configureStore({
-    reducer: {
-        auth: authReducer,
-    },
-});
-
-export default function App({Component, pageProps}: AppProps) {
-    const {isLoading, setIsLoading} = useContext(LoaderContext);
-    const {login, logout, token} = useAuth();
+export default function App ({ Component, pageProps }: AppProps) {
+    const { isLoading, setIsLoading } = useContext(LoaderContext);
+    const { token } = useAuth();
     const router = useRouter();
     const blogRoutePattern = /^\/blog(\/.*)?$/;
     const isBlogRoute = router.pathname.match(blogRoutePattern);
@@ -33,22 +28,24 @@ export default function App({Component, pageProps}: AppProps) {
     ];
 
     return (
-        <Provider store={store}>
-            <LoaderContext.Provider value={{isLoading, setIsLoading}}>
-                <LoaderProvider>
-                    <SnackbarProvider>
-                        {!isBlogRoute && !unprotectedRoutes.includes(router.pathname) ? (
-                            <AuthProvider login={login} logout={logout} token={token}>
+        <ThemeProvider theme={theme}>
+            <Provider store={store}>
+                <LoaderContext.Provider value={{ isLoading, setIsLoading }}>
+                    <LoaderProvider>
+                        <SnackbarProvider>
+                            {!isBlogRoute && !unprotectedRoutes.includes(router.pathname) ? (
+                                <AuthProvider token={token}>
+                                    <Component {...pageProps} />
+                                </AuthProvider>
+                            ) : (
                                 <Component {...pageProps} />
-                            </AuthProvider>
-                        ) : (
-                            <Component {...pageProps} />
-                        )}
-                        <Loader/>
-                        <SnackBar/>
-                    </SnackbarProvider>
-                </LoaderProvider>
-            </LoaderContext.Provider>
-        </Provider>
+                            )}
+                            <Loader/>
+                            <SnackBar/>
+                        </SnackbarProvider>
+                    </LoaderProvider>
+                </LoaderContext.Provider>
+            </Provider>
+        </ThemeProvider>
     );
 }

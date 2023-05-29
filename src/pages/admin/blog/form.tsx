@@ -1,14 +1,14 @@
-import React, {useContext, useState} from "react";
+import React, { useContext, useState } from "react";
 import PrivateLayout from "@/components/Layout/privateLayout";
-import {convertToSlug} from "@/utils/utils";
-import {ImageOverlay} from "@/utils/admin/ImageOverlay";
-import {Button} from "@/utils/Button";
-import {useRouter} from "next/router";
-import {LoaderContext} from "@/context/LoaderContext";
-import {Paper, TextField} from "@mui/material";
-import {useSnackbar} from "@/context/SnackbarContext";
-import {BlockNoteEditor} from "@blocknote/core";
-import {BlockNoteView, useBlockNote} from "@blocknote/react";
+import { convertToSlug } from "@/utils/utils";
+import { ImageOverlay } from "@/utils/admin/ImageOverlay";
+import { Button } from "@/utils/Button";
+import { useRouter } from "next/router";
+import { LoaderContext } from "@/context/LoaderContext";
+import { Paper, TextField } from "@mui/material";
+import { useSnackbar } from "@/context/SnackbarContext";
+import { BlockNoteEditor } from "@blocknote/core";
+import { BlockNoteView, useBlockNote } from "@blocknote/react";
 import "@blocknote/core/style.css";
 
 const fieldNames: any = {
@@ -24,9 +24,9 @@ const fieldNames: any = {
 const Form: React.FC = () => {
     const router = useRouter();
 
-    const {slug} = router.query;
+    const { slug } = router.query;
 
-    const {openSnackbar} = useSnackbar();
+    const { openSnackbar } = useSnackbar();
 
     const [editorData, setEditorData] = useState<any>({});
 
@@ -38,7 +38,7 @@ const Form: React.FC = () => {
     });
 
 
-    const {setIsLoading} = useContext(LoaderContext)
+    const { setIsLoading } = useContext(LoaderContext)
 
     const [imageUrl, setImageUrl] = useState<string>('');
 
@@ -54,7 +54,7 @@ const Form: React.FC = () => {
             };
         });
         setErrors((prevErrors: any) => {
-            const {[key]: deletedKey, ...restErrors} = prevErrors;
+            const { [key]: deletedKey, ...restErrors } = prevErrors;
             return restErrors;
         });
     };
@@ -68,7 +68,7 @@ const Form: React.FC = () => {
                 acc[cur] = `${fieldNames[cur]} is required`;
                 return acc;
             }, {});
-            setErrors((prevErrors: any) => ({...prevErrors, ...newErrors}));
+            setErrors((prevErrors: any) => ({ ...prevErrors, ...newErrors }));
         }
 
         if (Object.keys(errors).length > 0 || emptyParams.length > 0) {
@@ -108,9 +108,14 @@ const Form: React.FC = () => {
 
     return <PrivateLayout title="Enjoy Mondays Pre Launch - Blog Slug">
         <div className="flex items-center mb-[24px] gap-[12px]">
-            <h1 className="flex-1 font-semibold text-[20px] tracking-[1px]">
-                {!slug ? 'Add New' : 'Update'} Blog (Image Size: 1920x1080)
-            </h1>
+            <div className="flex-1">
+                <h1 className="font-semibold text-[20px] tracking-[1px]">
+                    Add New Blog
+                </h1>
+                <h3 className="font-medium text-[12px] tracking-[1px]">
+                    Recommended Image Size: 1920x1080 & Allowed Image Format: .png, .jpg, .jpeg, .webp
+                </h3>
+            </div>
             {/*<div>*/}
             {/*    <Button*/}
             {/*        label={!isFeatured ? 'Add to Featured' : 'Remove from Featured'}*/}
@@ -139,6 +144,13 @@ const Form: React.FC = () => {
                             setParam("image", file);
                             setImageUrl(url);
                         }}
+                        helper={<div className="pl-2">
+                            <div className="inline text-[13px] font-medium text-red-700 p-2 w-auto rounded"
+                                 style={{ background: "rgba(255,255,255,.75)" }}
+                            >
+                                Allowed Maximum Size: 4MB
+                            </div>
+                        </div>}
                         className="object-cover w-full h-[265px]"
                         wrapperHeightClass="h-full"
                     />

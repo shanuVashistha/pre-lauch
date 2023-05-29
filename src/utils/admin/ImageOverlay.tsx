@@ -9,11 +9,12 @@ interface ImageOverlayInterface {
     withOverlay?: boolean;
     onUploadSuccess: (file: File, url: string) => any;
     className?: string;
+    helper?: any;
     wrapperHeightClass?: string;
 }
 
 export const ImageOverlay: React.FC<ImageOverlayInterface> = (props) => {
-    const { id, url, update, remove, withOverlay, onUploadSuccess, className, wrapperHeightClass } = props;
+    const { id, helper, url, update, remove, withOverlay, onUploadSuccess, className, wrapperHeightClass } = props;
 
     const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
         if (!e.target.files || e.target.files.length === 0) return;
@@ -34,29 +35,34 @@ export const ImageOverlay: React.FC<ImageOverlayInterface> = (props) => {
             alt="Image"
             className={`w-full ${className ? className : ''}`}
         />
-        <div className="absolute top-0 left-0 flex justify-end w-full">
-            <div className="p-2">
-                <label htmlFor={`uploadImage-${id || "test"}`} className="cursor-pointer">
-                    <Img
-                        src="/images/icons/upload.svg"
-                        alt="upload"
-                        className="w-[35px] h-[35px] bg-white rounded-full p-2"
-                    />
-                    <input className="hidden" type="file" id={`uploadImage-${id || "test"}`}
-                           onChange={handleImageUpload}/>
-                </label>
+        <div className="absolute top-0 left-0 flex items-center w-full">
+            <div className="flex-1">
+                {helper}
             </div>
-            {
-                remove && <div className="p-2">
-                    <div className="cursor-pointer" onClick={remove}>
+            <div>
+                <div className="p-2">
+                    <label htmlFor={`uploadImage-${id || "test"}`} className="cursor-pointer">
                         <Img
-                            src="/images/icons/remove.svg"
+                            src="/images/icons/upload.svg"
                             alt="upload"
                             className="w-[35px] h-[35px] bg-white rounded-full p-2"
                         />
-                    </div>
+                        <input className="hidden" type="file" id={`uploadImage-${id || "test"}`}
+                               onChange={handleImageUpload}/>
+                    </label>
                 </div>
-            }
+                {
+                    remove && <div className="p-2">
+                        <div className="cursor-pointer" onClick={remove}>
+                            <Img
+                                src="/images/icons/remove.svg"
+                                alt="upload"
+                                className="w-[35px] h-[35px] bg-white rounded-full p-2"
+                            />
+                        </div>
+                    </div>
+                }
+            </div>
         </div>
     </div>
 }

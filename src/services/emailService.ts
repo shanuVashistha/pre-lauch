@@ -6,16 +6,18 @@ const verfiedEmail = process.env.SENDGRID_VERIFIED_EMAIL;
 interface EmailParams {
     to: string;
     subject: string;
-    text: string;
+    text?: string;
+    html?: any;
 }
 
 export class EmailService {
-    static async sendEmail ({ to, subject, text }: EmailParams): Promise<void> {
+    static async sendEmail({to, subject, text, html}: EmailParams): Promise<void> {
         const msg: any = {
             to,
             from: verfiedEmail,
             subject,
             text,
+            html
         };
 
         try {

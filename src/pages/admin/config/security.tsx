@@ -1,8 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import PrivateLayout from "@/components/Layout/privateLayout";
 import { Button, Grid, TextField, Typography } from "@mui/material";
 import { LoaderContext } from "@/context/LoaderContext";
 import { useSnackbar } from "@/context/SnackbarContext";
+import { useCurrentUserData } from "@/factories/UserFactory";
+import { PasswordInput } from "@/utils/PasswordInput";
 
 const fieldNames: any = {
     username: 'Username',
@@ -14,8 +16,13 @@ const fieldNames: any = {
 const Security: React.FC = () => {
     const { setIsLoading } = useContext(LoaderContext);
     const { openSnackbar } = useSnackbar();
+    const user = useCurrentUserData();
+
+    const [showCurrentPassword, setShowCurrentPassword] = useState<boolean>(false);
+    const [showNewPassword, setShowNewPassword] = useState<boolean>(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
+
     const [params, setParams] = React.useState<any>({
-        username: '',
         currentPassword: '',
         newPassword: '',
         confirmPassword: ''
@@ -67,7 +74,7 @@ const Security: React.FC = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(params)
+                body: JSON.stringify({ username: user.username || "", ...params })
             });
             const data = await response.json();
             if (data.error) {
@@ -105,29 +112,26 @@ const Security: React.FC = () => {
                     fullWidth
                     label="Username"
                     variant="outlined"
-                    value={params.username}
-                    onChange={(e) => setParam("username", e.target.value)}
-                    error={!!errors.username}
-                    helperText={errors.username}
+                    disabled
+                    value={user.username || ""}
                 />
-            </Grid><Grid item md sm={6} xs={12}>
-            <TextField
-                fullWidth
-                label="Current Password"
-                variant="outlined"
-                type="password"
-                value={params.currentPassword}
-                onChange={(e) => setParam("currentPassword", e.target.value)}
-                error={!!errors.currentPassword}
-                helperText={errors.currentPassword}
-            />
-        </Grid>
+            </Grid>
             <Grid item md sm={6} xs={12}>
-                <TextField
-                    fullWidth
+                <PasswordInput
+                    showPassword={showCurrentPassword}
+                    setShowPassword={setShowCurrentPassword}
+                    label="Current Password"
+                    value={params.currentPassword}
+                    onChange={(e) => setParam("currentPassword", e.target.value)}
+                    error={!!errors.currentPassword}
+                    helperText={errors.currentPassword}
+                />
+            </Grid>
+            <Grid item md sm={6} xs={12}>
+                <PasswordInput
+                    showPassword={showNewPassword}
+                    setShowPassword={setShowNewPassword}
                     label="New Password"
-                    variant="outlined"
-                    type="password"
                     value={params.newPassword}
                     onChange={(e) => setParam("newPassword", e.target.value)}
                     error={!!errors.newPassword}
@@ -135,11 +139,10 @@ const Security: React.FC = () => {
                 />
             </Grid>
             <Grid item md sm={6} xs={12}>
-                <TextField
-                    fullWidth
+                <PasswordInput
+                    showPassword={showConfirmPassword}
+                    setShowPassword={setShowConfirmPassword}
                     label="Confirm New Password"
-                    variant="outlined"
-                    type="password"
                     value={params.confirmPassword}
                     onChange={(e) => setParam("confirmPassword", e.target.value)}
                     error={!!errors.confirmPassword}
