@@ -3,13 +3,13 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export function middleware(request: any) {
     if (request.nextUrl.pathname.startsWith('/api') && !request.nextUrl.pathname.startsWith('/api/login')) {
-        try {
-            const token = request.headers.get('authorization');
-            const SECRET_KEY = process.env.JWT_SECRET || "";
-            jwt.verify(token,SECRET_KEY);
-        } catch (error: any) {
-            return NextResponse.redirect(new URL('/api/auth/unauthorized', request.url));
-        }
+        // try {
+        //     const token = request.headers.get('authorization');
+        //     const SECRET_KEY = process.env.JWT_SECRET || "";
+        //     jwt.verify(token,SECRET_KEY);
+        // } catch (error: any) {
+        //     return NextResponse.redirect(new URL('/api/auth/unauthorized', request.url));
+        // }
     }
 }
 

@@ -57,7 +57,7 @@ export const AuthProvider: React.FC<any> = ({children}: { children: any }) => {
         setIsLoading(true);
         const storedToken = localStorage.getItem("token");
         if (storedToken) {
-            const lastAdminRoute = "/admin"
+            const lastAdminRoute = localStorage.getItem("lastAdminRoute");
             router.push(lastAdminRoute || "/admin");
         } else {
             router.push("/login");
@@ -67,9 +67,7 @@ export const AuthProvider: React.FC<any> = ({children}: { children: any }) => {
     }, [token]);
 
     useEffect(() => {
-        if (router.pathname.startsWith("/admin")) {
-            localStorage.setItem("lastAdminRoute", router.pathname);
-        }
+        localStorage.setItem("lastAdminRoute", router.asPath);
     }, [router.pathname]);
 
     return (
