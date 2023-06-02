@@ -1,16 +1,16 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {useContext, useEffect, useState} from "react";
 import PrivateLayout from "@/components/Layout/privateLayout";
-import { ImageOverlay } from "@/utils/admin/ImageOverlay";
-import { Button } from "@/utils/Button";
-import { LoaderContext } from "@/context/LoaderContext";
-import { Paper, TextField } from "@mui/material";
-import { useRouter } from "next/router";
-import { useSnackbar } from "@/context/SnackbarContext";
-import { BlockNoteView, useBlockNote } from "@blocknote/react";
-import { BlockNoteEditor } from "@blocknote/core";
-import { GetServerSideProps } from "next";
-import { blogApi } from "@/helper/Lookups/blog";
-import { BlogInterface } from "@/types";
+import {ImageOverlay} from "@/utils/admin/ImageOverlay";
+import {Button} from "@/utils/Button";
+import {LoaderContext} from "@/context/LoaderContext";
+import {Paper, TextField} from "@mui/material";
+import {useRouter} from "next/router";
+import {useSnackbar} from "@/context/SnackbarContext";
+import {BlockNoteView, useBlockNote} from "@blocknote/react";
+import {BlockNoteEditor} from "@blocknote/core";
+import {GetServerSideProps} from "next";
+import {blogApi} from "@/helper/Lookups/blog";
+import {BlogInterface} from "@/types";
 import "@blocknote/core/style.css";
 
 const fieldNames: any = {
@@ -29,12 +29,22 @@ interface BlogEditFormInterface {
 
 const Edit: React.FC<BlogEditFormInterface> = (props) => {
     const router: any = useRouter();
-    const { openSnackbar } = useSnackbar()
-    const { setIsLoading } = useContext(LoaderContext)
+    const {openSnackbar} = useSnackbar()
+    const {setIsLoading} = useContext(LoaderContext)
     const [editorData, setEditorData] = useState<any>({});
     const [errors, setErrors] = useState<any>("");
     // const [isFeatured, setIsFeatured] = useState<any>(false);
-    const initialContent: null = props.blog ? JSON.parse(props.blog.body) : null;
+    const data = JSON.parse(props.blog.body);
+    const updatedData = data.map((item: any) => {
+        const filteredContent = item.content.filter(
+            (contentItem: any) => contentItem.text.trim() !== ""
+        );
+        return {
+            ...item,
+            content: filteredContent,
+        };
+    });
+    const initialContent: null = props.blog ? updatedData : null;
 
     const editor: BlockNoteEditor | null = useBlockNote({
         initialContent: initialContent ? initialContent : undefined,
@@ -54,7 +64,7 @@ const Edit: React.FC<BlogEditFormInterface> = (props) => {
             };
         });
         setErrors((prevErrors: any) => {
-            const { [key]: deletedKey, ...restErrors } = prevErrors;
+            const {[key]: deletedKey, ...restErrors} = prevErrors;
             return restErrors;
         });
     };
@@ -69,7 +79,7 @@ const Edit: React.FC<BlogEditFormInterface> = (props) => {
                 acc[cur] = `${fieldNames[cur]} is required`;
                 return acc;
             }, {});
-            setErrors((prevErrors: any) => ({ ...prevErrors, ...newErrors }));
+            setErrors((prevErrors: any) => ({...prevErrors, ...newErrors}));
         }
 
         if (Object.keys(errors).length > 0 || emptyParams.length > 0) {
@@ -154,7 +164,7 @@ const Edit: React.FC<BlogEditFormInterface> = (props) => {
                         }}
                         helper={<div className="pl-2">
                             <div className="inline text-[13px] font-medium text-red-700 p-2 w-auto rounded"
-                                 style={{ background: "rgba(255,255,255,.75)" }}
+                                 style={{background: "rgba(255,255,255,.75)"}}
                             >
                                 Allowed Maximum Size: 4MB
                             </div>

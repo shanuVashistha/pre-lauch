@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
-import { Img } from "@/utils/Img";
+import React, {FC} from 'react';
+import {Img} from "@/utils/Img";
 
 interface BlogBodyInterface {
     content: any[];
@@ -21,7 +21,7 @@ interface BlockItemHeadingInterface {
 }
 
 const Heading: FC<BlockItemHeadingInterface> = (props) => {
-    const { textColor, backgroundColor, textAlignment, children, level } = props;
+    const {textColor, backgroundColor, textAlignment, children, level} = props;
     const HeadingTag: any = `h${level}`;
     const getClass = (level: any) => {
         const defaultClasses = 'font-medium text-[#1D1E25] my-[20px]';
@@ -39,7 +39,7 @@ const Heading: FC<BlockItemHeadingInterface> = (props) => {
     const className = getClass(level);
     return (
         <HeadingTag
-            style={{ color: textColor, backgroundColor, textAlign: textAlignment }}
+            style={{color: textColor, backgroundColor, textAlign: textAlignment}}
             className={className}
         >
             {children}
@@ -47,7 +47,7 @@ const Heading: FC<BlockItemHeadingInterface> = (props) => {
     );
 };
 
-const Paragraph: FC<BlockItemInterface> = ({ textColor, backgroundColor, textAlignment, children }) => {
+const Paragraph: FC<BlockItemInterface> = ({textColor, backgroundColor, textAlignment, children}) => {
     const linkItem = children?.find((item: any) => item.type === 'link');
     if (linkItem) {
         return (<>
@@ -58,7 +58,7 @@ const Paragraph: FC<BlockItemInterface> = ({ textColor, backgroundColor, textAli
                                 return (
                                     <p
                                         key={index}
-                                        style={{ color: textColor, backgroundColor, textAlign: textAlignment }}
+                                        style={{color: textColor, backgroundColor, textAlign: textAlignment}}
                                         className="inline font-normal xxl:text-[16px] md:text-[14px] sm:text-[12px] text-[10px] md:leading-[27px] leading-[15px] tracking-[0.6px] text-[#5B6570] my-[10px]"
                                     >
                                         {item.text}
@@ -83,7 +83,7 @@ const Paragraph: FC<BlockItemInterface> = ({ textColor, backgroundColor, textAli
     } else {
         return (
             <p
-                style={{ color: textColor, backgroundColor, textAlign: textAlignment }}
+                style={{color: textColor, backgroundColor, textAlign: textAlignment}}
                 className="font-normal xxl:text-[16px] md:text-[14px] sm:text-[12px] text-[10px] md:leading-[27px] leading-[15px] tracking-[0.6px] text-[#5B6570] my-[10px]"
             >
                 {children[0]?.text}
@@ -92,9 +92,9 @@ const Paragraph: FC<BlockItemInterface> = ({ textColor, backgroundColor, textAli
     }
 };
 
-const BulletListItem: FC<BlockItemInterface> = ({ textColor, backgroundColor, textAlignment, children }) => (
+const BulletListItem: FC<BlockItemInterface> = ({textColor, backgroundColor, textAlignment, children}) => (
     <div
-        style={{ color: textColor, backgroundColor, textAlign: textAlignment }}
+        style={{color: textColor, backgroundColor, textAlign: textAlignment}}
         className="w-full flex items-center gap-[16px] pb-[12px]"
     >
         <Img src="/images/check.svg" alt="Check"
@@ -106,7 +106,7 @@ const BulletListItem: FC<BlockItemInterface> = ({ textColor, backgroundColor, te
 );
 
 export const BlogBody: FC<BlogBodyInterface> = (props) => {
-    const { content } = props;
+    const {content} = props;
     return (
         <>
             {

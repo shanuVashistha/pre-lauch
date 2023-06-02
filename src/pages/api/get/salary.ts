@@ -4,9 +4,9 @@ import {openai} from "@/services/openAi";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
     try {
-        const prompt = "Please provide the approx highest salary for software developers with 8+ years of experience in London, working in enterprise companies and only need highest number";
+        const prompt = `Please provide the approx salaries with highest salary for software developers with 8+ years of experience in London, working in enterprise companies and only need salary in number no year nothing else only result in number and i need only one highest result`;
 
-        const response = await openai.createCompletion({
+        const response: any = await openai.createCompletion({
             model: "text-davinci-003",
             prompt: prompt,
             temperature: 1,
@@ -18,7 +18,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
         // Extract the salary from the response
         const salary = String(response.data.choices[0].text).trim();
-        console.log(response.data)
+        console.log(salary)
         res.status(200).json({salary});
     } catch (error) {
         console.error('Error:', error);

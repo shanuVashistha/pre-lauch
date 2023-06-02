@@ -36,10 +36,10 @@ export interface BlogPageInterface {
 }
 
 export interface CalculatorInterface {
-    occupation: string;
+    role: string;
     experience: string;
     location: string;
-    skills: string[];
+    skills: string;
     industry: string;
     company_size: string;
 }
