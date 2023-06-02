@@ -25,7 +25,10 @@ module.exports = {
                 'dark': '#1A1A1A',
                 'primary': '#263041',
                 'secondary': '#F9B400',
-            }
+            },
+            boxShadow: {
+                'custom': '0px 0px 20px rgba(0, 0, 0, 0.09)',
+            },
         },
         fontFamily: {
             primary: ['Poppins', 'sans-serif'],

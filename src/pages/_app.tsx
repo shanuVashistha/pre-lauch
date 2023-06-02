@@ -22,6 +22,7 @@ export default function App ({ Component, pageProps }: AppProps) {
     const unprotectedRoutes = [
         "/",
         "/home",
+        "/employer",
         "/calculator",
         "/blogs",
         "/404"

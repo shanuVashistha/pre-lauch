@@ -360,7 +360,7 @@ const Home: React.FC = () => {
                                     !showGreetings ? <div
                                             className="flex justify-between md:w-[510px] claim-input-container md:px-[10px] md:py-[5px] p-[8px]">
                                             <input
-                                                className="claim-input md:flex-1 md:w-auto w-[190px]   md:p-[16px] p-[8px] bg-transparent"
+                                                className="claim-input  md:flex-1 md:w-auto w-[190px]   md:p-[16px] p-[8px] bg-transparent"
                                                 placeholder="Enter your email address..."
                                                 value={email}
                                                 onChange={(e) => setEmail(e.target.value)}
