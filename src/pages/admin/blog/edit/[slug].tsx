@@ -12,6 +12,7 @@ import {GetServerSideProps} from "next";
 import {blogApi} from "@/helper/Lookups/blog";
 import {BlogInterface} from "@/types";
 import "@blocknote/core/style.css";
+import {useCurrentUserData} from "@/factories/UserFactory";
 
 const fieldNames: any = {
     title: "Title",
@@ -31,6 +32,7 @@ const Edit: React.FC<BlogEditFormInterface> = (props) => {
     const router: any = useRouter();
     const {openSnackbar} = useSnackbar()
     const {setIsLoading} = useContext(LoaderContext)
+    const user = useCurrentUserData();
     const [editorData, setEditorData] = useState<any>({});
     const [errors, setErrors] = useState<any>("");
     // const [isFeatured, setIsFeatured] = useState<any>(false);
@@ -96,6 +98,7 @@ const Edit: React.FC<BlogEditFormInterface> = (props) => {
             formData.append("description", params.description || "");
             formData.append("meta_description", params.meta_description || "");
             formData.append("meta_keywords", params.meta_keywords || "");
+            formData.append("created_by", user.name || "");
             // formData.append("is_featured", JSON.stringify(isFeatured));
             formData.append("file", params.image);
 

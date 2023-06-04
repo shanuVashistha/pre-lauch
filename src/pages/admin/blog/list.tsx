@@ -45,6 +45,7 @@ const Row: React.FC<BlogRowInterface> = (props) => {
                 </Link>
             </TableCell>
             <TableCell>{row.title}</TableCell>
+            <TableCell className="capitalize min-w-[110px]">{row.created_by}</TableCell>
             <TableCell>{row.description}</TableCell>
             <TableCell align="right" className="w-[150px]">
                 <Link href={`edit/${row.slug}`}>
@@ -63,7 +64,7 @@ const Row: React.FC<BlogRowInterface> = (props) => {
             </TableCell>
         </TableRow>
         <TableRow>
-            <TableCell colSpan={5} className="py-0">
+            <TableCell colSpan={6} className="py-0">
                 <Collapse in={open} timeout="auto" unmountOnExit>
                     <Grid container alignItems="stretch" className="py-[16px] gap-[16px]">
                         <Grid item md={4} sm={6} xs={12}>
@@ -126,7 +127,6 @@ const Row: React.FC<BlogRowInterface> = (props) => {
 const List: React.FC = () => {
     const [rows, setRows] = React.useState([]);
     const {setIsLoading} = useContext(LoaderContext)
-
     const getBlogs = async () => {
         setIsLoading(true);
         const response = await fetch(`/api/get/blogs?withoutPagination=true`);
@@ -165,6 +165,7 @@ const List: React.FC = () => {
                         <TableCell className="font-semibold">#</TableCell>
                         <TableCell className="font-semibold">Slug</TableCell>
                         <TableCell className="font-semibold">Title</TableCell>
+                        <TableCell className="font-semibold">Published By</TableCell>
                         <TableCell className="font-semibold">Description</TableCell>
                         <TableCell className="font-semibold" align="right">Actions</TableCell>
                     </TableRow>

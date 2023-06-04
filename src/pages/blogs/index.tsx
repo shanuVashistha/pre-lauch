@@ -11,7 +11,7 @@ const BlogsPage: React.FC = () => {
     const {isLoading, setIsLoading} = useContext(LoaderContext);
     const [blogs, setBlogs] = useState<BlogInterface[]>([]);
     const [page, setPage] = useState<number>(1);
-    const [limit, setLimit] = useState<number>(16);
+    const [limit, setLimit] = useState<number>(60);
     const [total, setTotal] = useState<number>(0);
     const [seoData, setSeoData] = useState<any>({});
 

@@ -1,8 +1,8 @@
 import multer from 'multer';
-import { S3UploadService } from "@/services/upload";
+import {S3UploadService} from "@/services/upload";
 import fs from 'fs';
 import util from 'util';
-import { dynamoDB } from "@/utils/config/aws";
+import {dynamoDB} from "@/utils/config/aws";
 
 const readFile = util.promisify(fs.readFile);
 const unlink = util.promisify(fs.unlink);
@@ -35,11 +35,11 @@ export default async (req: any, res: any) => {
     upload.single('file')(req, res, async (err) => {
         if (err instanceof multer.MulterError) {
             if (err.code === 'LIMIT_FILE_SIZE') {
-                return res.status(400).json({ error: 'File size exceeds the limit of 4MB' });
+                return res.status(400).json({error: 'File size exceeds the limit of 4MB'});
             }
-            return res.status(500).json({ error: err.message });
+            return res.status(500).json({error: err.message});
         } else if (err) {
-            return res.status(500).json({ error: err.message });
+            return res.status(500).json({error: err.message});
         }
 
         const file = req.file;
@@ -51,6 +51,7 @@ export default async (req: any, res: any) => {
         const description = req.body.description;
         const meta_description = req.body.meta_description;
         const meta_keywords = req.body.meta_keywords;
+        const created_by = req.body.created_by;
         // const is_featured = req.body.is_featured;
         let imageLocation = req.body.file;
 
@@ -70,6 +71,7 @@ export default async (req: any, res: any) => {
                 description,
                 meta_description,
                 meta_keywords,
+                created_by,
                 // is_featured,
                 image: imageLocation,
             };
@@ -79,7 +81,7 @@ export default async (req: any, res: any) => {
                 Key: {
                     slug: slug
                 },
-                UpdateExpression: "set title = :title, id = :id,  body = :body, meta_title = :meta_title, description = :description, meta_description = :meta_description, meta_keywords = :meta_keywords, image = :image",
+                UpdateExpression: "set title = :title, id = :id,  body = :body, meta_title = :meta_title, description = :description, meta_description = :meta_description, meta_keywords = :meta_keywords, created_by = :created_by, image = :image",
                 ExpressionAttributeValues: {
                     ':title': title,
                     ':id': id,
@@ -88,6 +90,7 @@ export default async (req: any, res: any) => {
                     ':description': description,
                     ':meta_description': meta_description,
                     ':meta_keywords': meta_keywords,
+                    ':created_by': created_by,
                     // ':is_featured': is_featured,
                     ':image': imageLocation
                 },
@@ -98,10 +101,10 @@ export default async (req: any, res: any) => {
 
             console.log('Blog updated:', blog);
 
-            res.status(200).json({ message: 'Blog updated successfully' });
+            res.status(200).json({message: 'Blog updated successfully'});
         } catch (error) {
             console.error('Error updating blog:', error);
-            res.status(500).json({ error: 'Error updating blog' });
+            res.status(500).json({error: 'Error updating blog'});
         }
     });
 };

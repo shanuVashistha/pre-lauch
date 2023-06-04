@@ -43,7 +43,7 @@ export const theme = responsiveFontSizes(createTheme({
         MuiTableCell: {
             styleOverrides: {
                 root: {
-                    fontSize: 13
+                    fontSize: 12,
                 }
             }
         }

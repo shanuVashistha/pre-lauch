@@ -1,15 +1,16 @@
-import React, { useContext, useState } from "react";
+import React, {useContext, useState} from "react";
 import PrivateLayout from "@/components/Layout/privateLayout";
-import { convertToSlug } from "@/utils/utils";
-import { ImageOverlay } from "@/utils/admin/ImageOverlay";
-import { Button } from "@/utils/Button";
-import { useRouter } from "next/router";
-import { LoaderContext } from "@/context/LoaderContext";
-import { Paper, TextField } from "@mui/material";
-import { useSnackbar } from "@/context/SnackbarContext";
-import { BlockNoteEditor } from "@blocknote/core";
-import { BlockNoteView, useBlockNote } from "@blocknote/react";
+import {convertToSlug} from "@/utils/utils";
+import {ImageOverlay} from "@/utils/admin/ImageOverlay";
+import {Button} from "@/utils/Button";
+import {useRouter} from "next/router";
+import {LoaderContext} from "@/context/LoaderContext";
+import {Paper, TextField} from "@mui/material";
+import {useSnackbar} from "@/context/SnackbarContext";
+import {BlockNoteEditor} from "@blocknote/core";
+import {BlockNoteView, useBlockNote} from "@blocknote/react";
 import "@blocknote/core/style.css";
+import {useCurrentUserData} from "@/factories/UserFactory";
 
 const fieldNames: any = {
     title: "Title",
@@ -24,9 +25,11 @@ const fieldNames: any = {
 const Form: React.FC = () => {
     const router = useRouter();
 
-    const { slug } = router.query;
+    const {slug} = router.query;
 
-    const { openSnackbar } = useSnackbar();
+    const user = useCurrentUserData();
+
+    const {openSnackbar} = useSnackbar();
 
     const [editorData, setEditorData] = useState<any>({});
 
@@ -38,7 +41,7 @@ const Form: React.FC = () => {
     });
 
 
-    const { setIsLoading } = useContext(LoaderContext)
+    const {setIsLoading} = useContext(LoaderContext)
 
     const [imageUrl, setImageUrl] = useState<string>('');
 
@@ -54,7 +57,7 @@ const Form: React.FC = () => {
             };
         });
         setErrors((prevErrors: any) => {
-            const { [key]: deletedKey, ...restErrors } = prevErrors;
+            const {[key]: deletedKey, ...restErrors} = prevErrors;
             return restErrors;
         });
     };
@@ -68,7 +71,7 @@ const Form: React.FC = () => {
                 acc[cur] = `${fieldNames[cur]} is required`;
                 return acc;
             }, {});
-            setErrors((prevErrors: any) => ({ ...prevErrors, ...newErrors }));
+            setErrors((prevErrors: any) => ({...prevErrors, ...newErrors}));
         }
 
         if (Object.keys(errors).length > 0 || emptyParams.length > 0) {
@@ -85,6 +88,7 @@ const Form: React.FC = () => {
             formData.append("description", params.description || "");
             formData.append("meta_description", params.meta_description || "");
             formData.append("meta_keywords", params.meta_keywords || "");
+            formData.append("created_by", user.name || "");
             // formData.append("is_featured", JSON.stringify(isFeatured));
             formData.append("file", params.image);
 
@@ -146,7 +150,7 @@ const Form: React.FC = () => {
                         }}
                         helper={<div className="pl-2">
                             <div className="inline text-[13px] font-medium text-red-700 p-2 w-auto rounded"
-                                 style={{ background: "rgba(255,255,255,.75)" }}
+                                 style={{background: "rgba(255,255,255,.75)"}}
                             >
                                 Allowed Maximum Size: 4MB
                             </div>
