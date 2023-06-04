@@ -39,7 +39,7 @@ const Edit: React.FC<BlogEditFormInterface> = (props) => {
     const data = JSON.parse(props.blog.body);
     const updatedData = data.map((item: any) => {
         const filteredContent = item.content.filter(
-            (contentItem: any) => contentItem.text.trim() !== ""
+            (contentItem: any) => contentItem?.text?.trim() !== ""
         );
         return {
             ...item,
