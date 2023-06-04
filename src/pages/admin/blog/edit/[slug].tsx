@@ -122,6 +122,7 @@ const Edit: React.FC<BlogEditFormInterface> = (props) => {
         setImageUrl(props.blog ? props.blog.image : '');
         // setIsFeatured(props.blog ? JSON.parse(props.blog.is_featured) : false);
         setIsLoading(false);
+        console.log(updatedData)
     }, [props]);
 
     return <PrivateLayout title="Enjoy Mondays Pre Launch - Blog Slug">
