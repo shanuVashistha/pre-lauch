@@ -26,7 +26,7 @@
     "@emotion/server": "^11.11.0",
     "@emotion/styled": "^11.11.0",
     "@firebase/firestore": "^3.11.0",
-    "@mui/material": "^5.13.0",
+    "@mui/material": "^5.13.3",
     "@next/bundle-analyzer": "^13.3.4",
     "@reduxjs/toolkit": "^1.9.5",
     "@sendgrid/mail": "^7.7.0",

@@ -20,6 +20,15 @@ body {
     max-height: calc(100vh - 56px);
 }
 
+.bg1 {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, #FFFFFF 100%);
+}
+
+.button2 {
+    background: #3ABAB1;
+    border-radius: 7.91606px;
+}
+
 .banner {
     background-image: url(/images/banner.png);
     background-size: 100% 100%;
