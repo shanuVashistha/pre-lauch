@@ -201,7 +201,7 @@ const BannerJob: React.FC = () => {
 
 
                 <div className=" md:px-[80px] bgbanner -z-0  md:pt-[40px]  px-[24px] relative">
-                    <div className="moving-item-wrapper z-0">
+                    <div className="moving-item-wrapper z-10">
 
 
                         <Img
@@ -242,7 +242,7 @@ const BannerJob: React.FC = () => {
                         />
                     </div>
                     <div
-                        className="flex max-w-[1390px] md:flex-row bgbanner  mx-auto justify-center flex-col gap-8  pt-[30px] md:pt-0">
+                        className="flex max-w-[1390px] md:flex-row   mx-auto justify-center flex-col gap-8  pt-[30px] md:pt-0">
                         <div className="md:flex-1 w-[100%] h-auto">
                             <Img
                                 src={"/jobseeker/lines.svg"}
@@ -515,7 +515,7 @@ const BannerJob: React.FC = () => {
                 <div
                     className="flex md:flex-row flex-col bgnever  justify-center md:gap-[10px] lg:gap-[200px] p-[30px] py-[50px]">
                     <div
-                        className=" md:text-[35px] sm:text-[30px] text-[20px]  leading-[40px] items-start justify-start font-semibold max-w-[400px]">
+                        className=" md:text-[35px] sm:text-[22px] text-[20px]  leading-[40px] items-start justify-start font-semibold max-w-[400px]">
                         <div> Never Want to Miss Any Job News?
                         </div>
 
