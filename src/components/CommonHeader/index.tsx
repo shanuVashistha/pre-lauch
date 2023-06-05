@@ -16,8 +16,7 @@ const Index: React.FC<any> = () => {
         }
     }
 
-    // window.addEventListener("scroll", setFixed);
-
+    window.addEventListener("scroll", setFixed);
     const handleOpenSidebar = () => {
         setOpenMenu(!openMenu);
     };
