@@ -13,17 +13,17 @@ export const EmployeeBanner: React.FC<any> = () => {
     const content = <>
         <Header/>
         <div
-            className="2xl:max-w-[1327.5px] xl:max-w-[1960px] relative mx-auto HeroSection    pt-[100px]  pb-[140px] xl:pb-[230px] 2xl:pb-[260px]">
-            <div className="flex  flex-col md:flex-row items-center justify-between ">
+            className="2xl:max-w-[1327.5px] xl:max-w-[1960px] relative mx-auto HeroSection    pt-[100px] pb-[30px] md:pb-[140px] xl:pb-[230px] 2xl:pb-[260px]">
+            <div className="flex  flex-col md:flex-row items-center justify-between pt-[50px] md:pt-[0px] mx-auto">
                 <div
-                    className="col-md-6 HeroContent">
+                    className="col-md-6 HeroContent  p-[10px]">
                     <div className="w-full h-full">
-                    <h1 className="text-center HeroHeading md:text-start text-[47px] font-semibold text-[#383F47]  leading-[57px] md:tracking-[-1.55px] pb-[14px] mx-auto md:m-0">
+                    <h1 className="text-center HeroHeading md:text-start   text-[#383F47]  md:tracking-[-1.55px] pb-[14px] mx-auto md:m-0">
                         Match with the Perfect Job <br/> Opportunities
                     </h1>
 
                     <p
-                        className="text-center HeroParagarph md:text-start  text-[#6D6D6D]  font-normal text-[19px] leading-[26px] tracking-[-0.68px] pb-[18px] md:pb-[40px] mx-auto md:m-0">
+                        className="text-center HeroParagarph md:text-start  text-[#6D6D6D]  font-normal  tracking-[-0.68px] pb-[18px] md:pb-[40px] mx-auto md:m-0">
                         Spend less time looking and more time matching with great jobs in <br/> the Tech, Engineering, Sales, Marketing, Accounting, and Finance
                     </p>
                     <div className="flex justify-center items-center md:justify-start gap-[29px]">
@@ -39,7 +39,7 @@ export const EmployeeBanner: React.FC<any> = () => {
                         className="h-[100%] w-auto"
                     />
                 </div>
-                <div className="block relative mobileImageIcon w-[90%] mx-auto  mt-[-55px] md:hidden">
+                <div className="block relative mobileImageIcon w-[90%] mx-auto  mt-[55px] md:hidden">
                     <Img
                         src={image}
                         alt="ICON"

@@ -392,7 +392,7 @@ input:focus, input:focus-within, input:focus-visible, .input:focus, .input:focus
         padding-left: 60px;
     }
 }
-@media (min-width: 14px)and (max-width: 1140px) {
+@media (min-width: 768px)and (max-width: 1140px) {
     .HeroContent{
         padding-left:40px;
     }
@@ -463,21 +463,55 @@ input:focus, input:focus-within, input:focus-visible, .input:focus, .input:focus
         line-height: 18px;
 }
     }
-@media (min-width: 768px) and (max-width: 800px) {
+@media (min-width: 767px) and (max-width: 800px) {
     .AppIcon{
         height: 360px;
-        bottom: 0px;
-        right: 0;
+        bottom: -20px;
+        right: 0px;
     }.HeroHeading{
          font-size:28px;
          line-height: 40px;
          font-weight: 700;
      }
     .HeroParagarph{
-        font-size:08px;
-        line-height:13px;
+        font-size:10px;
+        line-height:15px;
 }
+}
+@media (min-width:600px) and (max-width: 767px) {
+    .HeroHeading{
+        font-size:40px;
+        line-height: 50px;
+        font-weight: 700;
     }
+    .HeroParagarph{
+        font-size:15px;
+        line-height:30px;
+    }
+}
+
+@media (min-width:400px) and (max-width: 600px) {
+    .HeroHeading{
+        font-size:25px;
+        line-height: 40px;
+        font-weight: 700;
+    }
+    .HeroParagarph{
+        font-size:12px;
+        line-height:20px;
+    }
+}
+@media (min-width:10px) and (max-width: 400px) {
+    .HeroHeading{
+        font-size:20px;
+        line-height: 30px;
+        font-weight: 700;
+    }
+    .HeroParagarph{
+        font-size:10px;
+        line-height:15px;
+    }
+}
 
 .backgroundImage{
     background-image: url('/images/icons/background.jpg');
@@ -485,7 +519,15 @@ input:focus, input:focus-within, input:focus-visible, .input:focus, .input:focus
     background-repeat: 0 center;
     background-size: cover;
 }
-
+.navbar{
+    background: transparent;
+}
+.navbar.fixed{
+    background: white;
+    width: 100%;
+    z-index: 10000;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
 .custom-drop-shadow {
     --tw-shadow: 0px 0px 20px rgba(0, 0, 0, 0.09);
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),

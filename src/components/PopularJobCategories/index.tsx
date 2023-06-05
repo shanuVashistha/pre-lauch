@@ -42,8 +42,8 @@ export const PopularJobCategories: React.FC<any> = () => {
     const content = <>
         <div className="flex flex-col justify-center items-center mx-auto">
             <div className="max-w-[1200px] pt-[70px] pb-[30px] ">
-                <h1 className="text-center text-[#2C98F0] text-[42px] font-semibold pb-[20px]">Popular Job Categories </h1>
-                <p className="text-center text-[#363848] text-[16px] font-normal pb-[70px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed <br/> do eiusmod tempor incididunt ut labore et dolore</p>
+                <h1 className="text-center text-[#2C98F0] text-[24px] sm:text-[35px] md:text-[42px] font-semibold pb-[10px] md:pb-[20px]">Popular Job Categories </h1>
+                <p className="text-center text-[#363848] text-[10px] sm:text-[14px] md:text-[16px] font-normal pb-[40px] md:pb-[70px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed <br/> do eiusmod tempor incididunt ut labore et dolore</p>
                 <div className="w-full mx-auto justify-center items-center flex pb-[100px]">
                     <div className="w-full grid md:grid-cols-2 lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-[15px]">
                         {data.map((items,index) =>
