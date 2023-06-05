@@ -80,6 +80,28 @@ const Paragraph: FC<BlockItemInterface> = ({textColor, backgroundColor, textAlig
                 }
             </>
         );
+    } else if (children.length > 1) {
+        return (<>
+                {
+                    children.map((item: any, index: number) => {
+                        return (
+                            <p
+                                key={index}
+                                style={{
+                                    color: textColor,
+                                    backgroundColor,
+                                    textAlign: textAlignment,
+                                    fontWeight: item?.styles?.bold ? 600 : 400
+                                }}
+                                className="xxl:text-[16px] md:text-[14px] sm:text-[12px] text-[10px] md:leading-[27px] leading-[15px] tracking-[0.6px] text-[#5B6570] my-[10px] inline"
+                            >
+                                {item?.text}
+                            </p>
+                        )
+                    })
+                }
+            </>
+        )
     } else {
         return (
             <p
@@ -104,13 +126,26 @@ const BulletListItem: FC<BlockItemInterface> = ({textColor, backgroundColor, tex
         </p>
     </div>
 );
+const NumberedListItem: FC<BlockItemInterface> = ({textColor, backgroundColor, textAlignment, children}) => (
+    <div
+        style={{color: textColor, backgroundColor, textAlign: textAlignment}}
+        className="w-full flex items-center gap-[16px] pb-[12px]"
+    >
+        <div>
+
+        </div>
+        <p className="font-normal xxl:text-[16px] md:text-[14px] sm:text-[12px] text-[10px] md:leading-[27px] leading-[15px] tracking-[0.6px] text-[#5B6570]">
+            {children}
+        </p>
+    </div>
+);
 
 export const BlogBody: FC<BlogBodyInterface> = (props) => {
     const {content} = props;
     return (
         <>
             {
-                content?.map((item) => {
+                content?.map((item, index) => {
                     switch (item.type) {
                         case 'heading':
                             return (
@@ -136,6 +171,17 @@ export const BlogBody: FC<BlogBodyInterface> = (props) => {
                                 </Paragraph>
                             );
                         case 'bulletListItem':
+                            return (
+                                <BulletListItem
+                                    key={item.id}
+                                    textColor={item.props.textColor}
+                                    backgroundColor={item.props.backgroundColor}
+                                    textAlignment={item.props.textAlignment}
+                                >
+                                    {item.content[0]?.text}
+                                </BulletListItem>
+                            );
+                        case 'numberedListItem':
                             return (
                                 <BulletListItem
                                     key={item.id}
