@@ -1,15 +1,19 @@
 import React, {useState} from 'react';
+import {useRouter} from "next/router";
+
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const router = useRouter();
+
 
     const toggleNavbar = () => {
         setIsOpen(!isOpen);
     };
 
     return (
-        <nav className="bg-transparent mt-[25px]">
-            <div className="max-w-[1459px] mx-auto px-2 sm:px-[70px] xxl:px-[49px] lg:px-[70px] md:block hidden">
+        <nav className="bgbanner pt-[25px]">
+            <div className="max-w-[1459px] mx-auto px-2 sm:px-[70px] xxl:px-[35px] lg:px-[77px] md:block hidden">
                 <div className="relative flex items-center justify-between h-16">
                     <div className="flex ">
 
@@ -29,24 +33,24 @@ const Navbar = () => {
                         <div className="flex lg:space-x-4 sm:space-x-[5px]">
                             <a
                                 href="/"
-                                className=" hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                className=" hover:bg-[#F9B400] hover:text-white px-3 py-2 rounded-md tetxt-[16px] font-medium"
                             >
                                 Home
                             </a>
                             <a
                                 href="#"
-                                className=" hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                className=" hover:bg-[#F9B400] hover:text-white px-3 py-2 rounded-md tetxt-[16px] font-medium"
                             >
                                 Resources
                             </a>
                             <a
                                 href="#"
-                                className=" hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                className=" hover:bg-[#F9B400] hover:text-white px-3 py-2 rounded-md tetxt-[16px] font-medium"
                             >
                                 About us </a>
                             <a
                                 href="#"
-                                className=" hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                className=" hover:bg-[#F9B400] hover:text-white px-3 py-2 rounded-md tetxt-[16px] font-medium"
                             >
                                 Contact Us
                             </a>
@@ -57,13 +61,17 @@ const Navbar = () => {
 
                         <button
                             type="button"
-                            className="bg-gray-900 text-white px-4 py-2 rounded-md text-sm font-medium"
+                            onClick={() => router.push("/")}
+
+                            className="bg-white text-black px-4 py-2 rounded-md text-[16px] font-medium"
                         >
                             Sign In
                         </button>
                         <button
                             type="button"
-                            className="bg-gray-900 text-white px-4 py-2 rounded-md text-sm font-medium"
+                            onClick={() => router.push("/")}
+
+                            className="bg-[#F9B400] text-white px-4 py-2 rounded-md text-[16px] font-medium"
                         >
                             Sign Up
                         </button>
@@ -75,7 +83,7 @@ const Navbar = () => {
             </div>
 
 
-            <div className=" sm:hidden">
+            <div className=" md:hidden">
                 <div className="max-w-[700px] mx-auto px-2 sm:px-6 lg:px-8">
                     <div className="relative flex items-center justify-between h-16">
                         <div className="absolute inset-y-0 left-0 flex items-center">
@@ -131,7 +139,9 @@ const Navbar = () => {
                                 <div>
                                     <button
                                         type="button"
-                                        className="bg-gray-900 text-white px-4 py-2 rounded-md text-sm font-medium mx-auto block"
+                                        onClick={() => router.push("/")}
+
+                                        className="bg-[#F9B400] text-white px-4 py-2 rounded-md text-sm font-medium mx-auto block"
                                     >
                                         Sign In
                                     </button>
@@ -139,9 +149,11 @@ const Navbar = () => {
                                 <div>
                                     <button
                                         type="button"
-                                        className="bg-gray-900 text-white px-4 py-2 rounded-md text-sm font-medium mx-auto block"
+                                        onClick={() => router.push("/")}
+
+                                        className="bg-[#5ACFC7;] text-white px-4 py-2 rounded-md text-sm font-medium mx-auto block"
                                     >
-                                        Sign up
+                                        Sign Up
                                     </button>
                                 </div>
                             </div>

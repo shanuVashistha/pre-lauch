@@ -21,7 +21,7 @@ body {
 }
 
 .bg1 {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, #FFFFFF 100%);
+    background: gray;
 }
 
 .button2 {
@@ -243,6 +243,12 @@ input:focus, input:focus-within, input:focus-visible, .input:focus, .input:focus
     border: 1px solid #263041;
 }
 
+.button.secondary1 {
+    background: #5ACFC7;;
+    color: #FFFFFF;
+    border: 1px solid #5ACFC7;;
+}
+
 .button.primary:hover {
     background: transparent;
     color: #F9B400;
@@ -251,6 +257,26 @@ input:focus, input:focus-within, input:focus-visible, .input:focus, .input:focus
 .button.secondary:hover {
     background: transparent;
     color: #263041;
+}
+
+.bgnever {
+    background: rgba(176, 220, 255, 0.27);
+}
+
+.bghow {
+    background: linear-gradient(109.04deg, #FFFBEF 0%, #EEF6FF 51.4%, #E8FAF3 98.1%);
+}
+
+.bgcomp {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, #FFFFFF 100%);
+}
+
+.bgbanner {
+    background: linear-gradient(109.04deg, #FFFBEF 0%, #EFF6FE 51.4%, #EDFAF5 98.1%);
+}
+
+.neverbg {
+    background: rgba(176, 220, 255, 0.27);
 }
 
 .claim-input-container {
