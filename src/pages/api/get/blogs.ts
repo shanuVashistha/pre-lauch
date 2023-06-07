@@ -1,5 +1,6 @@
 import {dynamoDB} from "@/utils/config/aws";
 import {NextApiRequest, NextApiResponse} from "next";
+import cors from "@/utils/cors";
 
 const getAllBlogs = async (req: NextApiRequest, res: NextApiResponse) => {
     const {page = '1', limit = '10', withoutPagination} = req.query;
@@ -31,7 +32,7 @@ const getAllBlogs = async (req: NextApiRequest, res: NextApiResponse) => {
             let data: any = await dynamoDB.scan(params).promise();
             let paginatedData = data.Items;
             let totalPages = Math.ceil(data.Count / parsedPageSize);
-            
+
             // Check if there are more items to fetch
             while (data.LastEvaluatedKey && paginatedData.length < parsedPageSize) {
                 // Set the exclusive start key to continue pagination
@@ -59,4 +60,4 @@ const getAllBlogs = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 };
 
-export default getAllBlogs;
+export default cors(getAllBlogs)

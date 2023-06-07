@@ -57,6 +57,7 @@ export default async (req: any, res: any) => {
         const meta_keywords = req.body.meta_keywords;
         const created_by = req.body.created_by
         // const is_featured = req.body.is_featured;
+        // status:string = "draft, publish, archive", published_at:date, created_at:date, updated_at:date, is_active:boolean, is_featured:boolean
 
         try {
             const buffer = await readFile(file.path);

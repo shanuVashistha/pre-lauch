@@ -1,8 +1,9 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import { dynamoDB } from "@/utils/config/aws";
+import {NextApiRequest, NextApiResponse} from "next";
+import {dynamoDB} from "@/utils/config/aws";
+import cors from "@/utils/cors";
 
 const getBlogBySlug = async (req: NextApiRequest, res: NextApiResponse) => {
-    const { slug } = req.query;
+    const {slug} = req.query;
 
     const params = {
         TableName: "blogs",
@@ -15,7 +16,7 @@ const getBlogBySlug = async (req: NextApiRequest, res: NextApiResponse) => {
         const data = await dynamoDB.get(params).promise();
         res.status(200).json(data.Item);
     } catch (error) {
-        res.status(500).json({ error: "Error fetching blog" });
+        res.status(500).json({error: "Error fetching blog"});
     }
 }
-export default getBlogBySlug;
+export default cors(getBlogBySlug);
