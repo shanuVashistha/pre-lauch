@@ -37,21 +37,24 @@ export const BarChart: FC<BarChartDataInterface> = (props) => {
             return null;
         }
         const salary: any = locationData.salary;
-
+        let count = stepsBefore/3;
         // Generate values before the salary
         for (let i: any = salary - stepsBefore * 10000; i < salary; i += 10000) {
             labels.push(formatSalary(i));
-            dataset.data.push(i);
+            dataset.data.push(salary/(stepsBefore-count));
+            count+=0.5;
         }
 
         // Add the salary itself
         labels.push(formatSalary(salary));
         dataset.data.push(salary);
 
+        count = stepsAfter-2;
         // Generate values after the salary
         for (let i: any = salary + 10000; i <= salary + stepsAfter * 10000; i += 10000) {
             labels.push(formatSalary(i));
-            dataset.data.push(i);
+            dataset.data.push(salary/(stepsAfter-count));
+            count-=0.5
         }
         setSalaryData(locationData.salary);
         setData({
@@ -109,7 +112,7 @@ export const BarChart: FC<BarChartDataInterface> = (props) => {
                             afterDraw: (chart: any) => {
                                 const {ctx, scales} = chart;
                                 const xScale = scales.x;
-                                const xValue = salaryData > 100000 ? salaryData / 100000 : salaryData / 10000;
+                                const xValue = 4;
                                 const xPixel = xScale.getPixelForValue(xValue);
                                 ctx.save();
                                 ctx.strokeStyle = '#615C55';
