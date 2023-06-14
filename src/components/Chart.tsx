@@ -4,11 +4,12 @@ import {salary as SalaryData} from "@/helper/data";
 import {formatSalary} from "@/helper/helper";
 
 interface BarChartDataInterface {
-    params: any
+    params: any;
+    onSalaryChange: (salary: any) => void;
 }
 
 export const BarChart: FC<BarChartDataInterface> = (props) => {
-    const {params} = props;
+    const {params, onSalaryChange} = props;
     const [salaryData, setSalaryData] = useState<any>({});
     const [data, setData] = useState<any>({});
     const getSalary = () => {
@@ -37,31 +38,31 @@ export const BarChart: FC<BarChartDataInterface> = (props) => {
             return null;
         }
         const salary: any = locationData.salary;
-        let count = stepsBefore/3;
+        let count = stepsBefore / 3;
         // Generate values before the salary
         for (let i: any = salary - stepsBefore * 10000; i < salary; i += 10000) {
             labels.push(formatSalary(i));
-            dataset.data.push(salary/(stepsBefore-count));
-            count+=0.5;
+            dataset.data.push(salary / (stepsBefore - count));
+            count += 0.5;
         }
 
         // Add the salary itself
         labels.push(formatSalary(salary));
         dataset.data.push(salary);
 
-        count = stepsAfter-2;
+        count = stepsAfter - 2;
         // Generate values after the salary
         for (let i: any = salary + 10000; i <= salary + stepsAfter * 10000; i += 10000) {
             labels.push(formatSalary(i));
-            dataset.data.push(salary/(stepsAfter-count));
-            count-=0.5
+            dataset.data.push(salary / (stepsAfter - count));
+            count -= 0.5
         }
         setSalaryData(locationData.salary);
         setData({
             labels,
             datasets: [dataset],
         });
-        console.log(salaryData);
+        onSalaryChange(locationData.salary);
     }
 
     useEffect(() => {

@@ -39,7 +39,7 @@ export interface CalculatorInterface {
     role: string;
     experience: string;
     location: string;
-    skills: string;
+    skill: string;
     industry: string;
     company_size: string;
 }
