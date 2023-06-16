@@ -1,7 +1,6 @@
 import Chart from 'chart.js/auto';
 import {FC, useEffect, useRef, useState} from "react";
-import {salary as SalaryData} from "@/helper/data";
-import {formatSalary} from "@/helper/helper";
+import {user_salary_data as userData} from "@/helper/data";
 
 interface BarChartDataInterface {
     params: any;
@@ -13,56 +12,46 @@ export const BarChart: FC<BarChartDataInterface> = (props) => {
     const [salaryData, setSalaryData] = useState<any>({});
     const [data, setData] = useState<any>({});
     const getSalary = () => {
-        const {role, experience, location} = params;
-        const roleData = SalaryData.find((item: any) => item.role === role);
+        const {role, experience, location, skill, industry, companySize} = params;
+        let filteredData = userData.filter((item: any) => item.role === role && item.designation === experience && item.country === location);
         const labels: any[] = [];
         const dataset: any = {
             data: [],
             backgroundColor: '#FFDE7C',
         };
-        const stepsBefore = 4;
-        const stepsAfter = 5;
-        if (!roleData) {
+        if (!filteredData) {
             return null;
         }
-
-        const experienceData = roleData.by_experience.find((item: any) => item.value === experience);
-
-        if (!experienceData) {
-            return null;
+        if(skill){
+            filteredData = userData.filter((item: any) => item.skills.includes(skill));
+        }
+        if(industry){
+            filteredData = userData.filter((item: any) => item.industry.includes(industry));
+        }
+        if(companySize){
+            filteredData = userData.filter((item: any) => item.companySize === companySize);
         }
 
-        const locationData = experienceData.location.find((item: any) => item.value === location);
+        // const salaryArray: any = filteredData.map((item: any) => item.salary );
 
-        if (!locationData) {
-            return null;
-        }
-        const salary: any = locationData.salary;
-        let count = stepsBefore / 3;
-        // Generate values before the salary
-        for (let i: any = salary - stepsBefore * 10000; i < salary; i += 10000) {
-            labels.push(formatSalary(i));
-            dataset.data.push(salary / (stepsBefore - count));
-            count += 0.5;
+        // const minimum = Math.min(...salaryArray);
+        // const maximum = Math.max(...salaryArray);
+        const bars = Math.min(filteredData.length,10);
+        // const rangeSize = (maximum - minimum) / bars;
+        // const labels = [];
+
+        for (let i = 0; i < bars; i++) {
+            dataset.data.push(filteredData[i].salary);
+            labels.push(`${filteredData[i].salary}k`);
         }
 
-        // Add the salary itself
-        labels.push(formatSalary(salary));
-        dataset.data.push(salary);
-
-        count = stepsAfter - 2;
-        // Generate values after the salary
-        for (let i: any = salary + 10000; i <= salary + stepsAfter * 10000; i += 10000) {
-            labels.push(formatSalary(i));
-            dataset.data.push(salary / (stepsAfter - count));
-            count -= 0.5
-        }
-        setSalaryData(locationData.salary);
+        const salary: any = maximum;
+        setSalaryData(salary);
         setData({
             labels,
             datasets: [dataset],
         });
-        onSalaryChange(locationData.salary);
+        onSalaryChange(salary);
     }
 
     useEffect(() => {
@@ -94,7 +83,7 @@ export const BarChart: FC<BarChartDataInterface> = (props) => {
                             y: {
                                 beginAtZero: true,
                                 ticks: {
-                                    callback: (value) => `${Number(value) / 1000}`, // Customize the y-axis label format
+                                    callback: (value) => `${Number(value)}`, // Customize the y-axis label format
                                 },
                             },
                             x: {
@@ -113,7 +102,7 @@ export const BarChart: FC<BarChartDataInterface> = (props) => {
                             afterDraw: (chart: any) => {
                                 const {ctx, scales} = chart;
                                 const xScale = scales.x;
-                                const xValue = 4;
+                                const xValue = (data.datasets && data.datasets.length > 0 ) ? data.datasets[0].data.indexOf(Math.max(...data.datasets[0].data)) : 1;
                                 const xPixel = xScale.getPixelForValue(xValue);
                                 ctx.save();
                                 ctx.strokeStyle = '#615C55';
