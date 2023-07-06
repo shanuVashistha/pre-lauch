@@ -65,6 +65,7 @@ class MyDocument extends Document {
                         gtag('config', 'G-DQ5QHTS0R3');`,
                         }}
                     ></script>
+                    <meta name="cf-2fa-verify" content="verify2FA3"/>
                 </Head>
                 <body>
                 <Main/>
