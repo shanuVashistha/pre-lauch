@@ -13,7 +13,7 @@ export const SideNav: React.FC<SideNavInterface> = (props) => {
     return <>
         <div className="h-[120px] flex items-center justify-center p-[40px] border-b-2">
             <Img
-                src="/images/logo.svg"
+                src="/images/logo2.svg"
                 alt="Logo"
                 className="w-full"
             />

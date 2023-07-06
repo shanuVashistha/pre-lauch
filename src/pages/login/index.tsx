@@ -45,7 +45,7 @@ const LoginPage = () => {
                     className="bg-[#F5F9FF] min-h-[100vh] gap-[20px] w-full flex flex-col items-center justify-center">
                     <div className="px-[20px] mb-[40px]">
                         <Img
-                            src="/images/logo.svg"
+                            src="/images/logo2.svg"
                             alt="Logo"
                             className="w-[200px]"
                         />
