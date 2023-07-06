@@ -1,15 +1,15 @@
-import React, {FC, useContext, useEffect, useState} from 'react';
-import {Header} from "@/components/Header";
-import {Grid, MenuItem, Paper, TextField} from "@mui/material";
-import {Footer} from "@/components/Footer";
-import {CalculatorInterface} from "@/types";
+import React, { FC, useContext, useEffect, useState } from 'react';
+import { Header } from "@/components/Header";
+import { Grid, MenuItem, Paper, TextField } from "@mui/material";
+import { Footer } from "@/components/Footer";
+import { CalculatorInterface } from "@/types";
 import Head from "next/head";
-import {Banner} from "@/components/Banner";
-import {company_size, experience, industries, location, roles, skills} from "@/helper/data";
-import {BarChart} from "@/components/Chart"
-import {formatSalaryNumber} from "@/helper/helper";
-import {BlogCards} from "@/utils/BlogCards";
-import {LoaderContext} from "@/context/LoaderContext";
+import { Banner } from "@/components/Banner";
+import { company_size, experience, industries, location, roles, skills } from "@/helper/data";
+import { BarChart } from "@/components/Chart"
+import { formatSalaryNumber } from "@/helper/helper";
+import { BlogCards } from "@/utils/BlogCards";
+import { LoaderContext } from "@/context/LoaderContext";
 
 const CalculatorPage: FC = () => {
     const [params, setParams] = useState<CalculatorInterface>({
@@ -20,7 +20,7 @@ const CalculatorPage: FC = () => {
         industry: '',
         skill: ''
     });
-    const {setIsLoading} = useContext(LoaderContext);
+    const { setIsLoading } = useContext(LoaderContext);
     const [errors, setErrors] = useState<any>("");
     const [seoData, setSeoData] = useState<any>({});
     const [salary, setSalary] = useState<any>(0);
@@ -34,7 +34,7 @@ const CalculatorPage: FC = () => {
             };
         });
         setErrors((prevErrors: any) => {
-            const {[key]: deletedKey, ...restErrors} = prevErrors;
+            const { [key]: deletedKey, ...restErrors } = prevErrors;
             return restErrors;
         });
     };
@@ -92,7 +92,7 @@ const CalculatorPage: FC = () => {
             wrap="nowrap"
             direction="column"
             className="main min-h-[100vh]"
-            style={{background: 'linear-gradient(109.04deg, #FFFCF3 0%, #EFF7FF 43.23%, #E8FAF3 98.1%)'}}
+            style={{ background: 'linear-gradient(109.04deg, #FFFCF3 0%, #EFF7FF 43.23%, #E8FAF3 98.1%)' }}
         >
             <Grid className="w-full">
                 <Header/>
