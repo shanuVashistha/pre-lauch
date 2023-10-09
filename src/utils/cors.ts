@@ -1,8 +1,8 @@
 import Cors from 'cors';
-import {NextApiRequest, NextApiResponse} from 'next';
+import { NextApiRequest, NextApiResponse } from 'next';
 
 const corsMiddleware = Cors({
-    origin: '*', // Set the desired origin or specify a list of allowed origins
+    origin: 'https://cms.enjoymondays.com/', // Set the desired origin or specify a list of allowed origins
     methods: ['GET', 'POST', 'OPTIONS'], // Set the allowed HTTP methods
     allowedHeaders: ['Content-Type'], // Set the allowed headers
 });
